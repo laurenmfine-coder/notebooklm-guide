@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combining Audio with Other Methods | NotebookLM Guide</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-serif: 'Lora', Georgia, serif;
+    
+    --stone-50: #fafaf9;
+    --stone-100: #f5f5f4;
+    --stone-200: #e7e5e4;
+    --stone-300: #d6d3d1;
+    --stone-400: #a8a29e;
+    --stone-500: #78716c;
+    --stone-600: #57534e;
+    --stone-700: #44403c;
+    --stone-800: #292524;
+    --stone-900: #1c1917;
+    
+    --sage-50: #f6f7f6;
+    --sage-100: #e3e7e3;
+    --sage-200: #c7d0c7;
+    --sage-500: #6b7c6b;
+    --sage-600: #4a5c4a;
+    --sage-700: #3d4a3d;
+    
+    --clay-50: #fdf8f6;
+    --clay-100: #f9ebe5;
+    --clay-500: #b07d62;
+    --clay-600: #96624a;
+    
+    --sky-50: #f5f9fc;
+    --sky-100: #e3eff7;
+    --sky-500: #5b8fb3;
+    --sky-600: #3d7199;
+    
+    --plum-50: #f9f7fa;
+    --plum-100: #ede8f0;
+    --plum-500: #7d6b8a;
+    --plum-600: #5e4d6b;
+    
+    --moss-50: #f6f8f5;
+    --moss-100: #e5ebe3;
+    --moss-500: #5a7356;
+    --moss-600: #445941;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-sans);
+    background: var(--stone-50);
+    color: var(--stone-800);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Navigation - Simple underline style */
+.site-nav {
+    background: white;
+    border-bottom: 1px solid var(--stone-200);
+    padding: 18px 24px;
+}
+
+.site-nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--stone-800);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+}
+
+.site-title:hover {
+    color: var(--stone-600);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--stone-500);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--stone-800);
+    border-bottom-color: var(--stone-300);
+}
+
+/* Page Headers - Muted colors, no gradients */
+.page-header {
+    padding: 64px 24px;
+    text-align: center;
+    background: var(--stone-100);
+    border-bottom: 1px solid var(--stone-200);
+}
+
+.page-header.audio { background: var(--clay-50); border-bottom-color: var(--clay-100); }
+.page-header.visual { background: var(--sky-50); border-bottom-color: var(--sky-100); }
+.page-header.readwrite { background: var(--plum-50); border-bottom-color: var(--plum-100); }
+.page-header.kinesthetic { background: var(--moss-50); border-bottom-color: var(--moss-100); }
+.page-header.training { background: var(--clay-50); border-bottom-color: var(--clay-100); }
+.page-header.time { background: var(--sky-50); border-bottom-color: var(--sky-100); }
+.page-header.problems { background: var(--plum-50); border-bottom-color: var(--plum-100); }
+
+.page-header h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.page-header .subtitle {
+    font-size: 1.05rem;
+    color: var(--stone-500);
+    max-width: 520px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--stone-400);
+    margin-bottom: 16px;
+}
+
+.breadcrumb a {
+    color: var(--stone-500);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+.main-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+/* Typography */
+h2 {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin: 48px 0 20px;
+    letter-spacing: -0.01em;
+}
+
+h2:first-child {
+    margin-top: 0;
+}
+
+h3 {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--stone-700);
+    margin: 32px 0 12px;
+}
+
+p {
+    margin-bottom: 16px;
+    color: var(--stone-700);
+}
+
+ul, ol {
+    margin: 16px 0;
+    padding-left: 20px;
+    color: var(--stone-700);
+}
+
+li {
+    margin-bottom: 8px;
+    padding-left: 4px;
+}
+
+li::marker {
+    color: var(--stone-400);
+}
+
+strong {
+    font-weight: 600;
+    color: var(--stone-800);
+}
+
+/* Callout Boxes - Subtle, no icons */
+.tip {
+    background: var(--sage-50);
+    border: 1px solid var(--sage-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+}
+
+.tip-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--sage-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.warning {
+    background: var(--clay-50);
+    border: 1px solid var(--clay-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+}
+
+.warning-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--clay-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Action Box - Distinct style */
+.action-box {
+    background: white;
+    border: 2px solid var(--stone-200);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 36px 0;
+}
+
+.action-box h3 {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--stone-500);
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.action-box p {
+    margin-bottom: 8px;
+}
+
+.action-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Navigation Cards - Pill style, no icons */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+}
+
+.card {
+    display: block;
+    background: white;
+    border: 1px solid var(--stone-200);
+    border-radius: 12px;
+    padding: 24px 28px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.card:hover {
+    border-color: var(--stone-300);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    transform: translateY(-2px);
+}
+
+.card h4 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: var(--stone-500);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Section Links - Clean list style */
+.link-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+}
+
+.link-list a {
+    display: block;
+    padding: 18px 24px;
+    background: white;
+    border: 1px solid var(--stone-200);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.link-list a:hover {
+    border-color: var(--stone-300);
+    background: var(--stone-50);
+}
+
+.link-list .link-title {
+    display: block;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin-bottom: 4px;
+}
+
+.link-list .link-desc {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--stone-500);
+}
+
+/* Post Navigation - Pill buttons */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--stone-200);
+}
+
+.post-nav a {
+    flex: 1;
+    padding: 16px 20px;
+    background: var(--stone-100);
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--stone-700);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.post-nav a:hover {
+    background: var(--stone-200);
+    color: var(--stone-800);
+}
+
+.post-nav .next {
+    text-align: right;
+}
+
+.post-nav .nav-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--stone-400);
+    margin-bottom: 2px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--stone-200);
+}
+
+th {
+    font-weight: 600;
+    color: var(--stone-600);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Footer - Simple */
+.site-footer {
+    background: var(--stone-100);
+    border-top: 1px solid var(--stone-200);
+    padding: 48px 24px;
+    text-align: center;
+    margin-top: 64px;
+}
+
+.site-footer p {
+    color: var(--stone-500);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    color: var(--stone-600);
+    text-decoration: underline;
+}
+
+.site-footer a:hover {
+    color: var(--stone-800);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .page-header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .post-nav {
+        flex-direction: column;
+    }
+    
+    .post-nav a {
+        text-align: center;
+    }
+    
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+    <nav class="site-nav"><div class="site-nav-inner"><a href="index.html" class="site-title">NotebookLM Guide</a><div class="nav-links"><a href="quiz/study-style-quiz.html">Take the Quiz</a><a href="learning-styles.html">Learning Styles</a><a href="training/index.html">By Stage</a><a href="time/index.html">By Time</a></div></div></nav>
+    <header class="page-header audio">
+        <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Audio</a> / Post 6</div>
+        <h1>Combining Audio with Other Methods</h1>
+        <p class="subtitle">Multi-modal strategies</p>
+    </header>
+    <main class="main-content">
+        
+<h2>Audio Is Your Strength, Not Your Limit</h2>
+<p>While audio is your primary channel, combining modalities strengthens retention. Lead with audio, supplement strategically.</p>
+
+<h2>Audio + Visual</h2>
+<p><strong>When:</strong> Anatomy, spatial content, diagrams</p>
+<ol>
+    <li>Listen to audio overview first (conceptual framework)</li>
+    <li>Then review visuals (images, diagrams)</li>
+    <li>Return to audio while mentally visualizing</li>
+</ol>
+
+<h2>Audio + Writing</h2>
+<p><strong>When:</strong> Complex material, exam prep</p>
+<ol>
+    <li>Listen to audio overview</li>
+    <li>Pause and write key points</li>
+    <li>Listen again while reviewing notes</li>
+</ol>
+
+<h2>Audio + Practice</h2>
+<p><strong>When:</strong> Preparing for application</p>
+<ol>
+    <li>Listen to audio on topic</li>
+    <li>Do practice questions</li>
+    <li>Re-listen focusing on areas you missed</li>
+</ol>
+
+<h2>Your Personal Mix</h2>
+<p>Suggested ratio for audio-dominant learners:</p>
+<ul>
+    <li>60-70% audio-based learning</li>
+    <li>15-20% visual supplement</li>
+    <li>10-15% writing/practice</li>
+</ul>
+
+<div class="action-box">
+    <h3>Experiment</h3>
+    <p>This week, try one "audio + visual" session and one "audio + writing" session. Note which combination helps retention for different content types.</p>
+</div>
+
+        <div class="post-nav"><a href="post5-active-vs-passive.html"><span class="nav-label">Previous</span>Active vs Passive</a></div>
+    </main>
+    <footer class="site-footer"><p><strong>NotebookLM for Medical Learners</strong></p><p>Created by Lauren Fine, MD, FAAAAI</p><p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p></footer>
+</body>
+</html>
