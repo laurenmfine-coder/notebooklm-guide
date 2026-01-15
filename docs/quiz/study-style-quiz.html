@@ -3,876 +3,558 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover Your NotebookLM Study Strategy | Medical Student Learning Style Quiz</title>
+    <title>Study Style Quiz | NotebookLM Guide</title>
     <style>
-        :root {
-            --primary: #1E3A5F;
-            --primary-light: #2563EB;
-            --secondary: #10B981;
-            --accent: #8B5CF6;
-            --warning: #F59E0B;
-            --bg: #F8FAFC;
-            --card-bg: #FFFFFF;
-            --text: #1F2937;
-            --text-light: #6B7280;
-            --border: #E5E7EB;
-            --efficient: #3B82F6;
-            --deep: #8B5CF6;
-            --active: #10B981;
-            --cautious: #F59E0B;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;600&display=swap');
         
+        :root {
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-serif: 'Lora', Georgia, serif;
+            --stone-50: #fafaf9;
+            --stone-100: #f5f5f4;
+            --stone-200: #e7e5e4;
+            --stone-300: #d6d3d1;
+            --stone-400: #a8a29e;
+            --stone-500: #78716c;
+            --stone-600: #57534e;
+            --stone-700: #44403c;
+            --stone-800: #292524;
+            --sage-50: #f6f7f6;
+            --sage-100: #e3e7e3;
+            --sage-600: #4a5c4a;
+            --clay-500: #b07d62;
+            --sky-500: #5b8fb3;
+            --plum-500: #7d6b8a;
+            --moss-500: #5a7356;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: var(--text);
-            padding: 20px;
+            font-family: var(--font-sans);
+            background: var(--stone-50);
+            color: var(--stone-800);
+            line-height: 1.7;
         }
-        
-        .container {
-            max-width: 700px;
+
+        .site-nav {
+            background: white;
+            border-bottom: 1px solid var(--stone-200);
+            padding: 18px 24px;
+        }
+
+        .site-nav-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--stone-800);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--stone-500);
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--stone-800);
+        }
+
+        .page-header {
+            padding: 64px 24px;
+            text-align: center;
+            background: var(--sage-50);
+            border-bottom: 1px solid var(--sage-100);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--stone-800);
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: var(--stone-500);
+            max-width: 480px;
             margin: 0 auto;
         }
-        
-        .card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-            overflow: hidden;
+
+        .quiz-container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 48px 24px;
         }
-        
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
+
+        .question-card {
+            background: white;
+            border: 1px solid var(--stone-200);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
         }
-        
-        .header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .header p {
-            opacity: 0.9;
-            font-size: 1rem;
-        }
-        
-        .progress-container {
-            padding: 20px 30px;
-            background: #F1F5F9;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .progress-bar {
-            height: 8px;
-            background: var(--border);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-light), var(--accent));
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-        
-        .progress-text {
-            text-align: center;
-            margin-top: 8px;
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-        
-        .content {
-            padding: 30px;
-        }
-        
-        /* Welcome Screen */
-        .welcome {
-            text-align: center;
-            padding: 40px 20px;
-        }
-        
-        .welcome h2 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .welcome-features {
-            text-align: left;
-            max-width: 350px;
-            margin: 0 auto 30px;
-        }
-        
-        .welcome-features li {
-            padding: 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .welcome-features .icon {
-            width: 24px;
-            height: 24px;
-            background: var(--secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-        
-        /* Questions */
-        .question-container {
-            display: none;
-        }
-        
-        .question-container.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
+
         .question-number {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-bottom: 10px;
-        }
-        
-        .question-text {
-            font-size: 1.2rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 25px;
-            color: var(--primary);
-            line-height: 1.4;
+            color: var(--stone-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
         }
-        
+
+        .question-text {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--stone-800);
+            margin-bottom: 24px;
+        }
+
         .options {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
-        
+
         .option {
-            padding: 16px 20px;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .option:hover {
-            border-color: var(--primary-light);
-            background: #F8FAFC;
-        }
-        
-        .option.selected {
-            border-color: var(--primary-light);
-            background: #EFF6FF;
-        }
-        
-        .option-letter {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-            transition: all 0.2s ease;
-        }
-        
-        .option.selected .option-letter {
-            background: var(--primary-light);
-            color: white;
-        }
-        
-        .option-text {
-            flex: 1;
-        }
-        
-        /* Buttons */
-        .btn {
-            padding: 14px 28px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-light), var(--accent));
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -10px rgba(37, 99, 235, 0.5);
-        }
-        
-        .btn-primary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .btn-secondary {
-            background: var(--border);
-            color: var(--text);
-        }
-        
-        .btn-secondary:hover {
-            background: #D1D5DB;
-        }
-        
-        .button-row {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            gap: 15px;
-        }
-        
-        /* Results */
-        .results {
-            display: none;
-            text-align: center;
-        }
-        
-        .results.active {
             display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .result-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-        }
-        
-        .result-icon.efficient { background: linear-gradient(135deg, #3B82F6, #1D4ED8); }
-        .result-icon.deep { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
-        .result-icon.active-learner { background: linear-gradient(135deg, #10B981, #059669); }
-        .result-icon.cautious { background: linear-gradient(135deg, #F59E0B, #D97706); }
-        
-        .result-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        
-        .result-title.efficient { color: var(--efficient); }
-        .result-title.deep { color: var(--deep); }
-        .result-title.active-learner { color: var(--active); }
-        .result-title.cautious { color: var(--cautious); }
-        
-        .result-subtitle {
-            color: var(--text-light);
-            margin-bottom: 25px;
-            font-size: 1.05rem;
-        }
-        
-        .result-section {
-            text-align: left;
-            margin: 25px 0;
-            padding: 20px;
-            background: #F8FAFC;
-            border-radius: 12px;
-        }
-        
-        .result-section h3 {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .result-section ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .result-section li {
-            padding: 8px 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            line-height: 1.5;
-        }
-        
-        .result-section li::before {
-            content: "✓";
-            color: var(--secondary);
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-        
-        .warning-box {
-            background: #FEF3C7;
-            border: 1px solid #FCD34D;
+            padding: 16px 20px;
+            background: var(--stone-50);
+            border: 2px solid var(--stone-200);
             border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            color: var(--stone-700);
         }
-        
-        .warning-box strong {
-            color: #92400E;
-        }
-        
-        .cta-section {
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px solid var(--border);
-        }
-        
-        .cta-section h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .cta-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .cta-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-        
-        .cta-btn.primary {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .cta-btn.primary:hover {
-            background: var(--primary-light);
-        }
-        
-        .cta-btn.secondary {
-            background: var(--border);
-            color: var(--text);
-        }
-        
-        .cta-btn.secondary:hover {
-            background: #D1D5DB;
-        }
-        
-        /* Score breakdown */
-        .score-breakdown {
-            margin: 20px 0;
-            padding: 15px;
+
+        .option:hover {
+            border-color: var(--stone-300);
             background: white;
-            border-radius: 10px;
-            border: 1px solid var(--border);
         }
-        
-        .score-bar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 8px 0;
+
+        .option.selected {
+            border-color: var(--sage-600);
+            background: var(--sage-50);
+            color: var(--stone-800);
         }
-        
-        .score-label {
-            width: 120px;
-            font-size: 0.85rem;
-            text-align: right;
+
+        .option input {
+            display: none;
         }
-        
-        .score-track {
-            flex: 1;
-            height: 12px;
-            background: var(--border);
-            border-radius: 6px;
+
+        .progress-bar {
+            background: var(--stone-200);
+            height: 4px;
+            border-radius: 2px;
+            margin-bottom: 32px;
             overflow: hidden;
         }
-        
-        .score-fill {
+
+        .progress-fill {
+            background: var(--sage-600);
             height: 100%;
-            border-radius: 6px;
-            transition: width 0.5s ease;
+            transition: width 0.3s;
         }
-        
-        .score-fill.efficient { background: var(--efficient); }
-        .score-fill.deep { background: var(--deep); }
-        .score-fill.active-learner { background: var(--active); }
-        .score-fill.cautious { background: var(--cautious); }
-        
-        .score-value {
-            width: 40px;
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-family: var(--font-sans);
+        }
+
+        .btn-secondary {
+            background: var(--stone-100);
+            color: var(--stone-700);
+        }
+
+        .btn-secondary:hover {
+            background: var(--stone-200);
+        }
+
+        .btn-primary {
+            background: var(--stone-800);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--stone-700);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .results-card {
+            background: white;
+            border: 1px solid var(--stone-200);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .results-card h2 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--stone-800);
+            margin-bottom: 8px;
+        }
+
+        .primary-style {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .primary-style.audio { color: var(--clay-500); }
+        .primary-style.visual { color: var(--sky-500); }
+        .primary-style.readwrite { color: var(--plum-500); }
+        .primary-style.kinesthetic { color: var(--moss-500); }
+
+        .score-breakdown {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 32px 0;
+            text-align: left;
+        }
+
+        .score-item {
+            background: var(--stone-50);
+            padding: 16px 20px;
+            border-radius: 10px;
+        }
+
+        .score-label {
             font-size: 0.85rem;
-            font-weight: 600;
+            color: var(--stone-500);
+            margin-bottom: 4px;
         }
-        
-        /* Responsive */
-        @media (max-width: 600px) {
-            body { padding: 10px; }
-            .header { padding: 30px 20px; }
-            .header h1 { font-size: 1.5rem; }
-            .content { padding: 20px; }
-            .question-text { font-size: 1.1rem; }
-            .button-row { flex-direction: column; }
-            .btn { width: 100%; }
+
+        .score-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--stone-800);
+        }
+
+        .result-description {
+            text-align: left;
+            margin: 32px 0;
+            padding: 24px;
+            background: var(--stone-50);
+            border-radius: 10px;
+        }
+
+        .result-description h3 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--stone-800);
+        }
+
+        .result-description p {
+            color: var(--stone-600);
+            margin-bottom: 12px;
+        }
+
+        .result-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .cta-link {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--stone-800);
+            color: white;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 500;
+            margin-top: 24px;
+            transition: all 0.2s;
+        }
+
+        .cta-link:hover {
+            background: var(--stone-700);
+        }
+
+        .hidden { display: none; }
+
+        .site-footer {
+            background: var(--stone-100);
+            border-top: 1px solid var(--stone-200);
+            padding: 48px 24px;
+            text-align: center;
+            margin-top: 64px;
+        }
+
+        .site-footer p {
+            color: var(--stone-500);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .site-footer a {
+            color: var(--stone-600);
+        }
+
+        @media (max-width: 640px) {
+            .page-header h1 { font-size: 1.6rem; }
+            .nav-links { display: none; }
+            .score-breakdown { grid-template-columns: 1fr; }
+            .nav-buttons { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="header">
-                <h1>🎯 Discover Your NotebookLM Study Strategy</h1>
-                <p>Find out which features will work best for YOUR learning style</p>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="../index.html" class="site-title">NotebookLM Guide</a>
+            <div class="nav-links">
+                <a href="../learning-styles.html">Learning Styles</a>
+                <a href="../training/index.html">By Stage</a>
+                <a href="../time/index.html">By Time</a>
             </div>
-            
-            <div class="progress-container" id="progressContainer" style="display: none;">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
-                </div>
-                <div class="progress-text"><span id="currentQ">1</span> of <span id="totalQ">12</span> questions</div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Study Style Quiz</h1>
+        <p>Discover your learning profile in 2 minutes and get personalized NotebookLM strategies</p>
+    </header>
+
+    <div class="quiz-container">
+        <div id="quiz">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress" style="width: 0%"></div>
             </div>
-            
-            <div class="content">
-                <!-- Welcome Screen -->
-                <div class="welcome" id="welcomeScreen">
-                    <h2>In just 2 minutes, discover your personalized study strategy</h2>
-                    <ul class="welcome-features">
-                        <li><span class="icon">✓</span> Identify your learning style</li>
-                        <li><span class="icon">✓</span> Get personalized NotebookLM recommendations</li>
-                        <li><span class="icon">✓</span> Receive a custom action plan</li>
-                        <li><span class="icon">✓</span> Access resources for your profile</li>
-                    </ul>
-                    <button class="btn btn-primary" onclick="startQuiz()">Start Quiz →</button>
-                </div>
-                
-                <!-- Questions Container -->
-                <div id="questionsContainer"></div>
-                
-                <!-- Results -->
-                <div class="results" id="resultsContainer"></div>
+            <div id="question-container"></div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>Back</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Continue</button>
+            </div>
+        </div>
+
+        <div id="results" class="hidden">
+            <div class="results-card">
+                <h2>Your Primary Learning Style</h2>
+                <div id="primary-style" class="primary-style"></div>
+                <div class="score-breakdown" id="score-breakdown"></div>
+                <div class="result-description" id="result-description"></div>
+                <a href="#" id="cta-link" class="cta-link">Explore Your Learning Guide</a>
             </div>
         </div>
     </div>
 
+    <footer class="site-footer">
+        <p><strong>NotebookLM for Medical Learners</strong></p>
+        <p>Created by Lauren Fine, MD, FAAAAI</p>
+        <p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p>
+    </footer>
+
     <script>
-        // Quiz Configuration
         const questions = [
             {
-                id: 1,
-                text: "When learning complex medical concepts, I retain information best by:",
+                text: "When learning a new medical concept, you prefer to:",
                 options: [
-                    { text: "Listening and discussing", scores: { efficient: 2, deep: 0, active: 0, cautious: 0 } },
-                    { text: "Reading and taking notes", scores: { efficient: 0, deep: 2, active: 0, cautious: 0 } },
-                    { text: "Doing practice questions and case scenarios", scores: { efficient: 0, deep: 0, active: 2, cautious: 0 } },
-                    { text: "A combination of methods", scores: { efficient: 1, deep: 1, active: 1, cautious: 0 } }
+                    { text: "Listen to someone explain it or hear a podcast about it", type: "audio" },
+                    { text: "See a diagram, chart, or visual representation", type: "visual" },
+                    { text: "Read about it and take notes in your own words", type: "readwrite" },
+                    { text: "Work through a case or practice problem", type: "kinesthetic" }
                 ]
             },
             {
-                id: 2,
-                text: "My biggest challenge with medical school studying is:",
+                text: "After a lecture, you're most likely to:",
                 options: [
-                    { text: "Finding time to study everything", scores: { efficient: 2, deep: 0, active: 0, cautious: 0 } },
-                    { text: "Remembering details for exams", scores: { efficient: 0, deep: 0, active: 2, cautious: 0 } },
-                    { text: "Understanding how concepts connect", scores: { efficient: 0, deep: 2, active: 0, cautious: 0 } },
-                    { text: "Applying knowledge to clinical scenarios", scores: { efficient: 0, deep: 0, active: 2, cautious: 0 } }
+                    { text: "Discuss the material with classmates or explain it out loud", type: "audio" },
+                    { text: "Review diagrams and create visual summaries", type: "visual" },
+                    { text: "Rewrite your notes or create written summaries", type: "readwrite" },
+                    { text: "Do practice questions or apply the concepts", type: "kinesthetic" }
                 ]
             },
             {
-                id: 3,
-                text: "I prefer study sessions that are:",
+                text: "When studying for exams, you find it most helpful to:",
                 options: [
-                    { text: "Short and frequent (15-30 min chunks)", scores: { efficient: 2, deep: 0, active: 0, cautious: 0 } },
-                    { text: "Longer and focused (60-90 min deep dives)", scores: { efficient: 0, deep: 2, active: 0, cautious: 0 } },
-                    { text: "Flexible based on my energy and schedule", scores: { efficient: 1, deep: 0, active: 0, cautious: 1 } },
-                    { text: "Structured with clear objectives", scores: { efficient: 0, deep: 0, active: 2, cautious: 0 } }
+                    { text: "Listen to recorded lectures or audio reviews", type: "audio" },
+                    { text: "Use flashcards with images or draw concept maps", type: "visual" },
+                    { text: "Create written study guides or rewrite key points", type: "readwrite" },
+                    { text: "Work through as many practice questions as possible", type: "kinesthetic" }
                 ]
             },
             {
-                id: 4,
-                text: "When I don't understand something, I typically:",
+                text: "During long study sessions, you tend to:",
                 options: [
-                    { text: "Re-read the material multiple times", scores: { efficient: 0, deep: 0, active: 0, cautious: 2 } },
-                    { text: "Look for alternative explanations (videos, articles)", scores: { efficient: 0, deep: 2, active: 0, cautious: 0 } },
-                    { text: "Ask questions to professors/peers", scores: { efficient: 0, deep: 1, active: 1, cautious: 0 } },
-                    { text: "Try to teach it to someone else", scores: { efficient: 0, deep: 0, active: 2, cautious: 0 } }
+                    { text: "Put on background audio or talk through concepts", type: "audio" },
+                    { text: "Use color-coding and visual organization", type: "visual" },
+                    { text: "Write and rewrite information multiple times", type: "readwrite" },
+                    { text: "Get restless and need to move or take action breaks", type: "kinesthetic" }
                 ]
             },
             {
-                id: 5,
-                text: "How often do you currently use AI tools (ChatGPT, Claude, etc.) for studying?",
+                text: "You remember information best when you:",
                 options: [
-                    { text: "Daily", scores: { efficient: 1, deep: 1, active: 1, cautious: -1 } },
-                    { text: "Weekly", scores: { efficient: 1, deep: 1, active: 1, cautious: 0 } },
-                    { text: "Rarely", scores: { efficient: 0, deep: 0, active: 0, cautious: 1 } },
-                    { text: "Never", scores: { efficient: 0, deep: 0, active: 0, cautious: 2 } }
+                    { text: "Hear it explained or say it out loud yourself", type: "audio" },
+                    { text: "Can visualize where it was on the page or in a diagram", type: "visual" },
+                    { text: "Have written it down in your own words", type: "readwrite" },
+                    { text: "Have physically done something with it or practiced it", type: "kinesthetic" }
                 ]
             },
             {
-                id: 6,
-                text: "Rate your confidence in evaluating whether AI-generated content is accurate:",
+                text: "When a concept isn't clicking, you:",
                 options: [
-                    { text: "Very confident (I regularly fact-check)", scores: { efficient: 1, deep: 1, active: 1, cautious: -1 } },
-                    { text: "Somewhat confident (I check important facts)", scores: { efficient: 1, deep: 1, active: 1, cautious: 0 } },
-                    { text: "Not very confident (I trust it mostly)", scores: { efficient: 0, deep: 0, active: 0, cautious: 1 } },
-                    { text: "Not confident at all", scores: { efficient: 0, deep: 0, active: 0, cautious: 2 } }
+                    { text: "Find a video or podcast that explains it differently", type: "audio" },
+                    { text: "Look for better diagrams or visual explanations", type: "visual" },
+                    { text: "Read multiple text sources until it makes sense", type: "readwrite" },
+                    { text: "Try to apply it to a real case or example", type: "kinesthetic" }
                 ]
             },
             {
-                id: 7,
-                text: "When studying, I typically:",
+                text: "Your ideal study environment includes:",
                 options: [
-                    { text: "Study alone and prefer independence", scores: { efficient: 1, deep: 1, active: 0, cautious: 0 } },
-                    { text: "Study with others or discuss concepts", scores: { efficient: 0, deep: 1, active: 1, cautious: 0 } },
-                    { text: "Mix of both depending on the topic", scores: { efficient: 1, deep: 1, active: 1, cautious: 0 } },
-                    { text: "Struggle to stay motivated either way", scores: { efficient: 2, deep: 0, active: 0, cautious: 0 } }
+                    { text: "Some background noise or the option to study out loud", type: "audio" },
+                    { text: "Clean space with room for visual materials and diagrams", type: "visual" },
+                    { text: "Quiet space with your notes and textbooks", type: "readwrite" },
+                    { text: "Space to move around or switch between activities", type: "kinesthetic" }
                 ]
             },
             {
-                id: 8,
-                text: "How do you currently organize your study materials?",
+                text: "When learning a procedure or physical skill, you prefer to:",
                 options: [
-                    { text: "Very organized (folders, systems, schedules)", scores: { efficient: 0, deep: 2, active: 0, cautious: 0 } },
-                    { text: "Somewhat organized (some structure)", scores: { efficient: 1, deep: 1, active: 0, cautious: 0 } },
-                    { text: "Minimally organized (informal notes)", scores: { efficient: 2, deep: 0, active: 0, cautious: 0 } },
-                    { text: "Not organized (scattered resources)", scores: { efficient: 2, deep: 0, active: 0, cautious: 1 } }
-                ]
-            },
-            {
-                id: 9,
-                text: "Which aspect of your current coursework needs the most support?",
-                options: [
-                    { text: "Memorizing facts and details", scores: { efficient: 0, deep: 0, active: 2, cautious: 0 } },
-                    { text: "Understanding mechanisms and pathways", scores: { efficient: 0, deep: 2, active: 0, cautious: 0 } },
-                    { text: "Integrating across organ systems", scores: { efficient: 0, deep: 2, active: 0, cautious: 0 } },
-                    { text: "Preparing for practical/clinical exams", scores: { efficient: 0, deep: 0, active: 2, cautious: 0 } }
-                ]
-            },
-            {
-                id: 10,
-                text: "How much time per week can you realistically dedicate to trying new study tools?",
-                options: [
-                    { text: "30-60 minutes", scores: { efficient: 2, deep: 0, active: 0, cautious: 1 } },
-                    { text: "1-2 hours", scores: { efficient: 1, deep: 0, active: 1, cautious: 0 } },
-                    { text: "2-4 hours", scores: { efficient: 0, deep: 1, active: 1, cautious: 0 } },
-                    { text: "4+ hours", scores: { efficient: 0, deep: 2, active: 0, cautious: 0 } }
-                ]
-            },
-            {
-                id: 11,
-                text: "What would make a study tool most valuable to you?",
-                options: [
-                    { text: "Saves me time", scores: { efficient: 2, deep: 0, active: 0, cautious: 0 } },
-                    { text: "Helps me understand better", scores: { efficient: 0, deep: 2, active: 0, cautious: 0 } },
-                    { text: "Improves my exam scores", scores: { efficient: 0, deep: 0, active: 2, cautious: 0 } },
-                    { text: "Reduces study stress/anxiety", scores: { efficient: 1, deep: 0, active: 0, cautious: 1 } }
-                ]
-            },
-            {
-                id: 12,
-                text: "How comfortable are you with technology and trying new tools?",
-                options: [
-                    { text: "Very comfortable - I love trying new tech", scores: { efficient: 1, deep: 1, active: 1, cautious: -1 } },
-                    { text: "Comfortable - I can figure things out", scores: { efficient: 1, deep: 1, active: 1, cautious: 0 } },
-                    { text: "Somewhat comfortable - I need guidance", scores: { efficient: 0, deep: 0, active: 0, cautious: 1 } },
-                    { text: "Not comfortable - I prefer familiar tools", scores: { efficient: 0, deep: 0, active: 0, cautious: 2 } }
+                    { text: "Have someone talk you through it step by step", type: "audio" },
+                    { text: "Watch a demonstration or video first", type: "visual" },
+                    { text: "Read the steps and follow written instructions", type: "readwrite" },
+                    { text: "Jump in and try it hands-on with guidance", type: "kinesthetic" }
                 ]
             }
         ];
 
-        // Profile Definitions
-        const profiles = {
-            efficient: {
-                name: "The Efficient Multitasker",
-                icon: "⚡",
-                class: "efficient",
-                subtitle: "Your time is limited, but you're ready to make the most of it.",
-                strategy: [
-                    "<strong>Audio Overviews First</strong> - Listen during your commute, workout, or between classes",
-                    "<strong>Quick Study Guides</strong> - Skim before lectures to prime your brain",
-                    "<strong>Targeted Q&A</strong> - 10-minute focused sessions to clarify confusion"
-                ],
-                actionPlan: [
-                    "Create one Notebook per course/module",
-                    "Upload lecture slides + key textbook chapters",
-                    "Listen to Audio Overview within 24 hours of each lecture",
-                    "Use Q&A for quick clarifications (not deep dives)",
-                    "Generate comprehensive Study Guide 1 week before exams"
-                ],
-                warning: "Don't just passively listen. Pause the audio and quiz yourself on key concepts.",
-                guideLink: "efficient-multitasker-guide.html"
+        const styleInfo = {
+            audio: {
+                name: "Audio Learner",
+                description: "You process information best through listening and verbal explanation. NotebookLM's Audio Overview feature will be your superpower. You can transform any content into listenable discussions and use commute/gym time for productive studying.",
+                link: "../audio/index.html",
+                linkText: "Explore Audio Learning Strategies"
             },
-            deep: {
-                name: "The Deep Processor",
-                icon: "🔬",
-                class: "deep",
-                subtitle: "You need to understand the 'why' behind the facts.",
-                strategy: [
-                    "<strong>Source Grounding + Citations</strong> - Always verify where information comes from",
-                    "<strong>Deep Q&A Sessions</strong> - Ask 'why' and 'how' questions with multiple follow-ups",
-                    "<strong>Integrated Study Guides</strong> - Combine multiple sources to build comprehensive understanding"
-                ],
-                actionPlan: [
-                    "Create integrated Notebooks (lectures + textbook + review articles)",
-                    "Use Q&A to explore mechanisms: 'Why does this happen?'",
-                    "Always check source citations for accuracy",
-                    "Create concept maps from Study Guide summaries",
-                    "Ask for ELI5 explanations of complex topics"
-                ],
-                warning: "Don't get lost in the weeds. Set time limits for each deep dive.",
-                guideLink: "deep-processor-guide.html"
+            visual: {
+                name: "Visual Learner",
+                description: "You need to see information to understand it. Diagrams, charts, and spatial organization help you make sense of complex concepts. Transform NotebookLM's text outputs into visual frameworks and concept maps.",
+                link: "../visual/index.html",
+                linkText: "Explore Visual Learning Strategies"
             },
-            active: {
-                name: "The Active Learner",
-                icon: "💪",
-                class: "active-learner",
-                subtitle: "You learn by doing—practice makes perfect.",
-                strategy: [
-                    "<strong>Case-Based Q&A</strong> - Create and solve clinical scenarios",
-                    "<strong>Custom Practice Questions</strong> - Generate quiz questions from your materials",
-                    "<strong>Teaching Mode</strong> - Use NotebookLM to critique your explanations"
-                ],
-                actionPlan: [
-                    "Upload case studies, practice problems, and clinical guidelines",
-                    "Ask NotebookLM to create USMLE-style vignettes",
-                    "Practice explaining concepts, then have AI evaluate your answer",
-                    "Generate progressive difficulty questions (recall → application → synthesis)",
-                    "Use Study Guides as answer keys for self-generated questions"
-                ],
-                warning: "Don't skip the foundational knowledge. Active learning works best when you have a base to build on.",
-                guideLink: "active-learner-guide.html"
+            readwrite: {
+                name: "Read/Write Learner",
+                description: "You learn best through reading and writing. Taking notes, rewriting concepts, and creating written summaries cements your understanding. NotebookLM's Study Guides and Q&A features are perfectly designed for you.",
+                link: "../readwrite/index.html",
+                linkText: "Explore Read/Write Strategies"
             },
-            cautious: {
-                name: "The Cautious Learner",
-                icon: "✅",
-                class: "cautious",
-                subtitle: "You're new to AI or concerned about accuracy—smart approach!",
-                strategy: [
-                    "<strong>Start with Study Guides</strong> - Familiar format, less intimidating",
-                    "<strong>Citation Verification</strong> - Always check sources before trusting content",
-                    "<strong>Parallel Use</strong> - Use NotebookLM alongside traditional methods first"
-                ],
-                actionPlan: [
-                    "Begin with just ONE Notebook for your most challenging course",
-                    "Generate a Study Guide and compare it to your own notes",
-                    "Use Q&A for clarification only after reading original sources",
-                    "Always click citation links to verify information",
-                    "Gradually increase use as confidence builds"
-                ],
-                warning: "Don't let fear keep you from trying. Start small—even 15 minutes per week adds up.",
-                guideLink: "cautious-learner-guide.html"
+            kinesthetic: {
+                name: "Kinesthetic Learner",
+                description: "You learn by doing. Practice, cases, and hands-on activities help you understand and remember. Transform NotebookLM outputs into active practice—work through cases, create your own questions, and engage physically with the material.",
+                link: "../kinesthetic/index.html",
+                linkText: "Explore Kinesthetic Strategies"
             }
         };
 
-        // State
         let currentQuestion = 0;
-        let answers = [];
-        let scores = { efficient: 0, deep: 0, active: 0, cautious: 0 };
+        let answers = {};
+        let scores = { audio: 0, visual: 0, readwrite: 0, kinesthetic: 0 };
 
-        // Functions
-        function startQuiz() {
-            document.getElementById('welcomeScreen').style.display = 'none';
-            document.getElementById('progressContainer').style.display = 'block';
-            document.getElementById('totalQ').textContent = questions.length;
-            renderQuestion(0);
+        function renderQuestion() {
+            const q = questions[currentQuestion];
+            const container = document.getElementById('question-container');
+            
+            let optionsHTML = '';
+            q.options.forEach((opt, i) => {
+                const selected = answers[currentQuestion] === i ? 'selected' : '';
+                optionsHTML += `<label class="option ${selected}" onclick="selectOption(${i})"><input type="radio" name="q${currentQuestion}" value="${i}" ${selected ? 'checked' : ''}>${opt.text}</label>`;
+            });
+
+            container.innerHTML = `<div class="question-card"><div class="question-number">Question ${currentQuestion + 1} of ${questions.length}</div><div class="question-text">${q.text}</div><div class="options">${optionsHTML}</div></div>`;
+
+            document.getElementById('progress').style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = answers[currentQuestion] === undefined;
+            document.getElementById('nextBtn').textContent = currentQuestion === questions.length - 1 ? 'See Results' : 'Continue';
         }
 
-        function renderQuestion(index) {
-            const container = document.getElementById('questionsContainer');
-            const q = questions[index];
-            
-            container.innerHTML = `
-                <div class="question-container active">
-                    <div class="question-number">Question ${index + 1} of ${questions.length}</div>
-                    <div class="question-text">${q.text}</div>
-                    <div class="options">
-                        ${q.options.map((opt, i) => `
-                            <div class="option" onclick="selectOption(${index}, ${i})" data-index="${i}">
-                                <div class="option-letter">${String.fromCharCode(65 + i)}</div>
-                                <div class="option-text">${opt.text}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div class="button-row">
-                        ${index > 0 ? '<button class="btn btn-secondary" onclick="prevQuestion()">← Back</button>' : '<div></div>'}
-                        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
-                            ${index === questions.length - 1 ? 'See Results →' : 'Next →'}
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            // Restore previous selection if exists
-            if (answers[index] !== undefined) {
-                const options = container.querySelectorAll('.option');
-                options[answers[index]].classList.add('selected');
-                document.getElementById('nextBtn').disabled = false;
-            }
-            
-            updateProgress(index + 1);
-        }
-
-        function selectOption(questionIndex, optionIndex) {
-            // Update UI
-            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-            document.querySelector(`.option[data-index="${optionIndex}"]`).classList.add('selected');
-            document.getElementById('nextBtn').disabled = false;
-            
-            // Store answer
-            answers[questionIndex] = optionIndex;
+        function selectOption(index) {
+            answers[currentQuestion] = index;
+            renderQuestion();
         }
 
         function nextQuestion() {
-            if (answers[currentQuestion] === undefined) return;
-            
-            // Add scores
-            const q = questions[currentQuestion];
-            const selectedOption = q.options[answers[currentQuestion]];
-            for (let key in selectedOption.scores) {
-                scores[key] += selectedOption.scores[key];
-            }
-            
-            currentQuestion++;
-            
-            if (currentQuestion >= questions.length) {
-                showResults();
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
             } else {
-                renderQuestion(currentQuestion);
+                calculateResults();
             }
         }
 
         function prevQuestion() {
             if (currentQuestion > 0) {
-                // Remove scores from current answer before going back
-                if (answers[currentQuestion] !== undefined) {
-                    const q = questions[currentQuestion];
-                    const selectedOption = q.options[answers[currentQuestion]];
-                    for (let key in selectedOption.scores) {
-                        scores[key] -= selectedOption.scores[key];
-                    }
-                }
                 currentQuestion--;
-                renderQuestion(currentQuestion);
+                renderQuestion();
             }
         }
 
-        function updateProgress(current) {
-            const percent = (current / questions.length) * 100;
-            document.getElementById('progressFill').style.width = percent + '%';
-            document.getElementById('currentQ').textContent = current;
+        function calculateResults() {
+            scores = { audio: 0, visual: 0, readwrite: 0, kinesthetic: 0 };
+            
+            Object.keys(answers).forEach(qIndex => {
+                const optionIndex = answers[qIndex];
+                const type = questions[qIndex].options[optionIndex].type;
+                scores[type]++;
+            });
+
+            const maxScore = Math.max(...Object.values(scores));
+            const primaryStyle = Object.keys(scores).find(key => scores[key] === maxScore);
+
+            document.getElementById('quiz').classList.add('hidden');
+            document.getElementById('results').classList.remove('hidden');
+
+            const primaryEl = document.getElementById('primary-style');
+            primaryEl.textContent = styleInfo[primaryStyle].name;
+            primaryEl.className = `primary-style ${primaryStyle}`;
+
+            document.getElementById('score-breakdown').innerHTML = `<div class="score-item"><div class="score-label">Audio</div><div class="score-value">${scores.audio}/${questions.length}</div></div><div class="score-item"><div class="score-label">Visual</div><div class="score-value">${scores.visual}/${questions.length}</div></div><div class="score-item"><div class="score-label">Read/Write</div><div class="score-value">${scores.readwrite}/${questions.length}</div></div><div class="score-item"><div class="score-label">Kinesthetic</div><div class="score-value">${scores.kinesthetic}/${questions.length}</div></div>`;
+
+            document.getElementById('result-description').innerHTML = `<h3>What This Means for You</h3><p>${styleInfo[primaryStyle].description}</p><p>Remember: Most people are multi-modal learners. Check your secondary scores above—you may benefit from strategies across multiple styles.</p>`;
+
+            const ctaEl = document.getElementById('cta-link');
+            ctaEl.href = styleInfo[primaryStyle].link;
+            ctaEl.textContent = styleInfo[primaryStyle].linkText;
         }
 
-        function showResults() {
-            document.getElementById('progressContainer').style.display = 'none';
-            document.getElementById('questionsContainer').innerHTML = '';
-            
-            // Determine primary profile
-            let maxScore = -Infinity;
-            let primaryProfile = 'efficient';
-            for (let key in scores) {
-                if (scores[key] > maxScore) {
-                    maxScore = scores[key];
-                    primaryProfile = key;
-                }
-            }
-            
-            const profile = profiles[primaryProfile];
-            const maxPossible = 24; // Approximate max score per category
-            
-            const resultsHTML = `
-                <div class="result-icon ${profile.class}">${profile.icon}</div>
-                <h2 class="result-title ${profile.class}">${profile.name}</h2>
-                <p class="result-subtitle">${profile.subtitle}</p>
-                
-                <div class="score-breakdown">
-                    <h4 style="margin-bottom: 15px; font-size: 0.9rem; color: var(--text-light);">Your Profile Breakdown:</h4>
-                    ${Object.keys(scores).map(key => `
-                        <div class="score-bar">
-                            <div class="score-label">${profiles[key].name.split(' ').slice(1).join(' ')}</div>
-                            <div class="score-track">
-                                <div class="score-fill ${profiles[key].class}" style="width: ${Math.max(0, (scores[key] / maxPossible) * 100)}%"></div>
-                            </div>
-                            <div class="score-value">${Math.max(0, scores[key])}</div>
-                        </div>
-                    `).join('')}
-                </div>
-                
-                <div class="result-section">
-                    <h3>🎯 Your NotebookLM Strategy</h3>
-                    <ul>
-                        ${profile.strategy.map(s => `<li>${s}</li>`).join('')}
-                    </ul>
-                </div>
-                
-                <div class="result-section">
-                    <h3>📋 Your Action Plan</h3>
-                    <ul>
-                        ${profile.actionPlan.map(a => `<li>${a}</li>`).join('')}
-                    </ul>
-                </div>
-                
-                <div class="warning-box">
-                    <strong>⚠️ Watch out for:</strong> ${profile.warning}
-                </div>
-                
-                <div class="cta-section">
-                    <h3>Ready to get started?</h3>
-                    <div class="cta-buttons">
-                        <a href="${profile.guideLink}" class="cta-btn primary">📥 Read Your Complete Guide</a>
-                        <a href="index.html" class="cta-btn secondary">🏠 Explore Full Resource Library</a>
-                        <button class="cta-btn secondary" onclick="restartQuiz()">🔄 Retake Quiz</button>
-                    </div>
-                </div>
-            `;
-            
-            const resultsContainer = document.getElementById('resultsContainer');
-            resultsContainer.innerHTML = resultsHTML;
-            resultsContainer.classList.add('active');
-        }
-
-        function restartQuiz() {
-            currentQuestion = 0;
-            answers = [];
-            scores = { efficient: 0, deep: 0, active: 0, cautious: 0 };
-            
-            document.getElementById('resultsContainer').classList.remove('active');
-            document.getElementById('resultsContainer').innerHTML = '';
-            document.getElementById('welcomeScreen').style.display = 'block';
-        }
+        renderQuestion();
     </script>
 </body>
 </html>

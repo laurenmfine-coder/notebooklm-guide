@@ -3,136 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maximizing NotebookLM Audio Overviews | NotebookLM for Medical Learners</title>
-    <meta name="description" content="Master the core audio study technique">
+    <title>Maximizing Audio Overviews | NotebookLM Guide</title>
     <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
 :root {
-    --primary: #1a365d;
-    --primary-light: #2c5282;
-    --primary-lighter: #3182ce;
-    --secondary: #38a169;
-    --secondary-light: #48bb78;
-    --accent: #805ad5;
-    --accent-light: #9f7aea;
-    --warning: #dd6b20;
-    --bg: #f7fafc;
-    --bg-alt: #edf2f7;
-    --card-bg: #ffffff;
-    --text: #2d3748;
-    --text-light: #718096;
-    --text-lighter: #a0aec0;
-    --border: #e2e8f0;
-    --border-light: #edf2f7;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-    --shadow: 0 4px 6px rgba(0,0,0,0.07);
-    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-    --radius: 12px;
-    --radius-lg: 16px;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-serif: 'Lora', Georgia, serif;
+    
+    --stone-50: #fafaf9;
+    --stone-100: #f5f5f4;
+    --stone-200: #e7e5e4;
+    --stone-300: #d6d3d1;
+    --stone-400: #a8a29e;
+    --stone-500: #78716c;
+    --stone-600: #57534e;
+    --stone-700: #44403c;
+    --stone-800: #292524;
+    --stone-900: #1c1917;
+    
+    --sage-50: #f6f7f6;
+    --sage-100: #e3e7e3;
+    --sage-200: #c7d0c7;
+    --sage-500: #6b7c6b;
+    --sage-600: #4a5c4a;
+    --sage-700: #3d4a3d;
+    
+    --clay-50: #fdf8f6;
+    --clay-100: #f9ebe5;
+    --clay-500: #b07d62;
+    --clay-600: #96624a;
+    
+    --sky-50: #f5f9fc;
+    --sky-100: #e3eff7;
+    --sky-500: #5b8fb3;
+    --sky-600: #3d7199;
+    
+    --plum-50: #f9f7fa;
+    --plum-100: #ede8f0;
+    --plum-500: #7d6b8a;
+    --plum-600: #5e4d6b;
+    
+    --moss-50: #f6f8f5;
+    --moss-100: #e5ebe3;
+    --moss-500: #5a7356;
+    --moss-600: #445941;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    font-family: var(--font-sans);
+    background: var(--stone-50);
+    color: var(--stone-800);
     line-height: 1.7;
     font-size: 16px;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Top Navigation */
-.top-nav {
-    background: var(--card-bg);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(10px);
-    background: rgba(255,255,255,0.95);
+/* Navigation - Simple underline style */
+.site-nav {
+    background: white;
+    border-bottom: 1px solid var(--stone-200);
+    padding: 18px 24px;
 }
 
-.top-nav-inner {
-    max-width: 1200px;
+.site-nav-inner {
+    max-width: 960px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.nav-brand {
-    font-weight: 700;
-    color: var(--primary);
-    text-decoration: none;
+.site-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
     font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    color: var(--stone-800);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+}
+
+.site-title:hover {
+    color: var(--stone-600);
 }
 
 .nav-links {
     display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
+    gap: 32px;
 }
 
-.nav-link {
-    padding: 8px 14px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text-light);
+.nav-links a {
     font-size: 0.9rem;
     font-weight: 500;
+    color: var(--stone-500);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
     transition: all 0.2s;
 }
 
-.nav-link:hover {
-    background: var(--bg-alt);
-    color: var(--primary);
+.nav-links a:hover {
+    color: var(--stone-800);
+    border-bottom-color: var(--stone-300);
 }
 
-.nav-link.active {
-    background: var(--primary);
-    color: white;
-}
-
-/* Page Header */
+/* Page Headers - Muted colors, no gradients */
 .page-header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    color: white;
-    padding: 60px 20px;
+    padding: 64px 24px;
     text-align: center;
+    background: var(--stone-100);
+    border-bottom: 1px solid var(--stone-200);
 }
 
-.page-header.audio { background: linear-gradient(135deg, #ec4899 0%, #be185d 100%); }
-.page-header.visual { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
-.page-header.readwrite { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); }
-.page-header.kinesthetic { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-.page-header.training { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
-.page-header.time { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
-.page-header.problems { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+.page-header.audio { background: var(--clay-50); border-bottom-color: var(--clay-100); }
+.page-header.visual { background: var(--sky-50); border-bottom-color: var(--sky-100); }
+.page-header.readwrite { background: var(--plum-50); border-bottom-color: var(--plum-100); }
+.page-header.kinesthetic { background: var(--moss-50); border-bottom-color: var(--moss-100); }
+.page-header.training { background: var(--clay-50); border-bottom-color: var(--clay-100); }
+.page-header.time { background: var(--sky-50); border-bottom-color: var(--sky-100); }
+.page-header.problems { background: var(--plum-50); border-bottom-color: var(--plum-100); }
 
 .page-header h1 {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-    font-weight: 700;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
 }
 
 .page-header .subtitle {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    max-width: 600px;
+    font-size: 1.05rem;
+    color: var(--stone-500);
+    max-width: 520px;
     margin: 0 auto;
+    font-weight: 400;
 }
 
 .breadcrumb {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-bottom: 15px;
+    font-size: 0.85rem;
+    color: var(--stone-400);
+    margin-bottom: 16px;
 }
 
 .breadcrumb a {
-    color: white;
+    color: var(--stone-500);
     text-decoration: none;
 }
 
@@ -142,26 +159,19 @@ body {
 
 /* Main Content */
 .main-content {
-    max-width: 800px;
+    max-width: 680px;
     margin: 0 auto;
-    padding: 40px 20px;
-}
-
-.content-card {
-    background: var(--card-bg);
-    border-radius: var(--radius-lg);
-    padding: 40px;
-    box-shadow: var(--shadow);
-    margin-bottom: 30px;
+    padding: 48px 24px;
 }
 
 /* Typography */
 h2 {
-    font-size: 1.5rem;
-    color: var(--primary);
-    margin: 40px 0 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--border-light);
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin: 48px 0 20px;
+    letter-spacing: -0.01em;
 }
 
 h2:first-child {
@@ -169,316 +179,299 @@ h2:first-child {
 }
 
 h3 {
-    font-size: 1.2rem;
-    color: var(--text);
-    margin: 30px 0 15px;
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--stone-700);
+    margin: 32px 0 12px;
 }
 
 p {
     margin-bottom: 16px;
-    color: var(--text);
+    color: var(--stone-700);
 }
 
 ul, ol {
     margin: 16px 0;
-    padding-left: 24px;
+    padding-left: 20px;
+    color: var(--stone-700);
 }
 
 li {
     margin-bottom: 8px;
+    padding-left: 4px;
+}
+
+li::marker {
+    color: var(--stone-400);
 }
 
 strong {
-    color: var(--primary);
     font-weight: 600;
+    color: var(--stone-800);
 }
 
-/* Callout Boxes */
-.callout {
+/* Callout Boxes - Subtle, no icons */
+.tip {
+    background: var(--sage-50);
+    border: 1px solid var(--sage-100);
+    border-radius: 8px;
     padding: 20px 24px;
-    border-radius: var(--radius);
+    margin: 28px 0;
+}
+
+.tip-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--sage-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.warning {
+    background: var(--clay-50);
+    border: 1px solid var(--clay-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+}
+
+.warning-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--clay-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Action Box - Distinct style */
+.action-box {
+    background: white;
+    border: 2px solid var(--stone-200);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 36px 0;
+}
+
+.action-box h3 {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--stone-500);
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.action-box p {
+    margin-bottom: 8px;
+}
+
+.action-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Navigation Cards - Pill style, no icons */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+}
+
+.card {
+    display: block;
+    background: white;
+    border: 1px solid var(--stone-200);
+    border-radius: 12px;
+    padding: 24px 28px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.card:hover {
+    border-color: var(--stone-300);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    transform: translateY(-2px);
+}
+
+.card h4 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: var(--stone-500);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Section Links - Clean list style */
+.link-list {
+    list-style: none;
+    padding: 0;
     margin: 24px 0;
 }
 
-.callout-tip {
-    background: #f0fff4;
-    border-left: 4px solid var(--secondary);
-}
-
-.callout-warning {
-    background: #fffaf0;
-    border-left: 4px solid var(--warning);
-}
-
-.callout-info {
-    background: #ebf8ff;
-    border-left: 4px solid var(--primary-lighter);
-}
-
-.callout-title {
-    font-weight: 600;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* Navigation Cards */
-.nav-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin: 30px 0;
-}
-
-.nav-card {
-    background: var(--card-bg);
-    border: 2px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.2s;
-}
-
-.nav-card:hover {
-    border-color: var(--primary-lighter);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-}
-
-.nav-card h4 {
-    font-size: 1.1rem;
-    color: var(--primary);
-    margin-bottom: 8px;
-}
-
-.nav-card p {
-    font-size: 0.9rem;
-    color: var(--text-light);
-    margin: 0;
-}
-
-/* Post Navigation */
-.post-nav {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 1px solid var(--border);
-}
-
-.post-nav-link {
-    flex: 1;
-    padding: 16px 20px;
-    background: var(--bg-alt);
-    border-radius: var(--radius);
-    text-decoration: none;
-    color: var(--text);
-    transition: all 0.2s;
-}
-
-.post-nav-link:hover {
-    background: var(--primary);
-    color: white;
-}
-
-.post-nav-link.next {
-    text-align: right;
-}
-
-.post-nav-label {
-    font-size: 0.8rem;
-    color: var(--text-light);
+.link-list a {
     display: block;
+    padding: 18px 24px;
+    background: white;
+    border: 1px solid var(--stone-200);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.link-list a:hover {
+    border-color: var(--stone-300);
+    background: var(--stone-50);
+}
+
+.link-list .link-title {
+    display: block;
+    font-weight: 600;
+    color: var(--stone-800);
     margin-bottom: 4px;
 }
 
-.post-nav-link:hover .post-nav-label {
-    color: rgba(255,255,255,0.8);
-}
-
-/* Section Links List */
-.section-links {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.section-links li {
-    margin: 0;
-}
-
-.section-links a {
+.link-list .link-desc {
     display: block;
+    font-size: 0.9rem;
+    color: var(--stone-500);
+}
+
+/* Post Navigation - Pill buttons */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--stone-200);
+}
+
+.post-nav a {
+    flex: 1;
     padding: 16px 20px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    margin-bottom: 10px;
+    background: var(--stone-100);
+    border-radius: 100px;
     text-decoration: none;
-    color: var(--text);
+    color: var(--stone-700);
+    font-weight: 500;
+    font-size: 0.95rem;
     transition: all 0.2s;
 }
 
-.section-links a:hover {
-    border-color: var(--primary-lighter);
-    background: var(--bg-alt);
-    padding-left: 28px;
+.post-nav a:hover {
+    background: var(--stone-200);
+    color: var(--stone-800);
 }
 
-.section-links .link-title {
-    font-weight: 600;
-    color: var(--primary);
+.post-nav .next {
+    text-align: right;
+}
+
+.post-nav .nav-label {
     display: block;
-}
-
-.section-links .link-desc {
-    font-size: 0.9rem;
-    color: var(--text-light);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--stone-400);
+    margin-bottom: 2px;
 }
 
 /* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 24px 0;
     font-size: 0.95rem;
 }
 
 th, td {
-    padding: 12px 16px;
+    padding: 14px 16px;
     text-align: left;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--stone-200);
 }
 
 th {
-    background: var(--bg-alt);
     font-weight: 600;
-    color: var(--primary);
+    color: var(--stone-600);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-/* Code/Examples */
-.example-box {
-    background: var(--bg-alt);
-    border-radius: var(--radius);
-    padding: 20px;
-    margin: 20px 0;
-    font-family: 'SF Mono', Monaco, monospace;
-    font-size: 0.9rem;
-    overflow-x: auto;
-}
-
-/* Action Step Box */
-.action-step {
-    background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
-    border: 2px solid var(--secondary);
-    border-radius: var(--radius);
-    padding: 24px;
-    margin: 30px 0;
-}
-
-.action-step h3 {
-    color: var(--secondary);
-    margin-top: 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Footer */
+/* Footer - Simple */
 .site-footer {
-    background: var(--primary);
-    color: white;
-    padding: 40px 20px;
+    background: var(--stone-100);
+    border-top: 1px solid var(--stone-200);
+    padding: 48px 24px;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 64px;
+}
+
+.site-footer p {
+    color: var(--stone-500);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
 }
 
 .site-footer a {
-    color: white;
-    opacity: 0.9;
+    color: var(--stone-600);
+    text-decoration: underline;
 }
 
 .site-footer a:hover {
-    opacity: 1;
+    color: var(--stone-800);
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    .page-header h1 { font-size: 1.7rem; }
-    .content-card { padding: 24px; }
-    .nav-links { display: none; }
-    .post-nav { flex-direction: column; }
-}
-
-/* Tooltip */
-.tooltip {
-    position: relative;
-    cursor: help;
-    border-bottom: 1px dotted var(--text-light);
-}
-
-.tooltip:hover::after {
-    content: attr(data-tip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--primary);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    white-space: nowrap;
-    z-index: 100;
-}
-
-/* Progress indicator for long content */
-.reading-progress {
-    position: fixed;
-    top: 57px;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: var(--secondary);
-    z-index: 99;
-    transition: width 0.1s;
+@media (max-width: 640px) {
+    .page-header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .post-nav {
+        flex-direction: column;
+    }
+    
+    .post-nav a {
+        text-align: center;
+    }
+    
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
 <body>
-    <div class="reading-progress" id="readingProgress"></div>
-    
-    <nav class="top-nav">
-        <div class="top-nav-inner">
-            <a href="index.html" class="nav-brand">📚 NotebookLM Guide</a>
-            <div class="nav-links">
-                <a href="quiz/study-style-quiz.html" class="nav-link">🎯 Quiz</a>
-                <a href="learning-styles.html" class="nav-link ">Learning Styles</a>
-                <a href="training/index.html" class="nav-link ">Training Stage</a>
-                <a href="time/index.html" class="nav-link ">By Time</a>
-                <a href="problems/index.html" class="nav-link ">By Problem</a>
-            </div>
-        </div>
-    </nav>
-    
+    <nav class="site-nav"><div class="site-nav-inner"><a href="../index.html" class="site-title">NotebookLM Guide</a><div class="nav-links"><a href="../quiz/study-style-quiz.html">Take the Quiz</a><a href="../learning-styles.html">Learning Styles</a><a href="../training/index.html">By Stage</a><a href="../time/index.html">By Time</a></div></div></nav>
     <header class="page-header audio">
-        <div class="breadcrumb"><a href="../index.html">Home</a> → <a href="index.html">Audio Learners</a> → Post 2</div>
-        <h1>Maximizing NotebookLM Audio Overviews</h1>
+        <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Audio</a> / Post 2</div>
+        <h1>Maximizing Audio Overviews</h1>
         <p class="subtitle">Master the core audio study technique</p>
     </header>
-    
     <main class="main-content">
-        <div class="content-card">
-            
-<h2>The Audio Overview: Your Primary Tool</h2>
+        
+<h2>Your Primary Tool</h2>
 <p>NotebookLM's Audio Overview generates a conversational discussion between two AI hosts about your uploaded content. For audio learners, this is gold.</p>
 
-<h2>How to Generate Effective Audio Overviews</h2>
+<h2>Generating Effective Audio</h2>
 
-<h3>Step 1: Upload the Right Content</h3>
-<p><strong>Best sources for audio overviews:</strong></p>
+<h3>Best Sources</h3>
 <ul>
     <li>Lecture slides with substantial text</li>
     <li>Textbook chapters (PDF format)</li>
@@ -487,168 +480,44 @@ th {
     <li>Clinical guidelines</li>
 </ul>
 
-<p><strong>Less ideal sources:</strong></p>
+<h3>Less Ideal Sources</h3>
 <ul>
     <li>Image-heavy content (anatomy atlases)</li>
     <li>Tables with lots of numbers</li>
     <li>Content requiring visual interpretation</li>
 </ul>
 
-<h3>Step 2: Optimize Your Source Material</h3>
-<p>Before uploading, consider:</p>
-<ul>
-    <li><strong>Combine related sources</strong> - Upload lecture slides + relevant textbook section together for integrated audio</li>
-    <li><strong>Remove unnecessary content</strong> - Delete admin slides, excessive images that won't translate to audio</li>
-    <li><strong>Check file quality</strong> - Ensure PDFs have selectable text (not just scanned images)</li>
-</ul>
-
-<h3>Step 3: Generate and Download</h3>
-<ol>
-    <li>Create a new Notebook in NotebookLM</li>
-    <li>Upload your sources</li>
-    <li>Click "Generate Audio Overview"</li>
-    <li>Wait for generation (usually 2-5 minutes)</li>
-    <li>Download the audio file for offline listening</li>
-</ol>
-
 <h2>The Multiple Exposure Strategy</h2>
-<p>One listen isn't enough. Use this pattern:</p>
 
 <table>
-    <tr>
-        <th>Exposure</th>
-        <th>Timing</th>
-        <th>Purpose</th>
-        <th>Listening Mode</th>
-    </tr>
-    <tr>
-        <td>1st</td>
-        <td>Day of lecture</td>
-        <td>Initial encoding</td>
-        <td>Active (with pauses)</td>
-    </tr>
-    <tr>
-        <td>2nd</td>
-        <td>Next day</td>
-        <td>Reinforcement</td>
-        <td>Passive (commute)</td>
-    </tr>
-    <tr>
-        <td>3rd</td>
-        <td>3-4 days later</td>
-        <td>Spaced repetition</td>
-        <td>Passive (gym)</td>
-    </tr>
-    <tr>
-        <td>4th</td>
-        <td>1 week later</td>
-        <td>Long-term retention</td>
-        <td>Active review</td>
-    </tr>
-    <tr>
-        <td>5th</td>
-        <td>Pre-exam</td>
-        <td>Final consolidation</td>
-        <td>Active + notes</td>
-    </tr>
+    <tr><th>Exposure</th><th>Timing</th><th>Purpose</th><th>Mode</th></tr>
+    <tr><td>1st</td><td>Day of lecture</td><td>Initial encoding</td><td>Active</td></tr>
+    <tr><td>2nd</td><td>Next day</td><td>Reinforcement</td><td>Passive</td></tr>
+    <tr><td>3rd</td><td>3-4 days later</td><td>Spaced repetition</td><td>Passive</td></tr>
+    <tr><td>4th</td><td>1 week later</td><td>Long-term retention</td><td>Active</td></tr>
+    <tr><td>5th</td><td>Pre-exam</td><td>Consolidation</td><td>Active</td></tr>
 </table>
 
-<h2>Speed Control Strategies</h2>
-<p>Adjust playback speed based on content familiarity:</p>
-
+<h2>Speed Control</h2>
 <ul>
-    <li><strong>1.0x speed:</strong> New, complex material requiring full attention</li>
-    <li><strong>1.25x speed:</strong> Material you've seen once, moderate complexity</li>
-    <li><strong>1.5x speed:</strong> Review of familiar content</li>
-    <li><strong>1.75-2.0x speed:</strong> Quick review of well-known material</li>
+    <li><strong>1.0x:</strong> New, complex material</li>
+    <li><strong>1.25x:</strong> Material you've seen once</li>
+    <li><strong>1.5x:</strong> Review of familiar content</li>
+    <li><strong>1.75-2.0x:</strong> Quick review of well-known material</li>
 </ul>
 
-<div class="callout callout-warning">
-    <div class="callout-title">⚠️ Warning</div>
+<div class="warning">
+    <div class="warning-title">Caution</div>
     <p>Don't start at high speeds. Your brain needs time to encode new information. Speed up only after initial exposure at normal pace.</p>
 </div>
 
-<h2>Active Listening Techniques</h2>
-<p>For maximum retention during active listening sessions:</p>
-
-<h3>Technique 1: Pause and Summarize</h3>
-<ul>
-    <li>Listen to 3-5 minutes of content</li>
-    <li>Pause the audio</li>
-    <li>Summarize out loud what you just heard</li>
-    <li>Resume audio</li>
-</ul>
-<p>This forces recall and identifies gaps in understanding.</p>
-
-<h3>Technique 2: Question Prediction</h3>
-<ul>
-    <li>After each major topic, pause</li>
-    <li>Ask yourself: "What exam question could come from this?"</li>
-    <li>Verbalize the answer</li>
-    <li>Continue listening</li>
-</ul>
-
-<h3>Technique 3: Connection Making</h3>
-<ul>
-    <li>As you listen, verbally connect new information to what you already know</li>
-    <li>"This is like..." or "This connects to..."</li>
-    <li>Speaking connections out loud strengthens neural pathways</li>
-</ul>
-
-<h2>When Audio Works Best</h2>
-<p><strong>Excellent for audio learning:</strong></p>
-<ul>
-    <li>Pathophysiology and mechanisms (sequential, story-like)</li>
-    <li>Pharmacology (drug classes, mechanisms, clinical uses)</li>
-    <li>Clinical reasoning and diagnostic approaches</li>
-    <li>Review and reinforcement of any topic</li>
-</ul>
-
-<p><strong>Supplement with visual for:</strong></p>
-<ul>
-    <li>Anatomy (spatial relationships)</li>
-    <li>Histology (pattern recognition)</li>
-    <li>Radiology (image interpretation)</li>
-    <li>ECG reading (visual patterns)</li>
-</ul>
-
-<div class="action-step">
-    <h3>🎯 Your Action Step</h3>
-    <p><strong>This week:</strong></p>
-    <ol>
-        <li>Generate audio overviews for all your current week's lectures</li>
-        <li>Listen to each at 1.0x speed first (active listening)</li>
-        <li>Re-listen at 1.25-1.5x during commute/gym</li>
-        <li>Track your retention compared to previous weeks</li>
-    </ol>
-    <p>By Friday, you'll know if this approach transforms your learning.</p>
+<div class="action-box">
+    <h3>This Week</h3>
+    <p>Generate audio overviews for all your current week's lectures. Listen to each at 1.0x speed first, then re-listen at 1.25-1.5x during commute. Track your retention.</p>
 </div>
 
-            <div class="post-nav"><a href="post1-why-audio-learning-works.html" class="post-nav-link prev">
-                <span class="post-nav-label">← Previous</span>
-                Why Audio Learning Works
-            </a><a href="post3-building-audio-library.html" class="post-nav-link next">
-                <span class="post-nav-label">Next →</span>
-                Building Your Audio Library
-            </a></div>
-        </div>
+        <div class="post-nav"><a href="post1-why-audio-learning-works.html"><span class="nav-label">Previous</span>Why Audio Works</a><a href="post3-building-audio-library.html" class="next"><span class="nav-label">Next</span>Building Library</a></div>
     </main>
-    
-    
-    <footer class="site-footer">
-        <p><strong>NotebookLM for Medical Learners</strong></p>
-        <p>Created by Lauren Fine, MD, FAAAAI</p>
-        <p style="margin-top: 15px;"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p>
-        <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.7;">© 2026 Lauren Fine. All rights reserved.</p>
-    </footer>
-    
-    <script>
-        // Reading progress indicator
-        window.addEventListener('scroll', () => {
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / docHeight) * 100;
-            document.getElementById('readingProgress').style.width = progress + '%';
-        });
-    </script>
+    <footer class="site-footer"><p><strong>NotebookLM for Medical Learners</strong></p><p>Created by Lauren Fine, MD, FAAAAI</p><p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p></footer>
 </body>
 </html>
