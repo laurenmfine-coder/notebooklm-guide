@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompts Library | NotebookLM Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="../index.html" class="site-title">NotebookLM Guide</a>
+            <div class="nav-links">
+                <a href="../getting-started.html">Get Started</a>
+                <a href="../quiz/study-style-quiz.html">Take the Quiz</a>
+                <a href="../learning-styles.html">Learning Styles</a>
+                <a href="index.html">Prompts Library</a>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="page-header prompts">
+        <div class="breadcrumb"><a href="../index.html">Home</a> → Prompts Library</div>
+        <h1>Prompts Library</h1>
+        <p class="subtitle">75+ ready-to-use prompts for any study situation</p>
+    </header>
+    
+    <main class="main-content">
+        <div class="section-intro">
+            <p>This library contains tested prompts organized by learning style, training stage, and time available. Copy any prompt, replace the text in [brackets] with your specific topic, and paste into NotebookLM.</p>
+            <ul class="learn-list">
+                <li>Find prompts matched to your learning style</li>
+                <li>Get prompts appropriate for your training stage</li>
+                <li>Choose prompts based on time available</li>
+                <li>Learn how to customize prompts for better results</li>
+            </ul>
+            <div class="meta">
+                <span>📝 75+ prompts</span>
+                <span>📋 Organized by category</span>
+            </div>
+        </div>
+
+        <div class="tip">
+            <div class="tip-title">How to Use These Prompts</div>
+            <ol>
+                <li>Copy the prompt exactly as written</li>
+                <li>Replace text in [brackets] with your specific topic</li>
+                <li>Paste into NotebookLM's chat feature</li>
+                <li>Adjust based on the response you get</li>
+            </ol>
+        </div>
+
+        <h2>Browse by Category</h2>
+        <div class="card-grid">
+            <a href="audio.html" class="card">
+                <h4>Audio Learners</h4>
+                <p>Prompts for audio overviews, podcast-style discussions, and listening-focused study.</p>
+            </a>
+            <a href="visual.html" class="card">
+                <h4>Visual Learners</h4>
+                <p>Prompts for tables, comparisons, algorithms, and visual framework descriptions.</p>
+            </a>
+            <a href="readwrite.html" class="card">
+                <h4>Read/Write Learners</h4>
+                <p>Prompts for study guides, summaries, flashcards, and written explanations.</p>
+            </a>
+            <a href="kinesthetic.html" class="card">
+                <h4>Kinesthetic Learners</h4>
+                <p>Prompts for clinical cases, practice scenarios, and active learning exercises.</p>
+            </a>
+        </div>
+
+        <div class="card-grid">
+            <a href="training-stage.html" class="card">
+                <h4>By Training Stage</h4>
+                <p>Prompts for pre-clinical, clinical rotations, and board preparation.</p>
+            </a>
+            <a href="time-based.html" class="card">
+                <h4>By Time Available</h4>
+                <p>Prompts optimized for 5-minute, 15-minute, 30-minute, and 1-hour sessions.</p>
+            </a>
+            <a href="universal.html" class="card">
+                <h4>Universal Prompts</h4>
+                <p>Practice questions, flashcards, mnemonics, and pharmacology prompts.</p>
+            </a>
+            <a href="troubleshooting.html" class="card">
+                <h4>Troubleshooting</h4>
+                <p>Prompts to fix common problems and improve responses.</p>
+            </a>
+        </div>
+
+        <h2>Most Popular Prompts</h2>
+
+        <h3>Comparison Table</h3>
+        <p>Works for any topic where you need to compare similar items.</p>
+        <div class="prompt-box">
+            <code>Create a detailed comparison table for [list 3-5 related conditions/medications]. Include columns for: mechanism, presentation, key diagnostic findings, treatment, and important side effects/complications.</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Clinical Case</h3>
+        <p>Generate realistic cases to work through for any condition.</p>
+        <div class="prompt-box">
+            <code>Create a realistic clinical case involving [condition]. Include patient demographics, presenting complaint, history, physical exam findings, and relevant labs. Ask me to work through diagnosis and management.</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Comprehensive Study Guide</h3>
+        <p>Get a complete overview of any topic.</p>
+        <div class="prompt-box">
+            <code>Create a comprehensive study guide for [topic] that includes: key definitions, pathophysiology, clinical presentation, diagnosis, and management. Organize it in a logical flow.</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Practice Questions</h3>
+        <p>Test your knowledge with board-style questions.</p>
+        <div class="prompt-box">
+            <code>Generate 10 multiple-choice questions about [topic] at the level of [Step 1/Step 2/shelf exam]. Include the correct answer and brief explanations for each.</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Quick Review</h3>
+        <p>Get the highlights when time is short.</p>
+        <div class="prompt-box">
+            <code>What are the top 10 most high-yield facts about [topic] for [specific exam]? Format as concise bullet points I can review quickly.</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h2>Customization Tips</h2>
+        <p>Make any prompt work better by adding context:</p>
+
+        <h3>Add Your Learning Level</h3>
+        <div class="prompt-box">
+            <code>Explain for a first-year medical student...</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-box">
+            <code>Explain at Step 1 preparation level...</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-box">
+            <code>Explain at the level of clinical rotations...</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Specify Your Prior Knowledge</h3>
+        <div class="prompt-box">
+            <code>I understand the basics of [X], focus on [Y]...</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-box">
+            <code>I'm struggling with [specific aspect]...</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>State Your Goal</h3>
+        <div class="prompt-box">
+            <code>I'm trying to understand this for clinical application...</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-box">
+            <code>I need to memorize this for my exam tomorrow...</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Specify Format and Length</h3>
+        <div class="prompt-box">
+            <code>Keep this under 500 words...</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-box">
+            <code>Organize as a table...</code>
+            <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="post-nav">
+            <a href="../learning-styles.html" class="prev">
+                <span class="nav-label">Previous</span>
+                Learning Styles
+            </a>
+            <a href="audio.html" class="next">
+                <span class="nav-label">Next</span>
+                Audio Prompts
+            </a>
+        </div>
+    </main>
+    
+    <footer class="site-footer">
+        <p><strong>NotebookLM for Medical Learners</strong></p>
+        <p>Created by Lauren Fine, MD, FAAAAI</p>
+        <p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p>
+    </footer>
+
+    <script>
+    function copyPrompt(btn) {
+        const code = btn.previousElementSibling.textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+    </script>
+</body>
+</html>

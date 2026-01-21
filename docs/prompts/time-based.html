@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-Based Prompts | NotebookLM Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="../index.html" class="site-title">NotebookLM Guide</a>
+            <div class="nav-links">
+                <a href="../getting-started.html">Get Started</a>
+                <a href="../quiz/study-style-quiz.html">Take the Quiz</a>
+                <a href="../learning-styles.html">Learning Styles</a>
+                <a href="index.html">Prompts Library</a>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="page-header time">
+        <div class="breadcrumb"><a href="../index.html">Home</a> → <a href="index.html">Prompts Library</a> → Time-Based Prompts</div>
+        <h1>Time-Based Prompts</h1>
+        <p class="subtitle">Prompts optimized for 5-minute, 15-minute, 30-minute, and 1-hour sessions</p>
+    </header>
+    
+    <main class="main-content">
+        <div class="section-intro">
+            <p>Match your study approach to the time you have. These prompts are designed to generate appropriately-sized content for each time block.</p>
+            <div class="meta">
+                <span>📝 15+ prompts</span>
+                <span>⏱ Time-matched</span>
+            </div>
+        </div>
+
+        <h2>5-Minute Study Session</h2>
+        <p>Focus: Quick wins, single concepts, rapid review</p>
+
+        <div class="prompt-category">
+            <h3>Quick Concept Review</h3>
+            <p>Best for: Refreshing a single concept</p>
+            <div class="prompt-box">
+                <code>Give me a 2-3 minute explanation of [concept] focusing only on what I absolutely need to know.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Single Comparison</h3>
+            <p>Best for: Quick differentiation</p>
+            <div class="prompt-box">
+                <code>Briefly compare [A] and [B]. Focus on the key difference I need to know to distinguish them.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Quick Quiz</h3>
+            <p>Best for: Self-testing</p>
+            <div class="prompt-box">
+                <code>Ask me 3 quick questions about [topic] to test my understanding. Include the answers.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>One Key Fact</h3>
+            <p>Best for: Memorization</p>
+            <div class="prompt-box">
+                <code>What's the single most important thing to know about [topic] for clinical practice?</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>15-Minute Study Session</h2>
+        <p>Focus: Focused review, moderate depth, practice questions</p>
+
+        <div class="prompt-category">
+            <h3>Focused Study Guide</h3>
+            <p>Best for: Targeted review of one topic</p>
+            <div class="prompt-box">
+                <code>Create a focused study guide on [specific topic]. Include pathophysiology, presentation, and management. Keep it concise for 15-minute review.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Practice Questions Set</h3>
+            <p>Best for: Active recall practice</p>
+            <div class="prompt-box">
+                <code>Generate 5 practice questions about [topic] at [exam level]. Include explanations for each answer.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Concept Explanation</h3>
+            <p>Best for: Understanding a tricky topic</p>
+            <div class="prompt-box">
+                <code>Explain [complex concept] in detail. Break it down into clear steps and include clinical relevance.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Quick Case</h3>
+            <p>Best for: Clinical application</p>
+            <div class="prompt-box">
+                <code>Create a brief clinical case about [condition]. Include just enough detail for me to work through diagnosis and initial management.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>30-Minute Study Session</h2>
+        <p>Focus: Comprehensive topic review, multiple cases, deeper understanding</p>
+
+        <div class="prompt-category">
+            <h3>Comprehensive Topic Review</h3>
+            <p>Best for: Thorough understanding of one topic</p>
+            <div class="prompt-box">
+                <code>Create a complete study session on [topic]. Include: overview, key concepts, practice questions, and clinical applications.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Case-Based Learning</h3>
+            <p>Best for: Clinical reasoning practice</p>
+            <div class="prompt-box">
+                <code>Generate 3 clinical cases about [topic] at different difficulty levels. Include questions for each and detailed explanations.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Audio Overview + Review</h3>
+            <p>Best for: Multi-modal learning</p>
+            <div class="prompt-box">
+                <code>Create a detailed audio overview of [topic] suitable for a 20-30 minute study session. Include multiple examples and clinical applications.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Comparison Deep Dive</h3>
+            <p>Best for: Distinguishing similar conditions</p>
+            <div class="prompt-box">
+                <code>Create a comprehensive comparison of [list 3-4 related conditions]. Include a detailed table plus clinical pearls for differentiating them.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>1+ Hour Study Session</h2>
+        <p>Focus: Deep learning, integration, comprehensive mastery</p>
+
+        <div class="prompt-category">
+            <h3>Deep Dive Study Package</h3>
+            <p>Best for: Comprehensive topic mastery</p>
+            <div class="prompt-box">
+                <code>Create a comprehensive learning package for [topic] including: detailed study guide, multiple practice cases, 10+ practice questions, and an audio overview. Organize for systematic studying.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Integration Session</h3>
+            <p>Best for: Connecting related topics</p>
+            <div class="prompt-box">
+                <code>Create a study session that integrates [topic A] with [topic B] and [topic C]. Show connections, generate cases requiring integration, and create comprehensive review materials.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Exam Topic Mastery</h3>
+            <p>Best for: Thorough exam preparation</p>
+            <div class="prompt-box">
+                <code>Help me master [topic] for [specific exam]. Include: comprehensive overview, high-yield facts, common test questions, clinical pearls, and practice cases.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Organ System Review</h3>
+            <p>Best for: Systems-based studying</p>
+            <div class="prompt-box">
+                <code>Create a complete review of the [organ system] including: anatomy, physiology, common pathology, pharmacology, and clinical applications. Include practice questions for each section.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tip">
+            <div class="tip-title">Pro Tip</div>
+            <p>Even with limited time, active engagement beats passive reading. A 5-minute session with practice questions will stick better than 15 minutes of re-reading notes. Match your prompts to encourage active learning regardless of time available.</p>
+        </div>
+
+        <div class="post-nav">
+            <a href="training-stage.html" class="prev">
+                <span class="nav-label">Previous</span>
+                Training Stage Prompts
+            </a>
+            <a href="universal.html" class="next">
+                <span class="nav-label">Next</span>
+                Universal Prompts
+            </a>
+        </div>
+    </main>
+    
+    <footer class="site-footer">
+        <p><strong>NotebookLM for Medical Learners</strong></p>
+        <p>Created by Lauren Fine, MD, FAAAAI</p>
+        <p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p>
+    </footer>
+
+    <script>
+    function copyPrompt(btn) {
+        const code = btn.previousElementSibling.textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+    </script>
+</body>
+</html>
