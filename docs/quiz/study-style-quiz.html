@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Style Quiz | NotebookLM Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;600&display=swap');
+        
+        :root {
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-serif: 'Lora', Georgia, serif;
+            --stone-50: #fafaf9;
+            --stone-100: #f5f5f4;
+            --stone-200: #e7e5e4;
+            --stone-300: #d6d3d1;
+            --stone-400: #a8a29e;
+            --stone-500: #78716c;
+            --stone-600: #57534e;
+            --stone-700: #44403c;
+            --stone-800: #292524;
+            --sage-50: #f6f7f6;
+            --sage-100: #e3e7e3;
+            --sage-600: #4a5c4a;
+            --clay-500: #b07d62;
+            --sky-500: #5b8fb3;
+            --plum-500: #7d6b8a;
+            --moss-500: #5a7356;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: var(--font-sans);
+            background: var(--stone-50);
+            color: var(--stone-800);
+            line-height: 1.7;
+        }
+
+        .site-nav {
+            background: white;
+            border-bottom: 1px solid var(--stone-200);
+            padding: 18px 24px;
+        }
+
+        .site-nav-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--stone-800);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--stone-500);
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--stone-800);
+        }
+
+        .page-header {
+            padding: 64px 24px;
+            text-align: center;
+            background: var(--sage-50);
+            border-bottom: 1px solid var(--sage-100);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--stone-800);
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: var(--stone-500);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .quiz-container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        .question-card {
+            background: white;
+            border: 1px solid var(--stone-200);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .question-number {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--stone-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .question-text {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--stone-800);
+            margin-bottom: 24px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            display: block;
+            padding: 16px 20px;
+            background: var(--stone-50);
+            border: 2px solid var(--stone-200);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            color: var(--stone-700);
+        }
+
+        .option:hover {
+            border-color: var(--stone-300);
+            background: white;
+        }
+
+        .option.selected {
+            border-color: var(--sage-600);
+            background: var(--sage-50);
+            color: var(--stone-800);
+        }
+
+        .option input {
+            display: none;
+        }
+
+        .progress-bar {
+            background: var(--stone-200);
+            height: 4px;
+            border-radius: 2px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--sage-600);
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-family: var(--font-sans);
+        }
+
+        .btn-secondary {
+            background: var(--stone-100);
+            color: var(--stone-700);
+        }
+
+        .btn-secondary:hover {
+            background: var(--stone-200);
+        }
+
+        .btn-primary {
+            background: var(--stone-800);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--stone-700);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .results-card {
+            background: white;
+            border: 1px solid var(--stone-200);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .results-card h2 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--stone-800);
+            margin-bottom: 8px;
+        }
+
+        .primary-style {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .primary-style.audio { color: var(--clay-500); }
+        .primary-style.visual { color: var(--sky-500); }
+        .primary-style.readwrite { color: var(--plum-500); }
+        .primary-style.kinesthetic { color: var(--moss-500); }
+
+        .score-breakdown {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 32px 0;
+            text-align: left;
+        }
+
+        .score-item {
+            background: var(--stone-50);
+            padding: 16px 20px;
+            border-radius: 10px;
+        }
+
+        .score-label {
+            font-size: 0.85rem;
+            color: var(--stone-500);
+            margin-bottom: 4px;
+        }
+
+        .score-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--stone-800);
+        }
+
+        .result-description {
+            text-align: left;
+            margin: 32px 0;
+            padding: 24px;
+            background: var(--stone-50);
+            border-radius: 10px;
+        }
+
+        .result-description h3 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--stone-800);
+        }
+
+        .result-description p {
+            color: var(--stone-600);
+            margin-bottom: 12px;
+        }
+
+        .result-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .cta-link {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--stone-800);
+            color: white;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 500;
+            margin-top: 24px;
+            transition: all 0.2s;
+        }
+
+        .cta-link:hover {
+            background: var(--stone-700);
+        }
+
+        .hidden { display: none; }
+
+        .site-footer {
+            background: var(--stone-100);
+            border-top: 1px solid var(--stone-200);
+            padding: 48px 24px;
+            text-align: center;
+            margin-top: 64px;
+        }
+
+        .site-footer p {
+            color: var(--stone-500);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .site-footer a {
+            color: var(--stone-600);
+        }
+
+        @media (max-width: 640px) {
+            .page-header h1 { font-size: 1.6rem; }
+            .nav-links { display: none; }
+            .score-breakdown { grid-template-columns: 1fr; }
+            .nav-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="../index.html" class="site-title">NotebookLM Guide</a>
+            <div class="nav-links">
+                <a href="../learning-styles.html">Learning Styles</a>
+                <a href="../training/index.html">By Stage</a>
+                <a href="../time/index.html">By Time</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Study Style Quiz</h1>
+        <p>Discover your learning profile in 2 minutes and get personalized NotebookLM strategies</p>
+    </header>
+
+    <div class="quiz-container">
+        <div id="quiz">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress" style="width: 0%"></div>
+            </div>
+            <div id="question-container"></div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>Back</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Continue</button>
+            </div>
+        </div>
+
+        <div id="results" class="hidden">
+            <div class="results-card">
+                <h2>Your Primary Learning Style</h2>
+                <div id="primary-style" class="primary-style"></div>
+                <div class="score-breakdown" id="score-breakdown"></div>
+                <div class="result-description" id="result-description"></div>
+                <a href="#" id="cta-link" class="cta-link">Explore Your Learning Guide</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p><strong>NotebookLM for Medical Learners</strong></p>
+        <p>Created by Lauren Fine, MD, FAAAAI</p>
+        <p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                text: "When learning a new medical concept, you prefer to:",
+                options: [
+                    { text: "Listen to someone explain it or hear a podcast about it", type: "audio" },
+                    { text: "See a diagram, chart, or visual representation", type: "visual" },
+                    { text: "Read about it and take notes in your own words", type: "readwrite" },
+                    { text: "Work through a case or practice problem", type: "kinesthetic" }
+                ]
+            },
+            {
+                text: "After a lecture, you're most likely to:",
+                options: [
+                    { text: "Discuss the material with classmates or explain it out loud", type: "audio" },
+                    { text: "Review diagrams and create visual summaries", type: "visual" },
+                    { text: "Rewrite your notes or create written summaries", type: "readwrite" },
+                    { text: "Do practice questions or apply the concepts", type: "kinesthetic" }
+                ]
+            },
+            {
+                text: "When studying for exams, you find it most helpful to:",
+                options: [
+                    { text: "Listen to recorded lectures or audio reviews", type: "audio" },
+                    { text: "Use flashcards with images or draw concept maps", type: "visual" },
+                    { text: "Create written study guides or rewrite key points", type: "readwrite" },
+                    { text: "Work through as many practice questions as possible", type: "kinesthetic" }
+                ]
+            },
+            {
+                text: "During long study sessions, you tend to:",
+                options: [
+                    { text: "Put on background audio or talk through concepts", type: "audio" },
+                    { text: "Use color-coding and visual organization", type: "visual" },
+                    { text: "Write and rewrite information multiple times", type: "readwrite" },
+                    { text: "Get restless and need to move or take action breaks", type: "kinesthetic" }
+                ]
+            },
+            {
+                text: "You remember information best when you:",
+                options: [
+                    { text: "Hear it explained or say it out loud yourself", type: "audio" },
+                    { text: "Can visualize where it was on the page or in a diagram", type: "visual" },
+                    { text: "Have written it down in your own words", type: "readwrite" },
+                    { text: "Have physically done something with it or practiced it", type: "kinesthetic" }
+                ]
+            },
+            {
+                text: "When a concept isn't clicking, you:",
+                options: [
+                    { text: "Find a video or podcast that explains it differently", type: "audio" },
+                    { text: "Look for better diagrams or visual explanations", type: "visual" },
+                    { text: "Read multiple text sources until it makes sense", type: "readwrite" },
+                    { text: "Try to apply it to a real case or example", type: "kinesthetic" }
+                ]
+            },
+            {
+                text: "Your ideal study environment includes:",
+                options: [
+                    { text: "Some background noise or the option to study out loud", type: "audio" },
+                    { text: "Clean space with room for visual materials and diagrams", type: "visual" },
+                    { text: "Quiet space with your notes and textbooks", type: "readwrite" },
+                    { text: "Space to move around or switch between activities", type: "kinesthetic" }
+                ]
+            },
+            {
+                text: "When learning a procedure or physical skill, you prefer to:",
+                options: [
+                    { text: "Have someone talk you through it step by step", type: "audio" },
+                    { text: "Watch a demonstration or video first", type: "visual" },
+                    { text: "Read the steps and follow written instructions", type: "readwrite" },
+                    { text: "Jump in and try it hands-on with guidance", type: "kinesthetic" }
+                ]
+            }
+        ];
+
+        const styleInfo = {
+            audio: {
+                name: "Audio Learner",
+                description: "You process information best through listening and verbal explanation. NotebookLM's Audio Overview feature will be your superpower. You can transform any content into listenable discussions and use commute/gym time for productive studying.",
+                link: "../audio/index.html",
+                linkText: "Explore Audio Learning Strategies"
+            },
+            visual: {
+                name: "Visual Learner",
+                description: "You need to see information to understand it. Diagrams, charts, and spatial organization help you make sense of complex concepts. Transform NotebookLM's text outputs into visual frameworks and concept maps.",
+                link: "../visual/index.html",
+                linkText: "Explore Visual Learning Strategies"
+            },
+            readwrite: {
+                name: "Read/Write Learner",
+                description: "You learn best through reading and writing. Taking notes, rewriting concepts, and creating written summaries cements your understanding. NotebookLM's Study Guides and Q&A features are perfectly designed for you.",
+                link: "../readwrite/index.html",
+                linkText: "Explore Read/Write Strategies"
+            },
+            kinesthetic: {
+                name: "Kinesthetic Learner",
+                description: "You learn by doing. Practice, cases, and hands-on activities help you understand and remember. Transform NotebookLM outputs into active practice—work through cases, create your own questions, and engage physically with the material.",
+                link: "../kinesthetic/index.html",
+                linkText: "Explore Kinesthetic Strategies"
+            }
+        };
+
+        let currentQuestion = 0;
+        let answers = {};
+        let scores = { audio: 0, visual: 0, readwrite: 0, kinesthetic: 0 };
+
+        function renderQuestion() {
+            const q = questions[currentQuestion];
+            const container = document.getElementById('question-container');
+            
+            let optionsHTML = '';
+            q.options.forEach((opt, i) => {
+                const selected = answers[currentQuestion] === i ? 'selected' : '';
+                optionsHTML += `<label class="option ${selected}" onclick="selectOption(${i})"><input type="radio" name="q${currentQuestion}" value="${i}" ${selected ? 'checked' : ''}>${opt.text}</label>`;
+            });
+
+            container.innerHTML = `<div class="question-card"><div class="question-number">Question ${currentQuestion + 1} of ${questions.length}</div><div class="question-text">${q.text}</div><div class="options">${optionsHTML}</div></div>`;
+
+            document.getElementById('progress').style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = answers[currentQuestion] === undefined;
+            document.getElementById('nextBtn').textContent = currentQuestion === questions.length - 1 ? 'See Results' : 'Continue';
+        }
+
+        function selectOption(index) {
+            answers[currentQuestion] = index;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                calculateResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+
+        function calculateResults() {
+            scores = { audio: 0, visual: 0, readwrite: 0, kinesthetic: 0 };
+            
+            Object.keys(answers).forEach(qIndex => {
+                const optionIndex = answers[qIndex];
+                const type = questions[qIndex].options[optionIndex].type;
+                scores[type]++;
+            });
+
+            const maxScore = Math.max(...Object.values(scores));
+            const primaryStyle = Object.keys(scores).find(key => scores[key] === maxScore);
+
+            document.getElementById('quiz').classList.add('hidden');
+            document.getElementById('results').classList.remove('hidden');
+
+            const primaryEl = document.getElementById('primary-style');
+            primaryEl.textContent = styleInfo[primaryStyle].name;
+            primaryEl.className = `primary-style ${primaryStyle}`;
+
+            document.getElementById('score-breakdown').innerHTML = `<div class="score-item"><div class="score-label">Audio</div><div class="score-value">${scores.audio}/${questions.length}</div></div><div class="score-item"><div class="score-label">Visual</div><div class="score-value">${scores.visual}/${questions.length}</div></div><div class="score-item"><div class="score-label">Read/Write</div><div class="score-value">${scores.readwrite}/${questions.length}</div></div><div class="score-item"><div class="score-label">Kinesthetic</div><div class="score-value">${scores.kinesthetic}/${questions.length}</div></div>`;
+
+            document.getElementById('result-description').innerHTML = `<h3>What This Means for You</h3><p>${styleInfo[primaryStyle].description}</p><p>Remember: Most people are multi-modal learners. Check your secondary scores above—you may benefit from strategies across multiple styles.</p>`;
+
+            const ctaEl = document.getElementById('cta-link');
+            ctaEl.href = styleInfo[primaryStyle].link;
+            ctaEl.textContent = styleInfo[primaryStyle].linkText;
+        }
+
+        renderQuestion();
+    </script>
+</body>
+</html>
