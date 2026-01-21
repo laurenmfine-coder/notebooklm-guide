@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Stage Prompts | NotebookLM Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="../index.html" class="site-title">NotebookLM Guide</a>
+            <div class="nav-links">
+                <a href="../getting-started.html">Get Started</a>
+                <a href="../quiz/study-style-quiz.html">Take the Quiz</a>
+                <a href="../learning-styles.html">Learning Styles</a>
+                <a href="index.html">Prompts Library</a>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="page-header training">
+        <div class="breadcrumb"><a href="../index.html">Home</a> → <a href="index.html">Prompts Library</a> → Training Stage Prompts</div>
+        <h1>Training Stage Prompts</h1>
+        <p class="subtitle">Prompts tailored to pre-clinical, clinical rotations, and board preparation</p>
+    </header>
+    
+    <main class="main-content">
+        <div class="section-intro">
+            <p>These prompts are designed for the specific needs and challenges of each stage of medical training.</p>
+            <div class="meta">
+                <span>📝 20+ prompts</span>
+                <span>🎓 Stage-appropriate</span>
+            </div>
+        </div>
+
+        <h2>Pre-Clinical (MS1/MS2) Prompts</h2>
+        <p>Focus: Building foundational knowledge, understanding mechanisms, connecting basic science to clinical relevtic</p>
+
+        <div class="prompt-category">
+            <h3>Foundation Building</h3>
+            <p>Best for: Initial learning of new topics</p>
+            <div class="prompt-box">
+                <code>Explain [topic] starting from basic concepts, building to complex applications. Include why this matters clinically and how it connects to patient care.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Mechanism Deep Dive</h3>
+            <p>Best for: Understanding pharmacology, pathophysiology</p>
+            <div class="prompt-box">
+                <code>Explain the mechanism of action of [drug/process] at the molecular level, then show how this mechanism explains both the therapeutic effects AND the side effects.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Basic Science Integration</h3>
+            <p>Best for: Connecting classroom to clinic</p>
+            <div class="prompt-box">
+                <code>Show how [basic science concept] connects to clinical practice. Explain why understanding this concept matters for patient care and clinical decision-making.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Concept Connection</h3>
+            <p>Best for: Cross-course integration</p>
+            <div class="prompt-box">
+                <code>Explain how [concept from course A] relates to [concept from course B]. Show the connections that will help me integrate my learning across courses.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Clinical Rotations (MS3/MS4) Prompts</h2>
+        <p>Focus: Clinical reasoning, practical application, presenting on rounds</p>
+
+        <div class="prompt-category">
+            <h3>Differential Diagnosis Builder</h3>
+            <p>Best for: Clinical reasoning, approaching new patients</p>
+            <div class="prompt-box">
+                <code>Generate a comprehensive differential diagnosis for a patient presenting with [symptom]. Organize by most common, most serious, and don't-miss diagnoses. Include key distinguishing features.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Clinical Reasoning Practice</h3>
+            <p>Best for: Developing diagnostic thinking</p>
+            <div class="prompt-box">
+                <code>Walk me through the clinical reasoning process for a patient presenting with [symptom]. Include: initial hypotheses, what history and exam would test these hypotheses, and how to interpret findings.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Pre-Rounds Prep</h3>
+            <p>Best for: Preparing for morning rounds</p>
+            <div class="prompt-box">
+                <code>For a patient with [condition], help me prepare for rounds by covering: key pathophysiology, typical presentation, diagnostic workup, management approach, and potential complications to monitor.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Presentation Practice</h3>
+            <p>Best for: Improving oral presentations</p>
+            <div class="prompt-box">
+                <code>Create a presentation script about [topic] as if I'm presenting on rounds. Include the key points to cover, how to organize the information, and anticipated questions attendings might ask.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Rotation-Specific Review</h3>
+            <p>Best for: Quick reference during rotations</p>
+            <div class="prompt-box">
+                <code>Create a quick reference guide for [specialty] rotation covering: common presentations, must-know emergencies, key medications, and what attendings typically expect students to know.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Board Preparation Prompts</h2>
+        <p>Focus: High-yield facts, question patterns, rapid review</p>
+
+        <div class="prompt-category">
+            <h3>High-Yield Summary</h3>
+            <p>Best for: Focused review of commonly tested topics</p>
+            <div class="prompt-box">
+                <code>What are the top 10 most high-yield facts about [topic] for [specific exam]? Format as concise bullet points I can review quickly.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Question Pattern Recognition</h3>
+            <p>Best for: Understanding how topics are tested</p>
+            <div class="prompt-box">
+                <code>What are common ways [topic] is tested on [exam type]? Provide example question stems and explain what the question is really asking for.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Weak Spot Identification</h3>
+            <p>Best for: Targeting areas needing improvement</p>
+            <div class="prompt-box">
+                <code>Based on my uploaded materials, identify concepts within [topic] that are frequently misunderstood or incompletely explained. Provide clear explanations of these challenging areas.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Rapid Review</h3>
+            <p>Best for: Last-minute review before exam</p>
+            <div class="prompt-box">
+                <code>Create a rapid review guide for [topic] that I can read through in 15 minutes before my exam. Include only must-know information.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Classic Presentations</h3>
+            <p>Best for: Pattern recognition on exams</p>
+            <div class="prompt-box">
+                <code>List the classic/"buzzword" presentations for conditions related to [topic]. Include the key finding that should make me think of each diagnosis.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>First-Order vs. Second-Order Questions</h3>
+            <p>Best for: Understanding question complexity</p>
+            <div class="prompt-box">
+                <code>For [topic], create examples of both first-order (recall) and second-order (application) questions. Explain the difference in how to approach each type.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tip">
+            <div class="tip-title">Pro Tip</div>
+            <p>Adjust your prompts as you progress through training. Early on, focus on "explain why" prompts. During rotations, shift to "how do I approach" prompts. For boards, use "what's high-yield" and "how is this tested" prompts.</p>
+        </div>
+
+        <div class="post-nav">
+            <a href="kinesthetic.html" class="prev">
+                <span class="nav-label">Previous</span>
+                Kinesthetic Prompts
+            </a>
+            <a href="time-based.html" class="next">
+                <span class="nav-label">Next</span>
+                Time-Based Prompts
+            </a>
+        </div>
+    </main>
+    
+    <footer class="site-footer">
+        <p><strong>NotebookLM for Medical Learners</strong></p>
+        <p>Created by Lauren Fine, MD, FAAAAI</p>
+        <p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p>
+    </footer>
+
+    <script>
+    function copyPrompt(btn) {
+        const code = btn.previousElementSibling.textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+    </script>
+</body>
+</html>

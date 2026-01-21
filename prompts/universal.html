@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Prompts | NotebookLM Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="../index.html" class="site-title">NotebookLM Guide</a>
+            <div class="nav-links">
+                <a href="../getting-started.html">Get Started</a>
+                <a href="../quiz/study-style-quiz.html">Take the Quiz</a>
+                <a href="../learning-styles.html">Learning Styles</a>
+                <a href="index.html">Prompts Library</a>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="page-header">
+        <div class="breadcrumb"><a href="../index.html">Home</a> → <a href="index.html">Prompts Library</a> → Universal Prompts</div>
+        <h1>Universal Prompts</h1>
+        <p class="subtitle">Practice questions, flashcards, mnemonics, and pharmacology prompts that work for everyone</p>
+    </header>
+    
+    <main class="main-content">
+        <div class="section-intro">
+            <p>These prompts work regardless of your learning style or training stage. They're useful additions to any study session.</p>
+            <div class="meta">
+                <span>📝 15+ prompts</span>
+                <span>🎯 Works for everyone</span>
+            </div>
+        </div>
+
+        <h2>Practice Questions</h2>
+
+        <div class="prompt-category">
+            <h3>Multiple Choice Questions</h3>
+            <p>Best for: Self-testing, exam simulation</p>
+            <div class="prompt-box">
+                <code>Generate 10 multiple-choice questions about [topic] at the level of [Step 1/Step 2/shelf exam]. Include the correct answer and brief explanations for each.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Clinical Vignettes</h3>
+            <p>Best for: Board-style practice</p>
+            <div class="prompt-box">
+                <code>Create 5 clinical vignette-style questions about [condition]. Each should include patient presentation, relevant findings, and ask about diagnosis or next best step in management.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Two-Step Questions</h3>
+            <p>Best for: Advanced reasoning practice</p>
+            <div class="prompt-box">
+                <code>Create 5 two-step reasoning questions about [topic]. The first step should require identifying the diagnosis, and the second step should ask about management or mechanism.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Flashcards</h2>
+
+        <div class="prompt-category">
+            <h3>Concept Flashcards</h3>
+            <p>Best for: Vocabulary and definitions</p>
+            <div class="prompt-box">
+                <code>Create 20 flashcard pairs for [topic]. Front should have the term/concept, back should have the definition and clinical relevance.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Clinical Presentation Cards</h3>
+            <p>Best for: Pattern recognition</p>
+            <div class="prompt-box">
+                <code>Generate flashcards with classic presentations of [conditions]. Front: clinical vignette, Back: diagnosis and key distinguishing features.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Image-Based Cards</h3>
+            <p>Best for: Visual diagnosis</p>
+            <div class="prompt-box">
+                <code>Create flashcards describing classic imaging/lab/physical exam findings for [conditions]. Front: describe what would be seen, Back: diagnosis and significance.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Mnemonics and Memory Aids</h2>
+
+        <div class="prompt-category">
+            <h3>Mnemonic Creation</h3>
+            <p>Best for: Lists and sequences</p>
+            <div class="prompt-box">
+                <code>Create a mnemonic to remember [list of items/criteria/steps]. Make it memorable and explain what each letter stands for.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Story-Based Memory</h3>
+            <p>Best for: Complex syndromes</p>
+            <div class="prompt-box">
+                <code>Create a short, memorable story that incorporates all the key features of [condition/syndrome]. Each story element should represent a clinical finding or fact.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Association Chains</h3>
+            <p>Best for: Connecting related facts</p>
+            <div class="prompt-box">
+                <code>Create a chain of associations linking [concept A] to [concept B] to [concept C]. Each link should be memorable and clinically meaningful.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Pharmacology</h2>
+
+        <div class="prompt-category">
+            <h3>Drug Overview</h3>
+            <p>Best for: Learning individual drugs</p>
+            <div class="prompt-box">
+                <code>Provide a comprehensive overview of [drug]. Include: mechanism of action, indications, dosing considerations, major side effects, contraindications, and drug interactions.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Drug Class Comparison</h3>
+            <p>Best for: Understanding drug families</p>
+            <div class="prompt-box">
+                <code>Compare all drugs in the [drug class]. Create a table showing similarities and differences in mechanism, uses, and side effects.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Mechanism to Side Effects</h3>
+            <p>Best for: Understanding why drugs cause specific effects</p>
+            <div class="prompt-box">
+                <code>Explain how the mechanism of [drug/drug class] leads to both its therapeutic effects and its side effects. Help me understand the logic connecting mechanism to clinical effects.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Drug Interactions</h3>
+            <p>Best for: Clinical safety</p>
+            <div class="prompt-box">
+                <code>List the most important drug interactions for [drug/drug class]. Explain the mechanism of each interaction and clinical consequences.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>General Study Aids</h2>
+
+        <div class="prompt-category">
+            <h3>Explain Like I'm Five</h3>
+            <p>Best for: Simplifying complex topics</p>
+            <div class="prompt-box">
+                <code>Explain [complex topic] in the simplest possible terms, as if to someone with no medical background. Then explain it again using proper medical terminology.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Common Misconceptions</h3>
+            <p>Best for: Avoiding errors</p>
+            <div class="prompt-box">
+                <code>What are the most common misconceptions or mistakes students make about [topic]? Explain each misconception and the correct understanding.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Clinical Pearls</h3>
+            <p>Best for: Practical wisdom</p>
+            <div class="prompt-box">
+                <code>What are the most important clinical pearls about [topic] that experienced clinicians know but textbooks don't always emphasize?</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tip">
+            <div class="tip-title">Pro Tip</div>
+            <p>After NotebookLM generates flashcards, copy them into a spaced repetition app like Anki. The combination of NotebookLM's content generation with Anki's scheduling algorithm is incredibly powerful for long-term retention.</p>
+        </div>
+
+        <div class="post-nav">
+            <a href="time-based.html" class="prev">
+                <span class="nav-label">Previous</span>
+                Time-Based Prompts
+            </a>
+            <a href="troubleshooting.html" class="next">
+                <span class="nav-label">Next</span>
+                Troubleshooting Prompts
+            </a>
+        </div>
+    </main>
+    
+    <footer class="site-footer">
+        <p><strong>NotebookLM for Medical Learners</strong></p>
+        <p>Created by Lauren Fine, MD, FAAAAI</p>
+        <p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p>
+    </footer>
+
+    <script>
+    function copyPrompt(btn) {
+        const code = btn.previousElementSibling.textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+    </script>
+</body>
+</html>

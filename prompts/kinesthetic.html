@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinesthetic Learner Prompts | NotebookLM Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="../index.html" class="site-title">NotebookLM Guide</a>
+            <div class="nav-links">
+                <a href="../getting-started.html">Get Started</a>
+                <a href="../quiz/study-style-quiz.html">Take the Quiz</a>
+                <a href="../learning-styles.html">Learning Styles</a>
+                <a href="index.html">Prompts Library</a>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="page-header kinesthetic">
+        <div class="breadcrumb"><a href="../index.html">Home</a> → <a href="index.html">Prompts Library</a> → Kinesthetic Prompts</div>
+        <h1>Kinesthetic Learner Prompts</h1>
+        <p class="subtitle">Prompts for clinical cases, practice scenarios, and active learning exercises</p>
+    </header>
+    
+    <main class="main-content">
+        <div class="section-intro">
+            <p>These prompts help you generate content for hands-on learning—clinical cases to work through, procedure guides, and active practice scenarios.</p>
+            <div class="meta">
+                <span>📝 15+ prompts</span>
+                <span>🏃 Optimized for active learning</span>
+            </div>
+        </div>
+
+        <h2>Basic Prompts - Cases and Practice</h2>
+
+        <div class="prompt-category">
+            <h3>Standard Clinical Case</h3>
+            <p>Best for: Applying knowledge, clinical reasoning practice</p>
+            <div class="prompt-box">
+                <code>Create a realistic clinical case involving [condition]. Include patient demographics, presenting complaint, history, physical exam findings, and relevant labs. Ask me to work through diagnosis and management.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Case Series</h3>
+            <p>Best for: Pattern recognition, understanding varied presentations</p>
+            <div class="prompt-box">
+                <code>Generate 3 cases involving different presentations of [condition]. Show how the same disease can present differently in different patients.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Diagnostic Challenge</h3>
+            <p>Best for: Differential diagnosis practice, avoiding common pitfalls</p>
+            <div class="prompt-box">
+                <code>Create a challenging diagnostic case where [condition] might be missed or confused with other conditions. Include red herrings and subtle clues.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Procedure Practice</h3>
+            <p>Best for: Skills preparation, mental rehearsal</p>
+            <div class="prompt-box">
+                <code>Create a step-by-step checklist for [procedure]. Include preparation, steps in order, safety considerations, and post-procedure care.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Advanced Prompts - Active Learning</h2>
+
+        <div class="prompt-category">
+            <h3>Evolving Case</h3>
+            <p>Best for: Dynamic clinical reasoning, adapting to changes</p>
+            <div class="prompt-box">
+                <code>Create a case that evolves over time. Start with initial presentation, then show how the patient's condition changes. Include complications or unexpected findings that require me to adapt my approach.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Critical Decision Point</h3>
+            <p>Best for: Emergency scenarios, time-sensitive decisions</p>
+            <div class="prompt-box">
+                <code>Create a case focused on a critical decision point in [condition/emergency]. Include time pressure, incomplete information, and need to prioritize actions.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Error Analysis Case</h3>
+            <p>Best for: Learning from mistakes, understanding pitfalls</p>
+            <div class="prompt-box">
+                <code>Generate a case where common mistakes might be made in managing [condition]. After I work through it, point out potential pitfalls and how to avoid them.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Hands-On Clinical Skills</h3>
+            <p>Best for: Physical exam technique, clinical skills practice</p>
+            <div class="prompt-box">
+                <code>Describe how to perform [physical exam maneuver] step-by-step. Include patient positioning, what I should do, what I'm looking for, and how to interpret findings.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Differential Diagnosis Practice</h2>
+
+        <div class="prompt-category">
+            <h3>DDx Generator</h3>
+            <div class="prompt-box">
+                <code>Generate a comprehensive differential diagnosis for a patient presenting with [symptom]. Organize by most common, most serious, and don't-miss diagnoses. Include key distinguishing features.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Narrowing the DDx</h3>
+            <div class="prompt-box">
+                <code>Create a case presenting with [symptom]. Then walk me through how to systematically narrow the differential using history, exam, and testing.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Simulation Scenarios</h2>
+
+        <div class="prompt-category">
+            <h3>Code Scenario</h3>
+            <div class="prompt-box">
+                <code>Create a code/resuscitation scenario involving [situation]. Include vital signs, rhythm, and patient response as I work through ACLS algorithms. Tell me outcomes based on my decisions.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Rapid Response</h3>
+            <div class="prompt-box">
+                <code>Create a rapid response scenario where a floor patient is decompensating. Include initial presentation and updates as I make decisions. Challenge me to prioritize interventions.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Handoff Practice</h3>
+            <div class="prompt-box">
+                <code>Generate a patient handoff scenario. Give me information about [type of patient] and ask me to present using SBAR format. Then critique my presentation.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tip">
+            <div class="tip-title">Pro Tip</div>
+            <p>Ask NotebookLM to present cases WITHOUT the answer. Write down your differential and plan before asking for the diagnosis. This active engagement is far more effective than passively reading through cases with answers provided.</p>
+        </div>
+
+        <div class="post-nav">
+            <a href="readwrite.html" class="prev">
+                <span class="nav-label">Previous</span>
+                Read/Write Prompts
+            </a>
+            <a href="training-stage.html" class="next">
+                <span class="nav-label">Next</span>
+                Training Stage Prompts
+            </a>
+        </div>
+    </main>
+    
+    <footer class="site-footer">
+        <p><strong>NotebookLM for Medical Learners</strong></p>
+        <p>Created by Lauren Fine, MD, FAAAAI</p>
+        <p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p>
+    </footer>
+
+    <script>
+    function copyPrompt(btn) {
+        const code = btn.previousElementSibling.textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+    </script>
+</body>
+</html>

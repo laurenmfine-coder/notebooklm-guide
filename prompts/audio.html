@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Learner Prompts | NotebookLM Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="../index.html" class="site-title">NotebookLM Guide</a>
+            <div class="nav-links">
+                <a href="../getting-started.html">Get Started</a>
+                <a href="../quiz/study-style-quiz.html">Take the Quiz</a>
+                <a href="../learning-styles.html">Learning Styles</a>
+                <a href="index.html">Prompts Library</a>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="page-header audio">
+        <div class="breadcrumb"><a href="../index.html">Home</a> → <a href="index.html">Prompts Library</a> → Audio Prompts</div>
+        <h1>Audio Learner Prompts</h1>
+        <p class="subtitle">Prompts optimized for audio overviews and listening-based study</p>
+    </header>
+    
+    <main class="main-content">
+        <div class="section-intro">
+            <p>These prompts help you get the most out of NotebookLM's Audio Overview feature and create content optimized for listening.</p>
+            <div class="meta">
+                <span>📝 15+ prompts</span>
+                <span>🎧 Optimized for audio</span>
+            </div>
+        </div>
+
+        <h2>Basic Prompts</h2>
+
+        <div class="prompt-category">
+            <h3>General Topic Overview</h3>
+            <p>Best for: Initial learning, getting oriented to a new topic</p>
+            <div class="prompt-box">
+                <code>Create an audio overview explaining [topic] in a conversational style, as if two medical students are discussing it over coffee. Focus on the key concepts I need to understand for my exam.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Quick Review Audio</h3>
+            <p>Best for: Pre-exam review, refreshing previously learned material</p>
+            <div class="prompt-box">
+                <code>Create a 10-15 minute audio overview covering the highest-yield points about [topic] for quick review before my exam.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Case-Based Discussion</h3>
+            <p>Best for: Clinical application, preparing for rotations</p>
+            <div class="prompt-box">
+                <code>Generate an audio overview that walks through clinical cases involving [condition]. Include how to approach diagnosis and management, with explanations of the reasoning.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Advanced Prompts</h2>
+
+        <div class="prompt-category">
+            <h3>Compare and Contrast</h3>
+            <p>Best for: Distinguishing similar conditions, differential diagnosis</p>
+            <div class="prompt-box">
+                <code>Create an audio overview that compares and contrasts [condition A] and [condition B]. Focus on how to differentiate them clinically, including presentation, diagnostic findings, and management differences.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Mechanism-Focused</h3>
+            <p>Best for: Understanding pathophysiology, connecting basic science to clinical</p>
+            <div class="prompt-box">
+                <code>Generate an audio discussion explaining the pathophysiology of [condition] from the cellular level up to clinical manifestations. Connect the basic science to clinical findings and treatment rationale.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Clinical Reasoning Audio</h3>
+            <p>Best for: Developing diagnostic thinking, preparing for clinical rotations</p>
+            <div class="prompt-box">
+                <code>Create an audio overview that walks through the clinical reasoning process for [chief complaint/symptom]. Include differential diagnosis generation, workup decisions, and interpretation of findings.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Integration Audio</h3>
+            <p>Best for: Connecting concepts across courses, holistic understanding</p>
+            <div class="prompt-box">
+                <code>Generate an audio overview that integrates anatomy, physiology, pathology, and pharmacology related to [organ system/condition]. Show how these basic sciences connect to clinical practice.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Exam Prep Audio</h3>
+            <p>Best for: Board preparation, shelf exam review</p>
+            <div class="prompt-box">
+                <code>Create an audio overview for [shelf exam/board exam topic] focusing on commonly tested concepts, classic presentations, and high-yield facts. Include memory aids where helpful.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Specialty-Specific Prompts</h2>
+
+        <div class="prompt-category">
+            <h3>Pharmacology Focus</h3>
+            <div class="prompt-box">
+                <code>Create an audio discussion of [drug class] covering mechanism of action, major drugs in the class, clinical uses, and important side effects. Explain in a way that helps me remember the connections.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Anatomy Review</h3>
+            <div class="prompt-box">
+                <code>Generate an audio overview of [anatomical region] that walks through the structures, their relationships, and clinical relevance. Include common pathology affecting this area.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Microbiology Review</h3>
+            <div class="prompt-box">
+                <code>Create an audio discussion covering [organism/infection type]. Include characteristics, pathogenesis, clinical presentation, diagnosis, and treatment in a conversational format.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tip">
+            <div class="tip-title">Pro Tip</div>
+            <p>For audio overviews, create separate notebooks for specific topics rather than uploading all your materials to one notebook. This keeps the audio focused and prevents overly general discussions.</p>
+        </div>
+
+        <div class="post-nav">
+            <a href="index.html" class="prev">
+                <span class="nav-label">Previous</span>
+                Prompts Library
+            </a>
+            <a href="visual.html" class="next">
+                <span class="nav-label">Next</span>
+                Visual Prompts
+            </a>
+        </div>
+    </main>
+    
+    <footer class="site-footer">
+        <p><strong>NotebookLM for Medical Learners</strong></p>
+        <p>Created by Lauren Fine, MD, FAAAAI</p>
+        <p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p>
+    </footer>
+
+    <script>
+    function copyPrompt(btn) {
+        const code = btn.previousElementSibling.textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+    </script>
+</body>
+</html>

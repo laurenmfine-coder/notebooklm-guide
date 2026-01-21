@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read/Write Learner Prompts | NotebookLM Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="../index.html" class="site-title">NotebookLM Guide</a>
+            <div class="nav-links">
+                <a href="../getting-started.html">Get Started</a>
+                <a href="../quiz/study-style-quiz.html">Take the Quiz</a>
+                <a href="../learning-styles.html">Learning Styles</a>
+                <a href="index.html">Prompts Library</a>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="page-header readwrite">
+        <div class="breadcrumb"><a href="../index.html">Home</a> → <a href="index.html">Prompts Library</a> → Read/Write Prompts</div>
+        <h1>Read/Write Learner Prompts</h1>
+        <p class="subtitle">Prompts for study guides, summaries, flashcards, and written explanations</p>
+    </header>
+    
+    <main class="main-content">
+        <div class="section-intro">
+            <p>These prompts help you generate comprehensive written materials—study guides, summaries, practice questions, and flashcard content.</p>
+            <div class="meta">
+                <span>📝 15+ prompts</span>
+                <span>📖 Optimized for reading/writing</span>
+            </div>
+        </div>
+
+        <h2>Basic Prompts - Study Guides</h2>
+
+        <div class="prompt-category">
+            <h3>Comprehensive Study Guide</h3>
+            <p>Best for: Initial learning, complete topic coverage</p>
+            <div class="prompt-box">
+                <code>Create a comprehensive study guide for [topic] that includes: key definitions, pathophysiology, clinical presentation, diagnosis, and management. Organize it in a logical flow.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>One-Page Summary</h3>
+            <p>Best for: Quick review, exam cramming</p>
+            <div class="prompt-box">
+                <code>Generate a one-page study sheet for [topic] with only the most essential information I need to know. Use bullet points and keep it concise.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Exam-Focused Guide</h3>
+            <p>Best for: Targeted exam preparation</p>
+            <div class="prompt-box">
+                <code>Create a study guide for [topic] focused on what's most commonly tested on [specific exam]. Include classic presentations and high-yield facts.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Chapter Summary</h3>
+            <p>Best for: Processing textbook material</p>
+            <div class="prompt-box">
+                <code>Summarize the key points from these sources about [topic]. Organize by major concepts and include important details under each.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Advanced Prompts - Study Materials</h2>
+
+        <div class="prompt-category">
+            <h3>Systems-Based Review</h3>
+            <p>Best for: Organ system approach, comprehensive coverage</p>
+            <div class="prompt-box">
+                <code>Create a study guide organized by body system for [topic]. For each system, include: normal physiology, pathophysiology, clinical manifestations, and relevant treatments.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Integrated Study Sheet</h3>
+            <p>Best for: Cross-course integration, connecting concepts</p>
+            <div class="prompt-box">
+                <code>Generate a study guide that integrates [topic] across multiple courses. Include the relevant anatomy, physiology, biochemistry, pharmacology, and pathology. Show how they connect.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Clinical Pearls Sheet</h3>
+            <p>Best for: Rotation preparation, practical tips</p>
+            <div class="prompt-box">
+                <code>Create a "clinical pearls" study sheet for [rotation/specialty]. Include practical tips, key physical exam findings, common presentations, and things attendings expect you to know on rounds.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Weak Area Focus</h3>
+            <p>Best for: Targeting knowledge gaps</p>
+            <div class="prompt-box">
+                <code>Based on my uploaded materials about [topic], create a focused study guide on the most complex or commonly misunderstood aspects. Include detailed explanations and examples.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Practice Questions and Flashcards</h2>
+
+        <div class="prompt-category">
+            <h3>Multiple Choice Questions</h3>
+            <p>Best for: Self-testing, exam simulation</p>
+            <div class="prompt-box">
+                <code>Generate 10 multiple-choice questions about [topic] at the level of [Step 1/Step 2/shelf exam]. Include the correct answer and brief explanations for each.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Clinical Vignettes</h3>
+            <p>Best for: Board-style practice</p>
+            <div class="prompt-box">
+                <code>Create 5 clinical vignette-style questions about [condition]. Each should include patient presentation, relevant findings, and ask about diagnosis or next best step in management.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Concept Flashcards</h3>
+            <p>Best for: Memorization, spaced repetition</p>
+            <div class="prompt-box">
+                <code>Create 20 flashcard pairs for [topic]. Front should have the term/concept, back should have the definition and clinical relevance.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Clinical Presentation Cards</h3>
+            <p>Best for: Pattern recognition, diagnosis practice</p>
+            <div class="prompt-box">
+                <code>Generate flashcards with classic presentations of [conditions]. Front: clinical vignette, Back: diagnosis and key distinguishing features.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <h2>Memory Aids</h2>
+
+        <div class="prompt-category">
+            <h3>Mnemonic Creation</h3>
+            <div class="prompt-box">
+                <code>Create a mnemonic to remember [list of items/criteria/steps]. Make it memorable and explain what each letter stands for.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-category">
+            <h3>Story-Based Memory Aid</h3>
+            <div class="prompt-box">
+                <code>Create a short, memorable story that incorporates all the key features of [condition/syndrome]. Each story element should represent a clinical finding or fact.</code>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tip">
+            <div class="tip-title">Pro Tip</div>
+            <p>Don't just read what NotebookLM generates. Rewrite key sections in your own words. The "generation effect" in memory research shows that producing text yourself leads to far better retention than passive reading.</p>
+        </div>
+
+        <div class="post-nav">
+            <a href="visual.html" class="prev">
+                <span class="nav-label">Previous</span>
+                Visual Prompts
+            </a>
+            <a href="kinesthetic.html" class="next">
+                <span class="nav-label">Next</span>
+                Kinesthetic Prompts
+            </a>
+        </div>
+    </main>
+    
+    <footer class="site-footer">
+        <p><strong>NotebookLM for Medical Learners</strong></p>
+        <p>Created by Lauren Fine, MD, FAAAAI</p>
+        <p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p>
+    </footer>
+
+    <script>
+    function copyPrompt(btn) {
+        const code = btn.previousElementSibling.textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+    </script>
+</body>
+</html>
