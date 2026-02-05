@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gems for Teaching | NotebookLM Guide</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-serif: 'Lora', Georgia, serif;
+    --stone-50: #fafaf9;
+    --stone-100: #f5f5f4;
+    --stone-200: #e7e5e4;
+    --stone-300: #d6d3d1;
+    --stone-400: #a8a29e;
+    --stone-500: #78716c;
+    --stone-600: #57534e;
+    --stone-700: #44403c;
+    --stone-800: #292524;
+    --sage-50: #f6f7f6;
+    --sage-100: #e3e7e3;
+    --sage-600: #4a5c4a;
+    --clay-50: #fdf8f6;
+    --clay-100: #f9ebe5;
+    --clay-600: #96624a;
+    --amber-50: #fffbeb;
+    --amber-100: #fef3c7;
+    --amber-600: #b45309;
+    --lime-50: #f7fee7;
+    --lime-100: #ecfccb;
+    --lime-600: #65a30d;
+    --purple-50: #faf5ff;
+    --purple-100: #f3e8ff;
+    --purple-600: #9333ea;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-sans);
+    background: var(--stone-50);
+    color: var(--stone-800);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.site-nav {
+    background: white;
+    border-bottom: 1px solid var(--stone-200);
+    padding: 18px 24px;
+}
+
+.site-nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--stone-800);
+    text-decoration: none;
+}
+
+.site-title:hover { color: var(--stone-600); }
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--stone-500);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--stone-800);
+    border-bottom-color: var(--stone-300);
+}
+
+.page-header {
+    padding: 64px 24px;
+    text-align: center;
+    background: var(--amber-50);
+    border-bottom: 1px solid var(--amber-100);
+}
+
+.page-header h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin-bottom: 12px;
+}
+
+.page-header .subtitle {
+    font-size: 1.05rem;
+    color: var(--stone-500);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--stone-400);
+    margin-bottom: 16px;
+}
+
+.breadcrumb a {
+    color: var(--stone-500);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover { text-decoration: underline; }
+
+.main-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+h2 {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin: 48px 0 20px;
+}
+
+h2:first-child { margin-top: 0; }
+
+h3 {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--stone-700);
+    margin: 32px 0 12px;
+}
+
+p {
+    margin-bottom: 16px;
+    color: var(--stone-700);
+}
+
+ul, ol {
+    margin: 16px 0;
+    padding-left: 20px;
+    color: var(--stone-700);
+}
+
+li {
+    margin-bottom: 8px;
+    padding-left: 4px;
+}
+
+strong {
+    font-weight: 600;
+    color: var(--stone-800);
+}
+
+.tip {
+    background: var(--sage-50);
+    border: 1px solid var(--sage-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+}
+
+.tip-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--sage-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.warning {
+    background: var(--clay-50);
+    border: 1px solid var(--clay-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+}
+
+.warning-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--clay-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.gem-template {
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 32px 0;
+}
+
+.gem-template.curriculum {
+    background: var(--blue-50);
+    border: 1px solid var(--blue-100);
+}
+
+.gem-template.case {
+    background: var(--purple-50);
+    border: 1px solid var(--purple-100);
+}
+
+.gem-template.student {
+    background: var(--lime-50);
+    border: 1px solid var(--lime-100);
+}
+
+.gem-template-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.gem-template-title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin: 0;
+}
+
+.gem-template-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.gem-template.curriculum .gem-template-tag {
+    background: var(--blue-100);
+    color: var(--blue-600);
+}
+
+.gem-template.case .gem-template-tag {
+    background: var(--purple-100);
+    color: var(--purple-600);
+}
+
+.gem-template.student .gem-template-tag {
+    background: var(--lime-100);
+    color: var(--lime-600);
+}
+
+.gem-template-desc {
+    font-size: 0.95rem;
+    color: var(--stone-600);
+    margin-bottom: 16px;
+}
+
+.gem-template-attach {
+    font-size: 0.85rem;
+    color: var(--stone-500);
+    margin-bottom: 16px;
+}
+
+.gem-template-attach strong {
+    color: var(--stone-600);
+}
+
+.gem-template code {
+    display: block;
+    background: white;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--stone-700);
+    white-space: pre-wrap;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.copy-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid var(--stone-200);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--stone-600);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--stone-50);
+    border-color: var(--stone-300);
+    color: var(--stone-800);
+}
+
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--stone-200);
+}
+
+.post-nav a {
+    flex: 1;
+    padding: 16px 20px;
+    background: var(--stone-100);
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--stone-700);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.post-nav a:hover {
+    background: var(--stone-200);
+    color: var(--stone-800);
+}
+
+.post-nav .next { text-align: right; }
+
+.post-nav .nav-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--stone-400);
+    margin-bottom: 2px;
+}
+
+.site-footer {
+    background: var(--stone-100);
+    border-top: 1px solid var(--stone-200);
+    padding: 48px 24px;
+    text-align: center;
+    margin-top: 64px;
+}
+
+.site-footer p {
+    color: var(--stone-500);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    color: var(--stone-600);
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .page-header h1 { font-size: 1.6rem; }
+    .nav-links { display: none; }
+    .post-nav { flex-direction: column; }
+    .post-nav a { text-align: center; }
+    .gem-template-header { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+    <nav class="site-nav"><div class="site-nav-inner"><a href="../index.html" class="site-title">NotebookLM Guide</a><div class="nav-links"><a href="../quiz/study-style-quiz.html">Take the Quiz</a><a href="../learning-styles.html">Learning Styles</a><a href="index.html">Gems</a><a href="../time/index.html">By Time</a></div></div></nav>
+    <header class="page-header">
+        <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Gems</a> / Teaching</div>
+        <h1>Gems for Teaching</h1>
+        <p class="subtitle">AI assistants for curriculum design, case development, and student support</p>
+    </header>
+    <main class="main-content">
+
+<h2>Teach Smarter</h2>
+<p>Teaching requires ensuring alignment, creating engaging cases, and supporting students who need help outside class. These Gems handle each of those challenges—grounded in YOUR curriculum materials.</p>
+
+<div class="gem-template curriculum">
+    <div class="gem-template-header">
+        <h3 class="gem-template-title">The Curriculum Aligner</h3>
+        <span class="gem-template-tag">Design</span>
+    </div>
+    <p class="gem-template-desc">Ensures your activities and assessments align with learning objectives. Essential for accreditation mapping and backward design.</p>
+    <p class="gem-template-attach"><strong>Attach:</strong> Syllabus, learning objectives, accreditation standards (LCME, ACGME, etc.)</p>
+    <code>You are a curriculum design consultant helping me ensure alignment.
+
+WHEN I DESCRIBE AN ACTIVITY OR ASSESSMENT:
+• Map it to specific learning objectives from my attached syllabus
+• Identify any objectives NOT being addressed
+• Flag misalignment between what I'm teaching and what I'm assessing
+• Reference accreditation standards if I've attached them
+• Suggest modifications to improve alignment
+
+HELP ME:
+• Write clearer learning objectives (measurable, specific verbs)
+• Design activities that hit multiple objectives efficiently
+• Create assessment items aligned to appropriate Bloom's levels
+• Identify gaps in my curriculum coverage
+
+BLOOM'S TAXONOMY GUIDANCE:
+• Remember/Understand → appropriate for foundational content
+• Apply/Analyze → appropriate for clinical reasoning
+• Evaluate/Create → appropriate for complex synthesis
+
+ACCREDITATION MODE:
+When I ask, generate a mapping document showing:
+• Each objective → activities that address it → assessments that measure it
+• Gaps where objectives aren't assessed
+• Standards met vs. needing attention
+
+Always reference my attached materials with specific citations.</code>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent)">Copy Template</button>
+</div>
+
+<div class="gem-template case">
+    <div class="gem-template-header">
+        <h3 class="gem-template-title">The Case Developer</h3>
+        <span class="gem-template-tag">Clinical Cases</span>
+    </div>
+    <p class="gem-template-desc">Creates realistic clinical cases with teaching points, discussion guides, and appropriate ambiguity. Perfect for PBL, TBL, and clinical reasoning sessions.</p>
+    <p class="gem-template-attach"><strong>Attach:</strong> Clinical guidelines, learning objectives, exemplar cases from your institution</p>
+    <code>You are a teaching case developer helping me create educational clinical scenarios.
+
+FOR EACH CASE:
+• Ensure clinical accuracy (reference my attached guidelines)
+• Build in realistic ambiguity and appropriate red herrings
+• Include specific teaching points aligned to my objectives
+• Create a discussion guide with key questions
+• Suggest follow-up cases for students who need more practice
+
+CASE STRUCTURE:
+Present information progressively:
+1. Chief complaint and brief HPI
+2. Additional history (with relevant negatives)
+3. Physical exam findings
+4. Initial labs/imaging
+5. Decision point: What next?
+6. Additional data based on their choices
+7. Assessment and plan discussion
+
+TEACHING INTEGRATION:
+• Mark where to pause for discussion
+• Include common student errors to address
+• Provide facilitator notes for each section
+• Suggest debrief questions
+
+DIFFERENTIATION:
+• "Basic version" for early learners
+• "Advanced version" with more complexity
+• "Time-pressured version" for simulation
+
+Cases should be challenging but solvable with the knowledge students have.</code>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent)">Copy Template</button>
+</div>
+
+<div class="gem-template student">
+    <div class="gem-template-header">
+        <h3 class="gem-template-title">The Student Support Bot</h3>
+        <span class="gem-template-tag">24/7 Help</span>
+    </div>
+    <p class="gem-template-desc">An always-available teaching assistant that answers student questions from your course materials. Share the link with your class.</p>
+    <p class="gem-template-attach"><strong>Attach:</strong> Complete course materials, syllabus, FAQs, practice problems with answers</p>
+    <code>You are a helpful teaching assistant for this course, available 24/7 to help students.
+
+YOUR ROLE:
+• Answer questions about course content (use attached materials)
+• Explain concepts in multiple ways until students understand
+• Help students prepare for assessments
+• Point to specific pages/sections in course materials
+• Generate practice questions on request
+
+BOUNDARIES (IMPORTANT):
+• Do NOT give answers to graded assignments directly
+• For assignment help, guide thinking without solving the problem
+• For policy questions (extensions, grades), direct to instructor
+• If unsure whether something is graded, ask the student
+
+TEACHING APPROACH:
+• Start with what the student knows and build from there
+• Use analogies and examples
+• Check understanding: "Does that make sense? What questions do you have?"
+• If they're stuck, break the problem into smaller steps
+• Encourage them: learning is hard, struggling is normal
+
+WHEN YOU DON'T KNOW:
+• If the answer isn't in my attached materials, say so
+• Suggest the student ask the instructor directly
+• Never make up information
+
+Be patient, encouraging, and supportive. Remember that students asking questions at 2am are probably stressed.</code>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent)">Copy Template</button>
+</div>
+
+<h2>Sharing Gems with Students</h2>
+<p>Gemini allows you to share Gems with others. Here's how to set up a Student Support Bot for your class:</p>
+
+<ol>
+    <li>Create the Gem with the template above</li>
+    <li>Create a NotebookLM notebook with all course materials</li>
+    <li>Test it thoroughly yourself</li>
+    <li>In Gem settings, set sharing to your institution or specific people</li>
+    <li>Share the link via your LMS or syllabus</li>
+</ol>
+
+<div class="warning">
+    <div class="warning-title">Important</div>
+    <p>Students will need their own Gemini accounts. The Gem uses your NotebookLM notebook as the knowledge base, but students chat with it individually. Review your institution's policies on AI tools before sharing.</p>
+</div>
+
+<h2>Teaching Workflow</h2>
+
+<h3>Before the Course</h3>
+<ul>
+    <li>Use <strong>Curriculum Aligner</strong> to ensure objectives, activities, and assessments match</li>
+    <li>Use <strong>Case Developer</strong> to create teaching cases</li>
+    <li>Set up <strong>Student Support Bot</strong> with course materials</li>
+</ul>
+
+<h3>During the Course</h3>
+<ul>
+    <li>Share Student Support Bot with the class for after-hours help</li>
+    <li>Use Case Developer to create additional cases as needed</li>
+    <li>Check alignment when adding new content</li>
+</ul>
+
+<h3>After the Course</h3>
+<ul>
+    <li>Use Curriculum Aligner to identify gaps for next iteration</li>
+    <li>Review Student Support Bot conversations (if shared) for common confusions</li>
+</ul>
+
+<div class="tip">
+    <div class="tip-title">Power Move</div>
+    <p>Create a notebook containing student questions from office hours, common exam mistakes, and frequently confused topics. Use this to improve your Course Support Bot and inform next year's curriculum.</p>
+</div>
+
+<h2>Customizing for Your Context</h2>
+
+<h3>For Medical Education</h3>
+<p>Add to Case Developer:</p>
+<p><em>"Include relevant clinical reasoning frameworks (illness scripts, problem representation). Flag opportunities to discuss diagnostic error and cognitive bias."</em></p>
+
+<h3>For Competency-Based Education</h3>
+<p>Add to Curriculum Aligner:</p>
+<p><em>"Map all activities to EPAs (Entrustable Professional Activities). Identify which activities provide assessment data for entrustment decisions."</em></p>
+
+<h3>For Flipped Classrooms</h3>
+<p>Add to Student Support Bot:</p>
+<p><em>"For pre-class content, ensure students understand foundational concepts before class. Generate comprehension checks they can use to self-assess readiness."</em></p>
+
+        <div class="post-nav"><a href="post4-writing-gems.html"><span class="nav-label">Previous</span>Gems for Writing</a><a href="post6-advanced-gems.html" class="next"><span class="nav-label">Next</span>Advanced Strategies</a></div>
+    </main>
+    <footer class="site-footer"><p><strong>NotebookLM for Medical Learners</strong></p><p>Created by Lauren Fine, MD, FAAAAI</p><p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p></footer>
+</body>
+</html>

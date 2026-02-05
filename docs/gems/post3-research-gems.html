@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gems for Research | NotebookLM Guide</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-serif: 'Lora', Georgia, serif;
+    --stone-50: #fafaf9;
+    --stone-100: #f5f5f4;
+    --stone-200: #e7e5e4;
+    --stone-300: #d6d3d1;
+    --stone-400: #a8a29e;
+    --stone-500: #78716c;
+    --stone-600: #57534e;
+    --stone-700: #44403c;
+    --stone-800: #292524;
+    --sage-50: #f6f7f6;
+    --sage-100: #e3e7e3;
+    --sage-600: #4a5c4a;
+    --amber-50: #fffbeb;
+    --amber-100: #fef3c7;
+    --amber-600: #b45309;
+    --rose-50: #fff1f2;
+    --rose-100: #ffe4e6;
+    --rose-600: #e11d48;
+    --indigo-50: #eef2ff;
+    --indigo-100: #e0e7ff;
+    --indigo-600: #4f46e5;
+    --teal-50: #f0fdfa;
+    --teal-100: #ccfbf1;
+    --teal-600: #0d9488;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-sans);
+    background: var(--stone-50);
+    color: var(--stone-800);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.site-nav {
+    background: white;
+    border-bottom: 1px solid var(--stone-200);
+    padding: 18px 24px;
+}
+
+.site-nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--stone-800);
+    text-decoration: none;
+}
+
+.site-title:hover { color: var(--stone-600); }
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--stone-500);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--stone-800);
+    border-bottom-color: var(--stone-300);
+}
+
+.page-header {
+    padding: 64px 24px;
+    text-align: center;
+    background: var(--amber-50);
+    border-bottom: 1px solid var(--amber-100);
+}
+
+.page-header h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin-bottom: 12px;
+}
+
+.page-header .subtitle {
+    font-size: 1.05rem;
+    color: var(--stone-500);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--stone-400);
+    margin-bottom: 16px;
+}
+
+.breadcrumb a {
+    color: var(--stone-500);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover { text-decoration: underline; }
+
+.main-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+h2 {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin: 48px 0 20px;
+}
+
+h2:first-child { margin-top: 0; }
+
+h3 {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--stone-700);
+    margin: 32px 0 12px;
+}
+
+p {
+    margin-bottom: 16px;
+    color: var(--stone-700);
+}
+
+ul, ol {
+    margin: 16px 0;
+    padding-left: 20px;
+    color: var(--stone-700);
+}
+
+li {
+    margin-bottom: 8px;
+    padding-left: 4px;
+}
+
+strong {
+    font-weight: 600;
+    color: var(--stone-800);
+}
+
+.tip {
+    background: var(--sage-50);
+    border: 1px solid var(--sage-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+}
+
+.tip-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--sage-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.gem-template {
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 32px 0;
+}
+
+.gem-template.synthesizer {
+    background: var(--indigo-50);
+    border: 1px solid var(--indigo-100);
+}
+
+.gem-template.critic {
+    background: var(--rose-50);
+    border: 1px solid var(--rose-100);
+}
+
+.gem-template.grant {
+    background: var(--teal-50);
+    border: 1px solid var(--teal-100);
+}
+
+.gem-template-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.gem-template-title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin: 0;
+}
+
+.gem-template-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.gem-template.synthesizer .gem-template-tag {
+    background: var(--indigo-100);
+    color: var(--indigo-600);
+}
+
+.gem-template.critic .gem-template-tag {
+    background: var(--rose-100);
+    color: var(--rose-600);
+}
+
+.gem-template.grant .gem-template-tag {
+    background: var(--teal-100);
+    color: var(--teal-600);
+}
+
+.gem-template-desc {
+    font-size: 0.95rem;
+    color: var(--stone-600);
+    margin-bottom: 16px;
+}
+
+.gem-template-attach {
+    font-size: 0.85rem;
+    color: var(--stone-500);
+    margin-bottom: 16px;
+}
+
+.gem-template-attach strong {
+    color: var(--stone-600);
+}
+
+.gem-template code {
+    display: block;
+    background: white;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--stone-700);
+    white-space: pre-wrap;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.copy-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid var(--stone-200);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--stone-600);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--stone-50);
+    border-color: var(--stone-300);
+    color: var(--stone-800);
+}
+
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--stone-200);
+}
+
+.post-nav a {
+    flex: 1;
+    padding: 16px 20px;
+    background: var(--stone-100);
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--stone-700);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.post-nav a:hover {
+    background: var(--stone-200);
+    color: var(--stone-800);
+}
+
+.post-nav .next { text-align: right; }
+
+.post-nav .nav-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--stone-400);
+    margin-bottom: 2px;
+}
+
+.site-footer {
+    background: var(--stone-100);
+    border-top: 1px solid var(--stone-200);
+    padding: 48px 24px;
+    text-align: center;
+    margin-top: 64px;
+}
+
+.site-footer p {
+    color: var(--stone-500);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    color: var(--stone-600);
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .page-header h1 { font-size: 1.6rem; }
+    .nav-links { display: none; }
+    .post-nav { flex-direction: column; }
+    .post-nav a { text-align: center; }
+    .gem-template-header { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+    <nav class="site-nav"><div class="site-nav-inner"><a href="../index.html" class="site-title">NotebookLM Guide</a><div class="nav-links"><a href="../quiz/study-style-quiz.html">Take the Quiz</a><a href="../learning-styles.html">Learning Styles</a><a href="index.html">Gems</a><a href="../time/index.html">By Time</a></div></div></nav>
+    <header class="page-header">
+        <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Gems</a> / Research</div>
+        <h1>Gems for Research</h1>
+        <p class="subtitle">AI partners for literature review, methods, and grant writing</p>
+    </header>
+    <main class="main-content">
+
+<h2>Research Just Got Easier</h2>
+<p>Research requires synthesizing vast amounts of literature, critiquing methods, and crafting compelling narratives. These Gems help with each stage—and they only work with YOUR sources, so every insight is grounded and citable.</p>
+
+<div class="gem-template synthesizer">
+    <div class="gem-template-header">
+        <h3 class="gem-template-title">The Literature Synthesizer</h3>
+        <span class="gem-template-tag">Lit Review</span>
+    </div>
+    <p class="gem-template-desc">Finds themes, gaps, and contradictions across your paper collection. Essential for writing literature reviews.</p>
+    <p class="gem-template-attach"><strong>Attach:</strong> Research papers, review articles, your Zotero/Mendeley exports</p>
+    <code>You are a research synthesis expert helping me make sense of my literature collection.
+
+CORE FUNCTIONS:
+• Identify common themes across my sources
+• Highlight where authors agree and disagree
+• Find gaps in the literature (questions no one has answered)
+• Trace how ideas evolved over time (if dates are available)
+• ALWAYS cite which specific paper you're drawing from
+
+WHEN I ASK A QUESTION:
+• Tell me which sources address it directly
+• Note any conflicting findings between sources
+• Identify methodological differences that might explain conflicts
+• Suggest what additional literature I might need
+
+SYNTHESIS MODES:
+• "Summarize themes" → Identify 3-5 major themes with supporting sources
+• "Find gaps" → What questions remain unanswered?
+• "Compare methods" → How did different authors approach similar questions?
+• "Timeline" → How has thinking evolved chronologically?
+
+When generating synthesis, organize by theme, not by paper.
+Always use in-text citations referencing my attached sources.</code>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent)">Copy Template</button>
+</div>
+
+<div class="gem-template critic">
+    <div class="gem-template-header">
+        <h3 class="gem-template-title">The Methods Critic</h3>
+        <span class="gem-template-tag">Methodology</span>
+    </div>
+    <p class="gem-template-desc">Critiques your research design and helps strengthen it before you collect data. Also useful for journal club.</p>
+    <p class="gem-template-attach"><strong>Attach:</strong> Methodology papers, research design guides, exemplar studies in your field</p>
+    <code>You are a methodological expert who critiques research designs constructively.
+
+WHEN I DESCRIBE MY METHODS:
+• Identify potential threats to validity (internal and external)
+• Suggest how I could strengthen the design
+• Compare to approaches in my attached exemplar papers
+• Anticipate reviewer objections
+• Flag statistical considerations I might have missed
+
+VALIDITY FRAMEWORK:
+For each threat identified, explain:
+1. What the threat is
+2. How it could affect my conclusions
+3. What I could do to mitigate it
+4. What to acknowledge in limitations if I can't fix it
+
+WHEN I ASK ABOUT A METHOD:
+• Explain when it's appropriate and when it's not
+• Reference how it was used in my attached papers
+• Discuss sample size and power considerations
+• Identify assumptions the method requires
+
+Be direct and honest. I need to hear problems NOW, not after IRB submission or peer review. Constructive criticism saves me time.</code>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent)">Copy Template</button>
+</div>
+
+<div class="gem-template grant">
+    <div class="gem-template-header">
+        <h3 class="gem-template-title">The Grant Writing Partner</h3>
+        <span class="gem-template-tag">Funding</span>
+    </div>
+    <p class="gem-template-desc">Helps frame significance, articulate innovation, and align with funding priorities. Essential for K-awards, R-series, and foundation grants.</p>
+    <p class="gem-template-attach"><strong>Attach:</strong> RFA/FOA documents, successful grants in your area, your preliminary data</p>
+    <code>You are a grant writing consultant helping me craft a compelling proposal.
+
+HELP ME WITH:
+• Framing significance in terms reviewers will value
+• Articulating innovation clearly
+• Aligning with the RFA/FOA priorities (reference my attached documents)
+• Learning from successful examples (reference my attached funded grants)
+• Identifying weaknesses before reviewers do
+
+FOR EACH SECTION I WRITE:
+1. Identify the strongest 2-3 elements
+2. Point out gaps or weak arguments
+3. Suggest specific language improvements
+4. Show me how similar sections were handled in my attached successful grants
+5. Check alignment with stated funding priorities
+
+SECTION-SPECIFIC GUIDANCE:
+• Specific Aims: Is there a clear hook? Are aims logical and independent?
+• Significance: Is the "so what" compelling? Is the gap clear?
+• Innovation: What's genuinely new? How does this advance the field?
+• Approach: Are methods appropriate and feasible? Is the timeline realistic?
+
+REVIEWER SIMULATION:
+When I ask, roleplay as a skeptical reviewer. What concerns would you raise in the critique? What score would you give and why?
+
+Be tough but constructive. I'd rather fix problems now than get a poor score.</code>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent)">Copy Template</button>
+</div>
+
+<h2>Research Workflow Integration</h2>
+
+<h3>Phase 1: Literature Review</h3>
+<ol>
+    <li>Upload your papers to a NotebookLM notebook</li>
+    <li>Use <strong>Literature Synthesizer</strong> to identify themes</li>
+    <li>Ask: "What gaps exist in this literature?"</li>
+    <li>Ask: "How do these papers inform my research question?"</li>
+</ol>
+
+<h3>Phase 2: Study Design</h3>
+<ol>
+    <li>Create a new notebook with methodology papers</li>
+    <li>Use <strong>Methods Critic</strong> to pressure-test your design</li>
+    <li>Ask: "What are the biggest threats to validity?"</li>
+    <li>Ask: "How did [attached exemplar study] handle this?"</li>
+</ol>
+
+<h3>Phase 3: Grant Writing</h3>
+<ol>
+    <li>Create a notebook with the RFA + successful grants</li>
+    <li>Use <strong>Grant Writing Partner</strong> for each section</li>
+    <li>Ask: "How well does my aims page align with the funding priorities?"</li>
+    <li>Ask: "Roleplay as a reviewer—what would you critique?"</li>
+</ol>
+
+<div class="tip">
+    <div class="tip-title">Pro Tip</div>
+    <p>For grant writing, upload 2-3 funded grants from your department or mentors. The Gem can learn what worked and apply similar strategies to your proposal. Just be sure to develop your own original content.</p>
+</div>
+
+<h2>Combining Gems</h2>
+<p>You can use multiple Gems in sequence:</p>
+<ol>
+    <li><strong>Literature Synthesizer</strong> identifies a gap</li>
+    <li>You design a study to address it</li>
+    <li><strong>Methods Critic</strong> strengthens the design</li>
+    <li><strong>Grant Writing Partner</strong> helps frame it for funders</li>
+</ol>
+<p>Each Gem uses the same NotebookLM sources but with different personas and goals.</p>
+
+        <div class="post-nav"><a href="post2-study-gems.html"><span class="nav-label">Previous</span>Gems for Studying</a><a href="post4-writing-gems.html" class="next"><span class="nav-label">Next</span>Gems for Writing</a></div>
+    </main>
+    <footer class="site-footer"><p><strong>NotebookLM for Medical Learners</strong></p><p>Created by Lauren Fine, MD, FAAAAI</p><p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p></footer>
+</body>
+</html>

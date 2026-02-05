@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gems for Writing | NotebookLM Guide</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-serif: 'Lora', Georgia, serif;
+    --stone-50: #fafaf9;
+    --stone-100: #f5f5f4;
+    --stone-200: #e7e5e4;
+    --stone-300: #d6d3d1;
+    --stone-400: #a8a29e;
+    --stone-500: #78716c;
+    --stone-600: #57534e;
+    --stone-700: #44403c;
+    --stone-800: #292524;
+    --sage-50: #f6f7f6;
+    --sage-100: #e3e7e3;
+    --sage-600: #4a5c4a;
+    --amber-50: #fffbeb;
+    --amber-100: #fef3c7;
+    --amber-600: #b45309;
+    --pink-50: #fdf2f8;
+    --pink-100: #fce7f3;
+    --pink-600: #db2777;
+    --orange-50: #fff7ed;
+    --orange-100: #ffedd5;
+    --orange-600: #ea580c;
+    --cyan-50: #ecfeff;
+    --cyan-100: #cffafe;
+    --cyan-600: #0891b2;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-sans);
+    background: var(--stone-50);
+    color: var(--stone-800);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.site-nav {
+    background: white;
+    border-bottom: 1px solid var(--stone-200);
+    padding: 18px 24px;
+}
+
+.site-nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--stone-800);
+    text-decoration: none;
+}
+
+.site-title:hover { color: var(--stone-600); }
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--stone-500);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--stone-800);
+    border-bottom-color: var(--stone-300);
+}
+
+.page-header {
+    padding: 64px 24px;
+    text-align: center;
+    background: var(--amber-50);
+    border-bottom: 1px solid var(--amber-100);
+}
+
+.page-header h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin-bottom: 12px;
+}
+
+.page-header .subtitle {
+    font-size: 1.05rem;
+    color: var(--stone-500);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--stone-400);
+    margin-bottom: 16px;
+}
+
+.breadcrumb a {
+    color: var(--stone-500);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover { text-decoration: underline; }
+
+.main-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+h2 {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin: 48px 0 20px;
+}
+
+h2:first-child { margin-top: 0; }
+
+h3 {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--stone-700);
+    margin: 32px 0 12px;
+}
+
+p {
+    margin-bottom: 16px;
+    color: var(--stone-700);
+}
+
+ul, ol {
+    margin: 16px 0;
+    padding-left: 20px;
+    color: var(--stone-700);
+}
+
+li {
+    margin-bottom: 8px;
+    padding-left: 4px;
+}
+
+strong {
+    font-weight: 600;
+    color: var(--stone-800);
+}
+
+.tip {
+    background: var(--sage-50);
+    border: 1px solid var(--sage-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+}
+
+.tip-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--sage-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.gem-template {
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 32px 0;
+}
+
+.gem-template.voice {
+    background: var(--pink-50);
+    border: 1px solid var(--pink-100);
+}
+
+.gem-template.editor {
+    background: var(--orange-50);
+    border: 1px solid var(--orange-100);
+}
+
+.gem-template.newsletter {
+    background: var(--cyan-50);
+    border: 1px solid var(--cyan-100);
+}
+
+.gem-template-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.gem-template-title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin: 0;
+}
+
+.gem-template-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.gem-template.voice .gem-template-tag {
+    background: var(--pink-100);
+    color: var(--pink-600);
+}
+
+.gem-template.editor .gem-template-tag {
+    background: var(--orange-100);
+    color: var(--orange-600);
+}
+
+.gem-template.newsletter .gem-template-tag {
+    background: var(--cyan-100);
+    color: var(--cyan-600);
+}
+
+.gem-template-desc {
+    font-size: 0.95rem;
+    color: var(--stone-600);
+    margin-bottom: 16px;
+}
+
+.gem-template-attach {
+    font-size: 0.85rem;
+    color: var(--stone-500);
+    margin-bottom: 16px;
+}
+
+.gem-template-attach strong {
+    color: var(--stone-600);
+}
+
+.gem-template code {
+    display: block;
+    background: white;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--stone-700);
+    white-space: pre-wrap;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.copy-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid var(--stone-200);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--stone-600);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--stone-50);
+    border-color: var(--stone-300);
+    color: var(--stone-800);
+}
+
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--stone-200);
+}
+
+.post-nav a {
+    flex: 1;
+    padding: 16px 20px;
+    background: var(--stone-100);
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--stone-700);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.post-nav a:hover {
+    background: var(--stone-200);
+    color: var(--stone-800);
+}
+
+.post-nav .next { text-align: right; }
+
+.post-nav .nav-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--stone-400);
+    margin-bottom: 2px;
+}
+
+.site-footer {
+    background: var(--stone-100);
+    border-top: 1px solid var(--stone-200);
+    padding: 48px 24px;
+    text-align: center;
+    margin-top: 64px;
+}
+
+.site-footer p {
+    color: var(--stone-500);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    color: var(--stone-600);
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .page-header h1 { font-size: 1.6rem; }
+    .nav-links { display: none; }
+    .post-nav { flex-direction: column; }
+    .post-nav a { text-align: center; }
+    .gem-template-header { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+    <nav class="site-nav"><div class="site-nav-inner"><a href="../index.html" class="site-title">NotebookLM Guide</a><div class="nav-links"><a href="../quiz/study-style-quiz.html">Take the Quiz</a><a href="../learning-styles.html">Learning Styles</a><a href="index.html">Gems</a><a href="../time/index.html">By Time</a></div></div></nav>
+    <header class="page-header">
+        <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Gems</a> / Writing</div>
+        <h1>Gems for Writing</h1>
+        <p class="subtitle">AI assistants that write in YOUR voice and hold you to high standards</p>
+    </header>
+    <main class="main-content">
+
+<h2>Write Better, Faster</h2>
+<p>The biggest problem with AI writing assistants? They don't sound like you. These Gems solve that by learning from your own writing samples. Upload your previous work to NotebookLM, and the Gem will match your voice.</p>
+
+<div class="gem-template voice">
+    <div class="gem-template-header">
+        <h3 class="gem-template-title">The Voice Matcher</h3>
+        <span class="gem-template-tag">Your Style</span>
+    </div>
+    <p class="gem-template-desc">Learns YOUR writing voice from examples and helps you maintain consistency. Essential for newsletters, articles, and personal brand content.</p>
+    <p class="gem-template-attach"><strong>Attach:</strong> Your published articles, newsletter issues, blog posts, or any writing that represents your voice</p>
+    <code>You are a writing assistant who matches MY voice and style.
+
+FIRST, ANALYZE MY ATTACHED WRITING FOR:
+• Sentence length and structure patterns
+• Vocabulary level and favorite phrases
+• How I use humor, examples, and analogies
+• My typical opening and closing patterns
+• Transition styles between sections
+• Level of formality
+• How I address readers (direct, conversational, etc.)
+
+WHEN HELPING ME WRITE:
+• Write in a way that sounds like ME, not generic AI
+• Match the tone and energy of my attached samples
+• Use similar sentence rhythms and paragraph lengths
+• Include the types of examples I typically use
+• Point out when something I've drafted sounds "off" from my usual voice
+
+EDITING MODE:
+When I share a draft, compare it to my attached samples and suggest edits that:
+• Maintain my voice while improving clarity
+• Flag sentences that sound unlike my typical style
+• Suggest alternatives that match my patterns
+
+Never use corporate jargon, clichés, or AI-sounding phrases unless my samples show I use them.</code>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent)">Copy Template</button>
+</div>
+
+<div class="gem-template editor">
+    <div class="gem-template-header">
+        <h3 class="gem-template-title">The Critical Editor</h3>
+        <span class="gem-template-tag">Tough Love</span>
+    </div>
+    <p class="gem-template-desc">Gives you honest, specific feedback that makes your writing publishable. Compares your work to high standards in your field.</p>
+    <p class="gem-template-attach"><strong>Attach:</strong> Style guides, exemplar papers from your target journal, well-written articles in your niche</p>
+    <code>You are a demanding but constructive editor. Your job is to make my writing publishable.
+
+FOR EVERY PIECE I SUBMIT:
+1. Identify the THREE biggest problems first (most important)
+2. Be specific about what's wrong and why it matters
+3. Suggest concrete fixes (not just "make this clearer")
+4. Compare to standards in my attached exemplar papers
+5. Note what's working well (briefly)
+
+CHECK FOR:
+• Logical flow and argument structure
+• Unsupported claims that need evidence
+• Jargon that could be simplified
+• Sentences that could be cut without losing meaning
+• Passive voice overuse
+• Vague language ("many studies show" → which studies?)
+• Transitions between paragraphs and sections
+
+LEVELS OF FEEDBACK:
+• "Quick scan" → Top 3 issues only
+• "Deep edit" → Line-by-line suggestions
+• "Final polish" → Publication-ready refinements
+
+Be honest. I need to hear problems now, not after I've submitted.
+Praise is useless if my writing isn't actually good.</code>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent)">Copy Template</button>
+</div>
+
+<div class="gem-template newsletter">
+    <div class="gem-template-header">
+        <h3 class="gem-template-title">The Newsletter Partner</h3>
+        <span class="gem-template-tag">Content</span>
+    </div>
+    <p class="gem-template-desc">Knows your publication's voice, audience, and recurring themes. Helps draft, ideate, and repurpose content.</p>
+    <p class="gem-template-attach"><strong>Attach:</strong> Your previous newsletter issues (at least 5-10 for best results)</p>
+    <code>You are my newsletter writing partner who knows my publication inside and out.
+
+BASED ON MY ATTACHED ISSUES, LEARN:
+• My typical length, structure, and tone
+• Recurring themes and segments
+• How I typically open (hook style) and close (CTA style)
+• Types of stories/examples I include
+• My audience and what resonates with them
+
+HELP ME WITH:
+• Brainstorming topics based on themes from previous issues
+• Drafting in my voice (match my attached examples)
+• Writing hooks that would work for my audience
+• Repurposing content: long post → thread → summary → email
+• Generating subject lines that match my style
+
+WHEN I SHARE AN IDEA:
+1. Suggest an angle that fits my publication
+2. Propose an outline based on my typical structure
+3. Draft a hook in my voice
+4. Identify what I could link to from previous issues
+
+QUALITY CHECK:
+Before I publish, compare my draft to my best-performing issues. Would this meet that standard?
+
+Never suggest clickbait or tactics that don't match my brand.</code>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent)">Copy Template</button>
+</div>
+
+<h2>When to Use Each Gem</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>Best Gem</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Drafting a newsletter from scratch</td>
+            <td>Newsletter Partner</td>
+        </tr>
+        <tr>
+            <td>Editing an academic manuscript</td>
+            <td>Critical Editor</td>
+        </tr>
+        <tr>
+            <td>Maintaining brand voice across content</td>
+            <td>Voice Matcher</td>
+        </tr>
+        <tr>
+            <td>Getting unstuck on what to write</td>
+            <td>Newsletter Partner</td>
+        </tr>
+        <tr>
+            <td>Final polish before submission</td>
+            <td>Critical Editor</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Building Your Writing Notebook</h2>
+<p>The quality of these Gems depends on what you upload. Here's what to include:</p>
+
+<h3>For Voice Matching</h3>
+<ul>
+    <li>5-10 of your best published pieces</li>
+    <li>Writing you're proudest of (shows your aspirational voice)</li>
+    <li>Recent work (your voice evolves)</li>
+</ul>
+
+<h3>For Critical Editing</h3>
+<ul>
+    <li>Style guides from your target publication</li>
+    <li>3-5 articles from that publication you admire</li>
+    <li>Your field's writing conventions document (if available)</li>
+</ul>
+
+<h3>For Newsletter Writing</h3>
+<ul>
+    <li>All your previous issues (more = better)</li>
+    <li>High-performing issues (by opens/engagement)</li>
+    <li>Notes about your audience and their needs</li>
+</ul>
+
+<div class="tip">
+    <div class="tip-title">Pro Tip</div>
+    <p>Create separate notebooks for different writing contexts. Your academic voice and newsletter voice are probably different. Keep them in separate notebooks and attach the right one to your Gem conversation.</p>
+</div>
+
+<h2>Avoiding Generic AI Voice</h2>
+<p>To make sure your Gem doesn't sound like every other AI:</p>
+<ol>
+    <li><strong>Upload enough samples.</strong> 3 pieces isn't enough. Aim for 10+.</li>
+    <li><strong>Include variety.</strong> Different topics, moods, and lengths help the Gem understand your range.</li>
+    <li><strong>Call out AI-isms.</strong> Add to your instructions: "Never use phrases like 'dive in,' 'unpack,' 'navigate,' or 'leverage' unless I use them in my samples."</li>
+    <li><strong>Test and iterate.</strong> If output sounds off, refine your instructions.</li>
+</ol>
+
+        <div class="post-nav"><a href="post3-research-gems.html"><span class="nav-label">Previous</span>Gems for Research</a><a href="post5-teaching-gems.html" class="next"><span class="nav-label">Next</span>Gems for Teaching</a></div>
+    </main>
+    <footer class="site-footer"><p><strong>NotebookLM for Medical Learners</strong></p><p>Created by Lauren Fine, MD, FAAAAI</p><p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p></footer>
+</body>
+</html>

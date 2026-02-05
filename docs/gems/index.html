@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigate by Learning Style | NotebookLM Guide</title>
+    <title>Level Up with Gemini Gems | NotebookLM Guide</title>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
 
@@ -48,6 +48,11 @@
     --moss-100: #e5ebe3;
     --moss-500: #5a7356;
     --moss-600: #445941;
+    
+    --amber-50: #fffbeb;
+    --amber-100: #fef3c7;
+    --amber-500: #d97706;
+    --amber-600: #b45309;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,7 +66,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Navigation - Simple underline style */
 .site-nav {
     background: white;
     border-bottom: 1px solid var(--stone-200);
@@ -109,7 +113,6 @@ body {
     border-bottom-color: var(--stone-300);
 }
 
-/* Page Headers - Muted colors, no gradients */
 .page-header {
     padding: 64px 24px;
     text-align: center;
@@ -117,13 +120,7 @@ body {
     border-bottom: 1px solid var(--stone-200);
 }
 
-.page-header.audio { background: var(--clay-50); border-bottom-color: var(--clay-100); }
-.page-header.visual { background: var(--sky-50); border-bottom-color: var(--sky-100); }
-.page-header.readwrite { background: var(--plum-50); border-bottom-color: var(--plum-100); }
-.page-header.kinesthetic { background: var(--moss-50); border-bottom-color: var(--moss-100); }
-.page-header.training { background: var(--clay-50); border-bottom-color: var(--clay-100); }
-.page-header.time { background: var(--sky-50); border-bottom-color: var(--sky-100); }
-.page-header.problems { background: var(--plum-50); border-bottom-color: var(--plum-100); }
+.page-header.gems { background: var(--amber-50); border-bottom-color: var(--amber-100); }
 
 .page-header h1 {
     font-family: var(--font-serif);
@@ -157,14 +154,12 @@ body {
     text-decoration: underline;
 }
 
-/* Main Content */
 .main-content {
     max-width: 680px;
     margin: 0 auto;
     padding: 48px 24px;
 }
 
-/* Typography */
 h2 {
     font-family: var(--font-serif);
     font-size: 1.35rem;
@@ -211,7 +206,6 @@ strong {
     color: var(--stone-800);
 }
 
-/* Callout Boxes - Subtle, no icons */
 .tip {
     background: var(--sage-50);
     border: 1px solid var(--sage-100);
@@ -229,51 +223,20 @@ strong {
     letter-spacing: 0.05em;
 }
 
-.warning {
-    background: var(--clay-50);
-    border: 1px solid var(--clay-100);
-    border-radius: 8px;
-    padding: 20px 24px;
-    margin: 28px 0;
-}
-
-.warning-title {
+.new-badge {
+    display: inline-block;
+    background: var(--amber-500);
+    color: white;
+    font-size: 0.7rem;
     font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--clay-600);
-    margin-bottom: 8px;
+    padding: 3px 8px;
+    border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin-left: 8px;
+    vertical-align: middle;
 }
 
-/* Action Box - Distinct style */
-.action-box {
-    background: white;
-    border: 2px solid var(--stone-200);
-    border-radius: 12px;
-    padding: 28px 32px;
-    margin: 36px 0;
-}
-
-.action-box h3 {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--stone-500);
-    margin: 0 0 12px 0;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.action-box p {
-    margin-bottom: 8px;
-}
-
-.action-box p:last-child {
-    margin-bottom: 0;
-}
-
-/* Navigation Cards - Pill style, no icons */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -312,11 +275,15 @@ strong {
     line-height: 1.5;
 }
 
-/* Section Links - Clean list style */
 .link-list {
     list-style: none;
     padding: 0;
     margin: 24px 0;
+}
+
+.link-list li {
+    padding: 0;
+    margin: 0;
 }
 
 .link-list a {
@@ -348,46 +315,6 @@ strong {
     color: var(--stone-500);
 }
 
-/* Post Navigation - Pill buttons */
-.post-nav {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid var(--stone-200);
-}
-
-.post-nav a {
-    flex: 1;
-    padding: 16px 20px;
-    background: var(--stone-100);
-    border-radius: 100px;
-    text-decoration: none;
-    color: var(--stone-700);
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: all 0.2s;
-}
-
-.post-nav a:hover {
-    background: var(--stone-200);
-    color: var(--stone-800);
-}
-
-.post-nav .next {
-    text-align: right;
-}
-
-.post-nav .nav-label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: var(--stone-400);
-    margin-bottom: 2px;
-}
-
-/* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -409,7 +336,6 @@ th {
     letter-spacing: 0.05em;
 }
 
-/* Footer - Simple */
 .site-footer {
     background: var(--stone-100);
     border-top: 1px solid var(--stone-200);
@@ -433,7 +359,6 @@ th {
     color: var(--stone-800);
 }
 
-/* Responsive */
 @media (max-width: 640px) {
     .page-header h1 {
         font-size: 1.6rem;
@@ -443,14 +368,6 @@ th {
         display: none;
     }
     
-    .post-nav {
-        flex-direction: column;
-    }
-    
-    .post-nav a {
-        text-align: center;
-    }
-    
     .card-grid {
         grid-template-columns: 1fr;
     }
@@ -458,47 +375,101 @@ th {
 </style>
 </head>
 <body>
-    <nav class="site-nav"><div class="site-nav-inner"><a href="index.html" class="site-title">NotebookLM Guide</a><div class="nav-links"><a href="quiz/study-style-quiz.html">Take the Quiz</a><a href="learning-styles.html">Learning Styles</a><a href="training/index.html">By Stage</a><a href="time/index.html">By Time</a></div></div></nav>
-    <header class="page-header ">
-        
-        <h1>Navigate by Learning Style</h1>
-        <p class="subtitle">Find strategies optimized for how your brain processes information</p>
+    <nav class="site-nav"><div class="site-nav-inner"><a href="../index.html" class="site-title">NotebookLM Guide</a><div class="nav-links"><a href="../quiz/study-style-quiz.html">Take the Quiz</a><a href="../learning-styles.html">Learning Styles</a><a href="index.html">Gems</a><a href="../time/index.html">By Time</a></div></div></nav>
+    <header class="page-header gems">
+        <div class="breadcrumb"><a href="../index.html">Home</a> / Gemini Gems</div>
+        <h1>Level Up with Gemini Gems <span class="new-badge">New</span></h1>
+        <p class="subtitle">Create custom AI tutors that work with your NotebookLM materials</p>
     </header>
     <main class="main-content">
         
-<h2>Find Your Style</h2>
-<p>Everyone processes information differently. Understanding your primary learning style helps you choose the NotebookLM features and strategies that work best for you.</p>
+<h2>What's a Gem?</h2>
+<p>You've mastered NotebookLM. You're uploading sources, generating Audio Overviews, and getting cited answers. But what if you could customize <strong>how</strong> NotebookLM talks to you?</p>
+
+<p>Gemini Gems are custom AI assistants with saved instructions. Think of them as AI personas you design once and use forever. And as of December 2025, you can attach your NotebookLM notebooks directly to them.</p>
 
 <div class="tip">
-    <div class="tip-title">Not sure which fits you?</div>
-    <p>Take the <a href="quiz/study-style-quiz.html">Study Style Quiz</a> for personalized recommendations.</p>
+    <div class="tip-title">The Game-Changer</div>
+    <p>NotebookLM gives you <strong>grounded answers</strong> from your materials. Gems give you <strong>custom behavior</strong>. Together? A personalized AI tutor that knows YOUR content and behaves exactly how you want.</p>
 </div>
 
-<h2>The Four Learning Styles</h2>
+<h2>Why This Matters</h2>
 
-<div class="card-grid">
-    <a href="audio/index.html" class="card">
-        <h4>Audio Learners</h4>
-        <p>You remember what you hear. Lectures stick with you. You explain things out loud to understand them. Audio Overviews are your superpower.</p>
-    </a>
-    <a href="visual/index.html" class="card">
-        <h4>Visual Learners</h4>
-        <p>You need to see it. Diagrams, charts, and color-coding help you understand. You think in images and spatial relationships.</p>
-    </a>
-    <a href="readwrite/index.html" class="card">
-        <h4>Read/Write Learners</h4>
-        <p>You learn through text. Reading and writing reinforce understanding. Notes, summaries, and written explanations are your tools.</p>
-    </a>
-    <a href="kinesthetic/index.html" class="card">
-        <h4>Kinesthetic Learners</h4>
-        <p>You learn by doing. Practice, cases, and hands-on activities cement knowledge. Sitting still and reading isn't enough.</p>
-    </a>
+<table>
+    <thead>
+        <tr>
+            <th>NotebookLM Alone</th>
+            <th>NotebookLM + Gems</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Generic AI personality</td>
+            <td>YOUR custom AI personality</td>
+        </tr>
+        <tr>
+            <td>Same behavior every time</td>
+            <td>Tailored to your learning style</td>
+        </tr>
+        <tr>
+            <td>No chat history saved</td>
+            <td>Conversations saved in Gemini</td>
+        </tr>
+        <tr>
+            <td>Grounded answers only</td>
+            <td>Grounded + web search</td>
+        </tr>
+        <tr>
+            <td>50 sources per notebook</td>
+            <td>Up to 300 sources (Pro)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Explore Gems</h2>
+
+<ul class="link-list">
+    <li><a href="post1-getting-started.html">
+        <span class="link-title">Getting Started with Gems</span>
+        <span class="link-desc">5-minute setup: Create your first Gem and connect it to NotebookLM</span>
+    </a></li>
+    <li><a href="post2-study-gems.html">
+        <span class="link-title">Gems for Studying</span>
+        <span class="link-desc">Socratic tutor, quiz master, and concept explainer templates</span>
+    </a></li>
+    <li><a href="post3-research-gems.html">
+        <span class="link-title">Gems for Research</span>
+        <span class="link-desc">Literature synthesis, methods critique, and grant writing partners</span>
+    </a></li>
+    <li><a href="post4-writing-gems.html">
+        <span class="link-title">Gems for Writing</span>
+        <span class="link-desc">Voice matching, critical editing, and newsletter assistance</span>
+    </a></li>
+    <li><a href="post5-teaching-gems.html">
+        <span class="link-title">Gems for Teaching</span>
+        <span class="link-desc">Curriculum alignment, case development, and student support bots</span>
+    </a></li>
+    <li><a href="post6-advanced-gems.html">
+        <span class="link-title">Advanced Gem Strategies</span>
+        <span class="link-desc">Multi-notebook workflows, iteration tips, and power user techniques</span>
+    </a></li>
+</ul>
+
+<h2>Quick Start</h2>
+<p>Want to try it right now? Here's the fastest path:</p>
+<ol>
+    <li>Go to <strong>gemini.google.com</strong></li>
+    <li>Click <strong>Gem manager</strong> → <strong>New Gem</strong></li>
+    <li>Paste this instruction: <em>"You are a Socratic tutor. Never give me answers directly. Instead, ask probing questions that guide me to discover the answer. Reference my attached NotebookLM materials."</em></li>
+    <li>Save, then click the <strong>paperclip icon</strong> → <strong>NotebookLM</strong> → choose a notebook</li>
+    <li>Start chatting!</li>
+</ol>
+
+<div class="tip">
+    <div class="tip-title">Ready to dive deeper?</div>
+    <p>Start with <a href="post1-getting-started.html"><strong>Getting Started with Gems</strong></a> for a complete walkthrough, or jump to <a href="post2-study-gems.html"><strong>Gems for Studying</strong></a> for copy-paste templates.</p>
 </div>
 
-<h2>Most People Are Multi-Modal</h2>
-<p>While you likely have a dominant style, most effective learners use multiple modalities. Each guide includes strategies for combining your primary style with others.</p>
-
-        
     </main>
     <footer class="site-footer"><p><strong>NotebookLM for Medical Learners</strong></p><p>Created by Lauren Fine, MD, FAAAAI</p><p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p></footer>
 </body>

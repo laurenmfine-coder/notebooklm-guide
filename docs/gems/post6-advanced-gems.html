@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Gem Strategies | NotebookLM Guide</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-serif: 'Lora', Georgia, serif;
+    --stone-50: #fafaf9;
+    --stone-100: #f5f5f4;
+    --stone-200: #e7e5e4;
+    --stone-300: #d6d3d1;
+    --stone-400: #a8a29e;
+    --stone-500: #78716c;
+    --stone-600: #57534e;
+    --stone-700: #44403c;
+    --stone-800: #292524;
+    --sage-50: #f6f7f6;
+    --sage-100: #e3e7e3;
+    --sage-600: #4a5c4a;
+    --clay-50: #fdf8f6;
+    --clay-100: #f9ebe5;
+    --clay-600: #96624a;
+    --amber-50: #fffbeb;
+    --amber-100: #fef3c7;
+    --amber-600: #b45309;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-sans);
+    background: var(--stone-50);
+    color: var(--stone-800);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.site-nav {
+    background: white;
+    border-bottom: 1px solid var(--stone-200);
+    padding: 18px 24px;
+}
+
+.site-nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--stone-800);
+    text-decoration: none;
+}
+
+.site-title:hover { color: var(--stone-600); }
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--stone-500);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--stone-800);
+    border-bottom-color: var(--stone-300);
+}
+
+.page-header {
+    padding: 64px 24px;
+    text-align: center;
+    background: var(--amber-50);
+    border-bottom: 1px solid var(--amber-100);
+}
+
+.page-header h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin-bottom: 12px;
+}
+
+.page-header .subtitle {
+    font-size: 1.05rem;
+    color: var(--stone-500);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--stone-400);
+    margin-bottom: 16px;
+}
+
+.breadcrumb a {
+    color: var(--stone-500);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover { text-decoration: underline; }
+
+.main-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+h2 {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin: 48px 0 20px;
+}
+
+h2:first-child { margin-top: 0; }
+
+h3 {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--stone-700);
+    margin: 32px 0 12px;
+}
+
+p {
+    margin-bottom: 16px;
+    color: var(--stone-700);
+}
+
+ul, ol {
+    margin: 16px 0;
+    padding-left: 20px;
+    color: var(--stone-700);
+}
+
+li {
+    margin-bottom: 8px;
+    padding-left: 4px;
+}
+
+strong {
+    font-weight: 600;
+    color: var(--stone-800);
+}
+
+.tip {
+    background: var(--sage-50);
+    border: 1px solid var(--sage-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+}
+
+.tip-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--sage-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.warning {
+    background: var(--clay-50);
+    border: 1px solid var(--clay-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+}
+
+.warning-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--clay-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.action-box {
+    background: white;
+    border: 2px solid var(--stone-200);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 36px 0;
+}
+
+.action-box h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--stone-500);
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.action-box p {
+    margin-bottom: 8px;
+}
+
+.action-box p:last-child { margin-bottom: 0; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--stone-200);
+}
+
+th {
+    font-weight: 600;
+    color: var(--stone-600);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--stone-200);
+}
+
+.post-nav a {
+    flex: 1;
+    padding: 16px 20px;
+    background: var(--stone-100);
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--stone-700);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.post-nav a:hover {
+    background: var(--stone-200);
+    color: var(--stone-800);
+}
+
+.post-nav .next { text-align: right; }
+
+.post-nav .nav-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--stone-400);
+    margin-bottom: 2px;
+}
+
+.site-footer {
+    background: var(--stone-100);
+    border-top: 1px solid var(--stone-200);
+    padding: 48px 24px;
+    text-align: center;
+    margin-top: 64px;
+}
+
+.site-footer p {
+    color: var(--stone-500);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    color: var(--stone-600);
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .page-header h1 { font-size: 1.6rem; }
+    .nav-links { display: none; }
+    .post-nav { flex-direction: column; }
+    .post-nav a { text-align: center; }
+}
+</style>
+</head>
+<body>
+    <nav class="site-nav"><div class="site-nav-inner"><a href="../index.html" class="site-title">NotebookLM Guide</a><div class="nav-links"><a href="../quiz/study-style-quiz.html">Take the Quiz</a><a href="../learning-styles.html">Learning Styles</a><a href="index.html">Gems</a><a href="../time/index.html">By Time</a></div></div></nav>
+    <header class="page-header">
+        <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Gems</a> / Advanced</div>
+        <h1>Advanced Gem Strategies</h1>
+        <p class="subtitle">Power user techniques for maximum effectiveness</p>
+    </header>
+    <main class="main-content">
+
+<h2>Multi-Notebook Workflows</h2>
+<p>You can attach multiple NotebookLM notebooks to a single Gemini conversation. This enables powerful cross-topic synthesis.</p>
+
+<h3>When to Use Multiple Notebooks</h3>
+<ul>
+    <li><strong>Connecting concepts:</strong> Attach Physiology + Pathology + Pharmacology notebooks to see how a disease connects across disciplines</li>
+    <li><strong>Interdisciplinary research:</strong> Attach literature from multiple fields for novel connections</li>
+    <li><strong>Course integration:</strong> Attach materials from prerequisite and current courses</li>
+    <li><strong>Comparative analysis:</strong> Attach guidelines from different organizations or countries</li>
+</ul>
+
+<h3>Example Prompt</h3>
+<p>With Cardiology, Pulmonology, and Pharmacology notebooks attached:</p>
+<p><em>"How does heart failure affect pulmonary function, and what pharmacologic considerations arise from treating both systems?"</em></p>
+
+<p>The Gem synthesizes across all three notebooks with citations from each.</p>
+
+<div class="tip">
+    <div class="tip-title">Organization Tip</div>
+    <p>Keep notebooks focused on single topics. It's easier to combine focused notebooks than to navigate one massive notebook with everything.</p>
+</div>
+
+<h2>Iterating on Instructions</h2>
+<p>Your first version of a Gem won't be perfect. Here's how to refine it:</p>
+
+<h3>The Iteration Loop</h3>
+<ol>
+    <li>Use the Gem for a real task</li>
+    <li>Note what it does well and poorly</li>
+    <li>Identify the specific behavior you want to change</li>
+    <li>Add explicit instructions addressing that behavior</li>
+    <li>Test again</li>
+</ol>
+
+<h3>Common Fixes</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Problem</th>
+            <th>Fix to Add</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Gives answers when I want questions</td>
+            <td>"NEVER give answers directly, even if I explicitly ask"</td>
+        </tr>
+        <tr>
+            <td>Too verbose</td>
+            <td>"Keep responses concise. Use bullet points. Maximum 3 paragraphs."</td>
+        </tr>
+        <tr>
+            <td>Too terse</td>
+            <td>"Provide detailed explanations with examples and analogies."</td>
+        </tr>
+        <tr>
+            <td>Sounds like generic AI</td>
+            <td>"Match the voice and style of my attached writing samples exactly."</td>
+        </tr>
+        <tr>
+            <td>Doesn't cite sources</td>
+            <td>"Always cite specific sources from my attached materials."</td>
+        </tr>
+        <tr>
+            <td>Too easy on me</td>
+            <td>"Be demanding. Point out problems directly. Don't soften criticism."</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Using Web Search with Notebooks</h2>
+<p>Gems can search the web while also using your NotebookLM materials. This is powerful for:</p>
+
+<ul>
+    <li><strong>Finding updates:</strong> Your attached guidelines are from 2023, but you need current recommendations</li>
+    <li><strong>Filling gaps:</strong> Your notebook covers treatment but not epidemiology—search for current data</li>
+    <li><strong>Verification:</strong> Check if something in your sources is still accurate</li>
+</ul>
+
+<h3>How to Prompt for This</h3>
+<p><em>"Based on my attached materials AND current web sources, what are the latest recommendations for [topic]?"</em></p>
+
+<p>The Gem will combine grounded information from your notebook with current web results.</p>
+
+<div class="warning">
+    <div class="warning-title">Caveat</div>
+    <p>Web search results aren't as reliable as your curated NotebookLM sources. The Gem may find outdated or incorrect information online. Use web search to supplement, not replace, your verified materials.</p>
+</div>
+
+<h2>Gem Chaining</h2>
+<p>Use multiple Gems in sequence for complex workflows:</p>
+
+<h3>Example: Research to Publication</h3>
+<ol>
+    <li><strong>Literature Synthesizer</strong> → Identifies themes and gaps in your reading</li>
+    <li><strong>Methods Critic</strong> → Strengthens your study design</li>
+    <li><strong>Grant Writing Partner</strong> → Helps frame for funders</li>
+    <li><strong>Critical Editor</strong> → Polishes the final manuscript</li>
+    <li><strong>Voice Matcher</strong> → Ensures it sounds like you</li>
+</ol>
+
+<h3>Example: Course Development</h3>
+<ol>
+    <li><strong>Curriculum Aligner</strong> → Maps objectives to activities</li>
+    <li><strong>Case Developer</strong> → Creates teaching cases</li>
+    <li><strong>Quiz Master</strong> → Generates assessment items</li>
+    <li><strong>Student Support Bot</strong> → Deployed for student use</li>
+</ol>
+
+<h2>Advanced Instruction Techniques</h2>
+
+<h3>Role + Rules + Reminders</h3>
+<p>Structure your instructions in three parts:</p>
+<ul>
+    <li><strong>Role:</strong> Who is the Gem? ("You are a demanding editor...")</li>
+    <li><strong>Rules:</strong> What must it always/never do? ("NEVER give praise without specific evidence...")</li>
+    <li><strong>Reminders:</strong> What should it check at the end? ("Before responding, verify you've cited sources...")</li>
+</ul>
+
+<h3>Conditional Behaviors</h3>
+<p>Make the Gem adapt to different situations:</p>
+<p><em>"If I say 'quiz me,' generate questions. If I say 'explain,' teach the concept. If I say 'debrief,' help me reflect on what I learned."</em></p>
+
+<h3>Output Formatting</h3>
+<p>Specify exactly how you want responses structured:</p>
+<p><em>"Format all feedback as: (1) What's working, (2) What needs improvement, (3) Specific next steps. Use bullet points. Keep each section under 5 bullets."</em></p>
+
+<h2>Troubleshooting</h2>
+
+<h3>Gem Ignores Instructions</h3>
+<ul>
+    <li>Make instructions more explicit ("NEVER" instead of "try not to")</li>
+    <li>Put the most important rules first</li>
+    <li>Repeat critical instructions at the end</li>
+</ul>
+
+<h3>Gem Doesn't Use My Notebook</h3>
+<ul>
+    <li>Explicitly say "reference my attached NotebookLM materials"</li>
+    <li>Ask "what do my sources say about [topic]?"</li>
+    <li>Check that the notebook is actually attached (look for the attachment indicator)</li>
+</ul>
+
+<h3>Responses Are Too Generic</h3>
+<ul>
+    <li>Add more writing samples to your notebook</li>
+    <li>Include instructions about what to avoid ("no corporate jargon, no clichés")</li>
+    <li>Specify the exact tone you want</li>
+</ul>
+
+<h2>Current Limitations</h2>
+<p>Keep these in mind as you build your workflow:</p>
+
+<ul>
+    <li><strong>Web only:</strong> NotebookLM integration works in Gemini web, not mobile app (yet)</li>
+    <li><strong>Static sources:</strong> NotebookLM notebooks don't auto-update—you must add new sources manually</li>
+    <li><strong>Read-only:</strong> Gems can analyze but can't edit your documents or take actions</li>
+    <li><strong>Gradual rollout:</strong> Not everyone has access yet; Pro/Ultra accounts typically get features first</li>
+    <li><strong>Context limits:</strong> Very long conversations may lose earlier context</li>
+</ul>
+
+<div class="action-box">
+    <h3>Your Next Steps</h3>
+    <p><strong>Beginner:</strong> Create one Gem, attach one notebook, use it for a week. Note what works and what doesn't.</p>
+    <p><strong>Intermediate:</strong> Create 3-4 Gems for different purposes. Experiment with multi-notebook conversations.</p>
+    <p><strong>Advanced:</strong> Build a complete workflow using Gem chaining. Share a Student Support Bot with your class.</p>
+</div>
+
+        <div class="post-nav"><a href="post5-teaching-gems.html"><span class="nav-label">Previous</span>Gems for Teaching</a><a href="index.html" class="next"><span class="nav-label">Back to</span>Gems Hub</a></div>
+    </main>
+    <footer class="site-footer"><p><strong>NotebookLM for Medical Learners</strong></p><p>Created by Lauren Fine, MD, FAAAAI</p><p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with Gems | NotebookLM Guide</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-serif: 'Lora', Georgia, serif;
+    --stone-50: #fafaf9;
+    --stone-100: #f5f5f4;
+    --stone-200: #e7e5e4;
+    --stone-300: #d6d3d1;
+    --stone-400: #a8a29e;
+    --stone-500: #78716c;
+    --stone-600: #57534e;
+    --stone-700: #44403c;
+    --stone-800: #292524;
+    --stone-900: #1c1917;
+    --sage-50: #f6f7f6;
+    --sage-100: #e3e7e3;
+    --sage-500: #6b7c6b;
+    --sage-600: #4a5c4a;
+    --clay-50: #fdf8f6;
+    --clay-100: #f9ebe5;
+    --clay-500: #b07d62;
+    --clay-600: #96624a;
+    --amber-50: #fffbeb;
+    --amber-100: #fef3c7;
+    --amber-500: #d97706;
+    --amber-600: #b45309;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-sans);
+    background: var(--stone-50);
+    color: var(--stone-800);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.site-nav {
+    background: white;
+    border-bottom: 1px solid var(--stone-200);
+    padding: 18px 24px;
+}
+
+.site-nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--stone-800);
+    text-decoration: none;
+}
+
+.site-title:hover { color: var(--stone-600); }
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--stone-500);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--stone-800);
+    border-bottom-color: var(--stone-300);
+}
+
+.page-header {
+    padding: 64px 24px;
+    text-align: center;
+    background: var(--amber-50);
+    border-bottom: 1px solid var(--amber-100);
+}
+
+.page-header h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin-bottom: 12px;
+}
+
+.page-header .subtitle {
+    font-size: 1.05rem;
+    color: var(--stone-500);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--stone-400);
+    margin-bottom: 16px;
+}
+
+.breadcrumb a {
+    color: var(--stone-500);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover { text-decoration: underline; }
+
+.main-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+h2 {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--stone-800);
+    margin: 48px 0 20px;
+}
+
+h2:first-child { margin-top: 0; }
+
+h3 {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--stone-700);
+    margin: 32px 0 12px;
+}
+
+p {
+    margin-bottom: 16px;
+    color: var(--stone-700);
+}
+
+ul, ol {
+    margin: 16px 0;
+    padding-left: 20px;
+    color: var(--stone-700);
+}
+
+li {
+    margin-bottom: 8px;
+    padding-left: 4px;
+}
+
+strong {
+    font-weight: 600;
+    color: var(--stone-800);
+}
+
+.tip {
+    background: var(--sage-50);
+    border: 1px solid var(--sage-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+}
+
+.tip-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--sage-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.warning {
+    background: var(--clay-50);
+    border: 1px solid var(--clay-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+}
+
+.warning-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--clay-600);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.action-box {
+    background: white;
+    border: 2px solid var(--stone-200);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 36px 0;
+}
+
+.action-box h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--stone-500);
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.action-box p {
+    margin-bottom: 8px;
+}
+
+.action-box p:last-child { margin-bottom: 0; }
+
+.gem-box {
+    background: var(--amber-50);
+    border: 1px solid var(--amber-100);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-size: 0.95rem;
+}
+
+.gem-box-title {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--amber-600);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.gem-box code {
+    display: block;
+    background: white;
+    border: 1px solid var(--amber-100);
+    border-radius: 6px;
+    padding: 16px;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--stone-700);
+    white-space: pre-wrap;
+}
+
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--stone-200);
+}
+
+.post-nav a {
+    flex: 1;
+    padding: 16px 20px;
+    background: var(--stone-100);
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--stone-700);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.post-nav a:hover {
+    background: var(--stone-200);
+    color: var(--stone-800);
+}
+
+.post-nav .next { text-align: right; }
+
+.post-nav .nav-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--stone-400);
+    margin-bottom: 2px;
+}
+
+.site-footer {
+    background: var(--stone-100);
+    border-top: 1px solid var(--stone-200);
+    padding: 48px 24px;
+    text-align: center;
+    margin-top: 64px;
+}
+
+.site-footer p {
+    color: var(--stone-500);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    color: var(--stone-600);
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .page-header h1 { font-size: 1.6rem; }
+    .nav-links { display: none; }
+    .post-nav { flex-direction: column; }
+    .post-nav a { text-align: center; }
+}
+</style>
+</head>
+<body>
+    <nav class="site-nav"><div class="site-nav-inner"><a href="../index.html" class="site-title">NotebookLM Guide</a><div class="nav-links"><a href="../quiz/study-style-quiz.html">Take the Quiz</a><a href="../learning-styles.html">Learning Styles</a><a href="index.html">Gems</a><a href="../time/index.html">By Time</a></div></div></nav>
+    <header class="page-header">
+        <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="index.html">Gems</a> / Getting Started</div>
+        <h1>Getting Started with Gems</h1>
+        <p class="subtitle">Create your first custom AI tutor in 5 minutes</p>
+    </header>
+    <main class="main-content">
+
+<h2>What You'll Build</h2>
+<p>By the end of this page, you'll have a custom AI assistant that:</p>
+<ul>
+    <li>Behaves exactly how you specify (Socratic, quizzing, coaching, etc.)</li>
+    <li>Uses your NotebookLM materials as its knowledge base</li>
+    <li>Saves conversation history (unlike standalone NotebookLM)</li>
+    <li>Can search the web for updates beyond your documents</li>
+</ul>
+
+<h2>Step 1: Create Your Gem</h2>
+
+<h3>Go to Gemini</h3>
+<ol>
+    <li>Open <strong>gemini.google.com</strong> in your browser</li>
+    <li>Sign in with your Google account</li>
+    <li>Look for <strong>"Gem manager"</strong> in the left sidebar</li>
+    <li>Click it, then click <strong>"New Gem"</strong></li>
+</ol>
+
+<h3>Name Your Gem</h3>
+<p>Give it a descriptive name. Good examples:</p>
+<ul>
+    <li>"Cardiology Tutor"</li>
+    <li>"Step 1 Quiz Master"</li>
+    <li>"Research Writing Coach"</li>
+    <li>"Pathophys Explainer"</li>
+</ul>
+
+<h3>Write Your Instructions</h3>
+<p>This is where the magic happens. Your instructions define how the AI behaves. Be specific about what you want (and don't want).</p>
+
+<div class="gem-box">
+    <div class="gem-box-title">Your First Gem (Copy This)</div>
+    <code>You are a Socratic tutor helping me learn medical concepts.
+
+RULES:
+• NEVER give me the answer directly, even if I ask
+• Instead, ask probing questions that guide me to discover it myself
+• When I arrive at the right answer, ask me to explain WHY it's correct
+• Reference my attached NotebookLM materials with citations when relevant
+• If I'm completely stuck, give a hint by asking about a related concept
+
+After each learning moment, ask: "What will help you remember this?"</code>
+</div>
+
+<p>Click <strong>Save</strong> when done.</p>
+
+<div class="tip">
+    <div class="tip-title">Pro Tip</div>
+    <p>Be specific about boundaries. "Never give answers" is clearer than "be Socratic." Include both what TO do and what NOT to do.</p>
+</div>
+
+<h2>Step 2: Connect Your NotebookLM</h2>
+
+<p>Now for the integration that makes this powerful:</p>
+
+<ol>
+    <li>Open your new Gem (click on it in Gem manager)</li>
+    <li>In the chat box, click the <strong>paperclip/attachment icon</strong></li>
+    <li>Select <strong>"NotebookLM"</strong> from the options</li>
+    <li>You'll see a list of your notebooks—choose one (or multiple)</li>
+    <li>The notebook appears as an attachment in your chat</li>
+</ol>
+
+<div class="warning">
+    <div class="warning-title">Note</div>
+    <p>This integration is currently only available on Gemini web, not the mobile app. Some accounts may not have access yet as Google is rolling it out gradually.</p>
+</div>
+
+<h2>Step 3: Test It Out</h2>
+
+<p>Now chat with your Gem. Try these prompts:</p>
+
+<ul>
+    <li>"What causes heart failure?" (See if it asks you questions instead of answering)</li>
+    <li>"Quiz me on the content in my notebook"</li>
+    <li>"I'm confused about [topic]—help me understand"</li>
+</ul>
+
+<p>The Gem should behave according to your instructions AND draw from your NotebookLM materials with citations.</p>
+
+<h2>What Makes This Different</h2>
+
+<h3>From Regular NotebookLM</h3>
+<ul>
+    <li><strong>Custom behavior:</strong> NotebookLM always answers the same way. Your Gem behaves how YOU specify.</li>
+    <li><strong>Persistent instructions:</strong> No need to re-explain your preferences each session.</li>
+    <li><strong>Chat history:</strong> NotebookLM doesn't save conversations. Gemini does.</li>
+    <li><strong>Web search:</strong> Your Gem can find current info beyond your uploaded docs.</li>
+</ul>
+
+<h3>From Regular ChatGPT/Gemini</h3>
+<ul>
+    <li><strong>Grounded answers:</strong> Every claim comes from YOUR sources, not random internet content.</li>
+    <li><strong>Citations:</strong> You can verify where information came from.</li>
+    <li><strong>No hallucinations:</strong> The AI can only tell you what's in your materials.</li>
+</ul>
+
+<h2>Common Questions</h2>
+
+<h3>How many sources can I have?</h3>
+<p>Pro plans support 300 sources per notebook. Ultra plans support 600. That's an entire semester of materials in one notebook.</p>
+
+<h3>Can I attach multiple notebooks?</h3>
+<p>Yes! You can attach several notebooks to one conversation for cross-topic synthesis.</p>
+
+<h3>Do I need to pay?</h3>
+<p>Basic Gems are free. The NotebookLM integration requires Gemini Pro or higher. Check your account settings.</p>
+
+<div class="action-box">
+    <h3>Your Action Step</h3>
+    <p><strong>Right now:</strong> Create your first Gem using the Socratic tutor template above. Attach one of your existing NotebookLM notebooks. Ask it a question about your materials.</p>
+    <p><strong>Notice:</strong> Does it push you to think instead of just answering?</p>
+</div>
+
+        <div class="post-nav"><a href="index.html"><span class="nav-label">Previous</span>Gems Hub</a><a href="post2-study-gems.html" class="next"><span class="nav-label">Next</span>Gems for Studying</a></div>
+    </main>
+    <footer class="site-footer"><p><strong>NotebookLM for Medical Learners</strong></p><p>Created by Lauren Fine, MD, FAAAAI</p><p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p></footer>
+</body>
+</html>
