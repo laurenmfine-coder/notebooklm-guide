@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSU MD Research Study | NotebookLM Guide</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="../index.html" class="site-title">NotebookLM Guide</a>
+            <div class="nav-links">
+                <a href="../quiz/study-style-quiz.html">Take the Quiz</a>
+                <a href="../learning-styles.html">Learning Styles</a>
+                <a href="index.html">Research Study</a>
+                <a href="../time/index.html">By Time</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enrollment gate: asks visitors whether they've completed the Week 0 survey -->
+    <div class="modal-overlay" id="enrollmentModal">
+        <div class="modal-box" id="modalStepAsk">
+            <h3>Have you completed the enrollment (Week 0) survey?</h3>
+            <p>Let's make sure you start in the right order.</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="modalNo">No</button>
+                <button class="btn btn-primary" id="modalYes">Yes</button>
+            </div>
+        </div>
+        <div class="modal-box" id="modalStepNo" style="display:none;">
+            <h3>Start with your enrollment survey</h3>
+            <p>No problem, that's the first step. Fill out the enrollment (Week 0) survey, then come back to this page for your next steps.</p>
+            <a class="btn btn-primary" style="display:block;" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=MS0rLD4u8U21cfs3wEL_G42ta3mG12JHqWNuDxk7uWtUNkZJMkZGS1hQUk02NDM0V0lMWlBaR1AxWS4u" target="_blank" rel="noopener">Fill out form</a>
+            <div class="modal-note">
+                <button class="btn btn-secondary" id="modalContinueAnyway">Continue to the page anyway</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="page-header study">
+        <div class="breadcrumb"><a href="../index.html">Home</a> → NSU MD Research Study</div>
+        <h1>NSU MD Research Study</h1>
+        <p class="subtitle">Your home base for the Gemini Notebook study: guidance for each stage, your survey links, and optional email support</p>
+    </header>
+
+    <main class="main-content">
+
+        <div class="study-copy">
+            <div class="study-copy-label">Welcome</div>
+            <p>Welcome to the study! Thank you for taking part in our research on AI-powered study tools. Over the next 32 weeks, you'll explore Gemini Notebook and discover how it can support the way you study. This page is your home base. Here you'll find step-by-step guidance for each stage of the study, links to your surveys, and the option to sign up for reminders and study tips along the way.</p>
+        </div>
+
+        <div class="study-copy">
+            <div class="study-copy-label">About the study</div>
+            <p>This study explores whether a guided approach to using Gemini Notebook, an AI study tool, helps medical students study more effectively, and which features work best for different types of learners. As a participant, you'll use Gemini Notebook and this Guide website at your own pace and complete five short, anonymous surveys over about 32 weeks. Your responses are linked only by a personal study code, never by your name or email.</p>
+        </div>
+
+        <div class="tip">
+            <div class="tip-title">Stay on track with email support (optional)</div>
+            <p>Sign up to receive (1) a reminder when your next survey is due, and (2) weekly tips, tricks, and sample prompts to help you get the most out of Gemini Notebook. Signing up is completely optional and kept separate from your survey responses. Your email is never linked to your answers.</p>
+            <!-- TODO: replace # with the live Resend/Loops sign-up form link once finalized -->
+            <a href="#" class="btn btn-primary" style="display:inline-block; margin-top:4px;">Sign up for reminders and tips</a>
+        </div>
+
+        <h2>Your Study Timeline</h2>
+        <p>Each stage below is designed to move you from first exposure toward confident, personalized, sustained use of Gemini Notebook, which is the change this study is measuring. Tap a stage to see what to do and find your survey.</p>
+
+        <div class="timepoint-list" id="timepointList">
+
+            <div class="timepoint open">
+                <div class="timepoint-header">
+                    <div>
+                        <span class="timepoint-week">Week 0</span>
+                        <div class="timepoint-title">Enrollment &amp; Getting Oriented</div>
+                    </div>
+                </div>
+                <div class="timepoint-body">
+                    <p class="timepoint-goal">Goal: get set up and discover how you learn best.</p>
+                    <ul>
+                        <li>Start here, then complete your enrollment survey.</li>
+                        <li>Take the Learning Style Quiz to find out what kind of learner you are (audio, visual, read/write, or kinesthetic).</li>
+                        <li>Open your learner-type guide and read how Gemini Notebook can be used in ways that fit your style.</li>
+                        <li>Get comfortable with the basics: upload a set of lecture notes or slides and try generating your first study guide or set of flashcards.</li>
+                        <li>Don't worry about doing it "right" yet. The goal this week is just to explore and get familiar.</li>
+                    </ul>
+                    <a class="timepoint-survey-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=MS0rLD4u8U21cfs3wEL_G42ta3mG12JHqWNuDxk7uWtUNkZJMkZGS1hQUk02NDM0V0lMWlBaR1AxWS4u" target="_blank" rel="noopener">Open enrollment survey</a>
+                </div>
+            </div>
+
+            <div class="timepoint">
+                <div class="timepoint-header">
+                    <div>
+                        <span class="timepoint-week">Week 8</span>
+                        <div class="timepoint-title">Build It Into Your Routine</div>
+                    </div>
+                </div>
+                <div class="timepoint-body">
+                    <p class="timepoint-goal">Goal: move from trying the tool to using it regularly for real coursework.</p>
+                    <ul>
+                        <li>By now you've had time to experiment. This stage is about making Gemini Notebook a regular part of how you study, not just something you tried once.</li>
+                        <li>Pick one upcoming exam or block and use Notebook as your main study aid for it: generate study guides from your lecture material and quiz yourself on the content.</li>
+                        <li>Try at least one feature you haven't used yet, for example Audio Overviews for review on the go, or the Q&amp;A/chat function to ask questions about your own notes.</li>
+                        <li>Revisit your learner-type guide and lean into the strategies that fit you: if you're an audio learner, make Audio Overviews a habit; if you're read/write, focus on study guides and briefing documents.</li>
+                        <li>Optional: attend the Week 8 Zoom workshop to see how other students are using the tool and pick up new ideas.</li>
+                    </ul>
+                    <a class="timepoint-survey-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=MS0rLD4u8U21cfs3wEL_G42ta3mG12JHqWNuDxk7uWtUQ0pDTjBDQVVIREpMVDdMTFRaODVFNDlMUC4u" target="_blank" rel="noopener">Open Week 8 survey</a>
+                </div>
+            </div>
+
+            <div class="timepoint">
+                <div class="timepoint-header">
+                    <div>
+                        <span class="timepoint-week">Week 16</span>
+                        <div class="timepoint-title">Deepen &amp; Personalize</div>
+                    </div>
+                </div>
+                <div class="timepoint-body">
+                    <p class="timepoint-goal">Goal: refine your workflow and use the more advanced features with intention.</p>
+                    <ul>
+                        <li>You're at the halfway point. This is where good habits turn into an efficient personal system.</li>
+                        <li>Reflect on what's working: which features have actually saved you time or helped you retain material? Do more of those, and drop what isn't helping.</li>
+                        <li>Push into more advanced use: organize multiple sources into a single notebook (e.g., lecture + textbook + your own notes) and have Notebook synthesize across them, or use it to connect concepts across different blocks.</li>
+                        <li>Use it for active recall, not just summarizing: have Notebook quiz you, then explain the questions you missed. Active recall is one of the highest-yield study methods.</li>
+                        <li>Experiment with combining Notebook with your other tools (Anki, question banks) so it complements your workflow rather than replacing everything.</li>
+                        <li>Optional: attend the Week 16 Zoom workshop to trade advanced tips with the group.</li>
+                    </ul>
+                    <a class="timepoint-survey-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=MS0rLD4u8U21cfs3wEL_G42ta3mG12JHqWNuDxk7uWtUOUlBVkRZQzFRNTBYOUNEUFdBTlpFS0VPVy4u" target="_blank" rel="noopener">Open Week 16 survey</a>
+                </div>
+            </div>
+
+            <div class="timepoint">
+                <div class="timepoint-header">
+                    <div>
+                        <span class="timepoint-week">Week 24</span>
+                        <div class="timepoint-title">Sustain &amp; Sharpen</div>
+                    </div>
+                </div>
+                <div class="timepoint-body">
+                    <p class="timepoint-goal">Goal: keep the habit going through a busy stretch and make the tool work under pressure.</p>
+                    <ul>
+                        <li>This is often a heavy point in the semester. The goal now is to keep Gemini Notebook working for you even when time is tight.</li>
+                        <li>Lean on the features that give you the most return for the least effort: quick Audio Overviews between classes, fast study guides the night before a quiz, on-demand quizzing when you only have 15 minutes.</li>
+                        <li>If your use has dropped off, that's useful to know. Try folding it back in for just one subject this stretch and notice whether it lightens the load.</li>
+                        <li>Notice how your confidence has changed since Week 0: tasks that felt unfamiliar early on (adapting the tool to your style, judging which outputs are trustworthy) should feel more natural now.</li>
+                        <li>Keep using the strategies matched to your learner type. Consistency is what makes the difference over a full semester.</li>
+                    </ul>
+                    <a class="timepoint-survey-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=MS0rLD4u8U21cfs3wEL_G42ta3mG12JHqWNuDxk7uWtUOFRTWUtGNFc2WDI2TE1NMFFQOUZZVjBDMC4u" target="_blank" rel="noopener">Open Week 24 survey</a>
+                </div>
+            </div>
+
+            <div class="timepoint">
+                <div class="timepoint-header">
+                    <div>
+                        <span class="timepoint-week">Week 32</span>
+                        <div class="timepoint-title">Final Reflection</div>
+                    </div>
+                </div>
+                <div class="timepoint-body">
+                    <p class="timepoint-goal">Goal: reflect on the full experience and complete the study.</p>
+                    <ul>
+                        <li>Look back over the whole 32 weeks: how has your approach to studying changed, and how has your confidence with AI tools grown?</li>
+                        <li>Think about which features earned a permanent place in your routine and which didn't. Your honest reflections are exactly what this study is trying to capture.</li>
+                        <li>Thank you for participating for the full study. Your input helps shape how medical schools support students using AI study tools.</li>
+                    </ul>
+                    <a class="timepoint-survey-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=MS0rLD4u8U21cfs3wEL_G42ta3mG12JHqWNuDxk7uWtUMU5KWk1XRVBWSjcwN1A4SlBUTU1QUDVYUi4u" target="_blank" rel="noopener">Open final survey</a>
+                </div>
+            </div>
+
+        </div>
+
+        <h2>All Survey Links</h2>
+        <p>Keep this list handy so you can always find your next survey.</p>
+        <ul class="link-list">
+            <li><a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=MS0rLD4u8U21cfs3wEL_G42ta3mG12JHqWNuDxk7uWtUNkZJMkZGS1hQUk02NDM0V0lMWlBaR1AxWS4u" target="_blank" rel="noopener"><span class="link-title">Enrollment / Week 0 survey</span><span class="link-desc">Fill out form</span></a></li>
+            <li><a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=MS0rLD4u8U21cfs3wEL_G42ta3mG12JHqWNuDxk7uWtUQ0pDTjBDQVVIREpMVDdMTFRaODVFNDlMUC4u" target="_blank" rel="noopener"><span class="link-title">Week 8 survey</span><span class="link-desc">Fill out form</span></a></li>
+            <li><a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=MS0rLD4u8U21cfs3wEL_G42ta3mG12JHqWNuDxk7uWtUOUlBVkRZQzFRNTBYOUNEUFdBTlpFS0VPVy4u" target="_blank" rel="noopener"><span class="link-title">Week 16 survey</span><span class="link-desc">Fill out form</span></a></li>
+            <li><a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=MS0rLD4u8U21cfs3wEL_G42ta3mG12JHqWNuDxk7uWtUOFRTWUtGNFc2WDI2TE1NMFFQOUZZVjBDMC4u" target="_blank" rel="noopener"><span class="link-title">Week 24 survey</span><span class="link-desc">Fill out form</span></a></li>
+            <li><a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=MS0rLD4u8U21cfs3wEL_G42ta3mG12JHqWNuDxk7uWtUMU5KWk1XRVBWSjcwN1A4SlBUTU1QUDVYUi4u" target="_blank" rel="noopener"><span class="link-title">Week 32 (final) survey</span><span class="link-desc">Fill out form</span></a></li>
+        </ul>
+
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>NotebookLM for Medical Learners</strong></p>
+        <p>Created by Lauren Fine, MD, FAAAAI</p>
+        <p style="margin-top:16px"><a href="https://laurenfine.substack.com">Permission to Change: Finding Your Ikigai</a></p>
+    </footer>
+
+    <script>
+    // Enrollment gate modal: ask once per browser session
+    (function () {
+        var modal = document.getElementById('enrollmentModal');
+        var stepAsk = document.getElementById('modalStepAsk');
+        var stepNo = document.getElementById('modalStepNo');
+
+        var alreadyAnswered = sessionStorage.getItem('nsuStudyEnrollmentAsked');
+        if (alreadyAnswered) {
+            modal.classList.add('hidden');
+        }
+
+        document.getElementById('modalYes').addEventListener('click', function () {
+            sessionStorage.setItem('nsuStudyEnrollmentAsked', 'yes');
+            modal.classList.add('hidden');
+        });
+
+        document.getElementById('modalNo').addEventListener('click', function () {
+            stepAsk.style.display = 'none';
+            stepNo.style.display = 'block';
+        });
+
+        document.getElementById('modalContinueAnyway').addEventListener('click', function () {
+            sessionStorage.setItem('nsuStudyEnrollmentAsked', 'no-continued');
+            modal.classList.add('hidden');
+        });
+    })();
+
+    // Timepoint accordion
+    document.querySelectorAll('.timepoint-header').forEach(function (header) {
+        header.addEventListener('click', function () {
+            header.parentElement.classList.toggle('open');
+        });
+    });
+    </script>
+</body>
+</html>
