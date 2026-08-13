@@ -37,30 +37,44 @@ module.exports = async (req, res) => {
     try { await resend.events.create({ name: EVENT_NAME }); report.event = "created"; }
     catch (e) { report.event = "skipped (" + (e && e.message) + ")"; }
 
-    // 2) Templates (create + publish). Reuse any that already exist (safe on re-run).
-    const existingByName = {};
+    // 2) Templates: ensure all 19 exist AND are published (safe on re-run).
+    const existing = {};
     try {
       const tl = await resend.templates.list();
       const items = (tl && tl.data && (tl.data.data || tl.data)) || [];
-      if (Array.isArray(items)) for (const it of items) if (it && it.name) existingByName[it.name] = it.id;
+      if (Array.isArray(items)) for (const it of items) if (it && it.name) existing[it.name] = { id: it.id, status: it.status };
     } catch (e) { /* best-effort */ }
 
     const ids = [];
+    const toPublish = [];
     for (const t of MANIFEST) {
-      if (existingByName[t.name]) {
-        ids.push(existingByName[t.name]);
-        report.templates.push({ name: t.name, id: existingByName[t.name], reused: true });
+      const ex = existing[t.name];
+      if (ex && ex.id) {
+        ids.push(ex.id);
+        report.templates.push({ name: t.name, id: ex.id, reused: true, status: ex.status });
+        if (ex.status !== "published") toPublish.push(ex.id);
         continue;
       }
       const html = Buffer.from(t.htmlB64, "base64").toString("utf8");
       const created = await resend.templates.create({ name: t.name, subject: t.subject, from: FROM, html });
       const id = created && created.data && created.data.id;
       if (!id) { report.errors.push("template " + t.name + ": " + JSON.stringify(created && created.error)); report.ok = false; continue; }
-      try { await resend.templates.publish(id); } catch (e) { report.errors.push("publish " + t.name + ": " + (e && e.message)); }
       ids.push(id);
+      toPublish.push(id);
       report.templates.push({ name: t.name, id });
-      await sleep(300); // throttle: Resend allows 10 requests/second
+      await sleep(250); // throttle: Resend allows 10 requests/second
     }
+
+    // Publish any drafts. publish() returns { error } on failure rather than throwing.
+    report.published = 0;
+    for (const id of toPublish) {
+      let pub;
+      try { pub = await resend.templates.publish(id); } catch (e) { pub = { error: { message: String(e && e.message) } }; }
+      if (pub && pub.error) { report.errors.push("publish " + id + ": " + JSON.stringify(pub.error)); report.ok = false; }
+      else report.published++;
+      await sleep(200);
+    }
+    if (!report.ok) return res.status(500).json(report);
     if (ids.length !== MANIFEST.length) {
       report.ok = false;
       return res.status(500).json(report);
