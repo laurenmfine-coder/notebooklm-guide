@@ -1,6 +1,6 @@
-# NotebookLM for Medical Learners
+# Gemini Notebook for Medical Learners
 
-A comprehensive guide for medical students to master NotebookLM and optimize study strategies based on learning style, training stage, and available time.
+A comprehensive guide for medical students to master Gemini Notebook and optimize study strategies based on learning style, training stage, and available time.
 
 ## 🌐 Live Site
 
