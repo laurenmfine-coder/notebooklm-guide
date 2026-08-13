@@ -5,6 +5,8 @@
 
 const { Resend } = require("resend");
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 const FROM = "NSU MD Research Study <study@updates.meded.studio>";
 const EVENT_NAME = "study.enrolled";
 const AUTOMATION_NAME = "NSU MD Study \u2014 Reminders & Tips";
@@ -57,6 +59,7 @@ module.exports = async (req, res) => {
       try { await resend.templates.publish(id); } catch (e) { report.errors.push("publish " + t.name + ": " + (e && e.message)); }
       ids.push(id);
       report.templates.push({ name: t.name, id });
+      await sleep(300); // throttle: Resend allows 10 requests/second
     }
     if (ids.length !== MANIFEST.length) {
       report.ok = false;
