@@ -2,18 +2,21 @@
 // Served at  https://notebook.meded.studio/api/signup
 //
 // The signup box on the study page POSTs { email } here. This function adds the
-// address to the Resend Audience and fires the "study.enrolled" event that starts
-// the reminder + weekly-tips Automation. It stores ONLY the email — it never sees
-// survey responses, so the reminder list stays separate from the Microsoft Forms data.
+// address to Resend and fires the "study.enrolled" event that starts the reminder
+// + weekly-tips Automation. It stores ONLY the email — it never sees survey
+// responses, so the reminder list stays separate from the Microsoft Forms data.
 //
 // Environment variables (set in Vercel → Project → Settings → Environment Variables):
-//   RESEND_API_KEY      - injected automatically by the Resend Vercel integration,
-//                         or pasted in manually.
-//   RESEND_AUDIENCE_ID  - id of the "NSU MD Study Participants" audience.
+//   RESEND_API_KEY     - injected automatically by the Resend Vercel integration,
+//                        or pasted in manually. (required)
+//   RESEND_SEGMENT_ID  - optional. If set, new contacts are tagged with this Resend
+//                        segment (e.g. "NSU MD Study Participants") so study sign-ups
+//                        are grouped separately. Leave unset to just add them to the
+//                        account's audience.
 
 const { Resend } = require("resend");
 
-const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID;
+const SEGMENT_ID = process.env.RESEND_SEGMENT_ID; // optional
 const EVENT_NAME = "study.enrolled";
 
 function isValidEmail(email) {
@@ -29,8 +32,8 @@ module.exports = async (req, res) => {
     return res.status(405).json({ ok: false, error: "Method not allowed" });
   }
 
-  // Not configured yet (env vars missing) — fail clearly instead of crashing.
-  if (!process.env.RESEND_API_KEY || !AUDIENCE_ID) {
+  // Not configured yet (API key missing) — fail clearly instead of crashing.
+  if (!process.env.RESEND_API_KEY) {
     return res.status(503).json({ ok: false, error: "Email signup isn't switched on yet." });
   }
 
@@ -48,9 +51,11 @@ module.exports = async (req, res) => {
 
   const resend = new Resend(process.env.RESEND_API_KEY);
 
-  // 1) Add (or upsert) the contact into the study audience.
+  // 1) Add (or upsert) the contact. Tag with the study segment if one is configured.
+  const contact = { email, unsubscribed: false };
+  if (SEGMENT_ID) contact.segments = [{ id: SEGMENT_ID }];
   try {
-    await resend.contacts.create({ audienceId: AUDIENCE_ID, email, unsubscribed: false });
+    await resend.contacts.create(contact);
   } catch (err) {
     if (!/exist/i.test(String(err && err.message))) {
       console.error("contact create failed", err);
