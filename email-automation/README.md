@@ -1,11 +1,14 @@
 # NSU MD Research Study — Email Reminders & Tips
 
+**Status: Live.** Deployed to Vercel, Resend Automation built and running,
+triggered off the `study.enrolled` custom event fired by
+`docs/api/signup.js` when someone submits the form on the study page.
+
 19 ready-to-use HTML email templates: 5 survey reminders + 14 weekly tips,
 built from the drafts in `Website_Update_Plan_Notebook_2.docx`. All delays
-are relative to each participant's own sign-up date (the "Sign up for
-reminders and tips" button on the study page), not a fixed calendar date —
-so someone who signs up today and someone who signs up next week each get
-their Week 8 email 56 days after *their own* sign-up.
+are relative to each participant's own sign-up date, not a fixed calendar
+date — so someone who signs up today and someone who signs up next week
+each get their Week 8 email 56 days after *their own* sign-up.
 
 ## What's in this folder
 
@@ -42,37 +45,24 @@ Run `node render.js` any time you edit `data/emails.js` to regenerate the HTML.
 
 *(Sorted by send order, not by category, so you can see the full cadence.)*
 
-## Setting up in Resend — what I need from you at each step
+## Live architecture (as deployed)
 
-**Step 1 — Account & domain**
-1. Create a Resend account (or log in if you already have one).
-2. Add and verify a sending domain (e.g. `updates.laurenfine.com` or similar — a subdomain keeps this separate from your main coaching email reputation). Resend gives you DNS records (TXT/CNAME) to add wherever your domain is hosted.
-3. Once verified, generate an API key from **Settings → API Keys**.
+- **Sign-up form:** `docs/study/index.html` — posts `{ email }` to `/api/signup`
+- **API:** `docs/api/signup.js` — Vercel serverless function. Adds the contact to Resend, then fires the `study.enrolled` event.
+- **Automation:** built in the Resend dashboard, triggered by `study.enrolled`, with delay + send-email steps following the schedule below.
+- **Hosting:** Vercel project, deployed at `notebook.meded.studio` (and the `meded.studio` root hub in `hub/index.html`).
 
-👉 **What I need from you:** paste the API key here when you're ready to test sending. I won't store it in memory, just use it for the session.
+## Setup steps — now complete ✅
 
-**Step 2 — Audience / contact list**
-1. In Resend, create an Audience (e.g. "NSU MD Study Participants").
-2. This is what the "Sign up for reminders and tips" button on the study page will add people to.
+These are kept here as a record of what was done, since the system is now live:
 
-👉 **What I need from you:** once the Audience exists, give me its Audience ID so I can wire up the sign-up form on the study page to actually submit to it (right now that button is a placeholder).
+1. ✅ Resend account, domain verified, API key generated (stored as `RESEND_API_KEY` in Vercel env vars).
+2. ✅ `study.enrolled` event wired as the Automation trigger (via the Vercel function, not a plain "contact added to audience" trigger — this is more flexible since it also lets the same event later carry survey-completion data if we build that in).
+3. ✅ 19 templates created in Resend, matching the files in `rendered/`.
+4. ✅ Automation built with delay + send-email steps following the schedule above, and turned on.
+5. ✅ Sign-up form on `docs/study/index.html` wired to `/api/signup`, deployed on Vercel.
 
-**Step 3 — Templates**
-1. In Resend, go to **Templates** (or the Automations email-step editor) and create 19 templates.
-2. For each one, copy the HTML from the matching file in `rendered/` and paste it into the template's HTML source.
-3. Name each template to match its `id` (e.g. `reminder-week0`, `tip-01-study-guide`) so it's easy to reference when building the Automation.
-
-👉 **What I need from you:** just confirm once these are created, or let me know if Resend's dashboard wants a different import format and I'll adjust the output.
-
-**Step 4 — Automation**
-1. Create a new Automation triggered by **Contact added to Audience** (the "NSU MD Study Participants" audience from Step 2).
-2. Add a sequence of **Delay** steps and **Send Email** steps following the schedule table above — delay to the right number of days, then send the matching template.
-3. Turn the Automation on.
-
-👉 **What I need from you:** nothing extra here — this step is entirely inside the Resend dashboard. If you'd like, use Claude in Chrome for this part since it's live, logged-in dashboard work; I can talk you through the exact delay values as you go.
-
-**Step 5 — Wire up the sign-up button**
-Once you've got the Audience ID (Step 2), let me know and I'll update the "Sign up for reminders and tips" button on `docs/study/index.html` to actually submit to Resend instead of being a placeholder link.
+**Still worth double-checking:** that the delay values actually configured in the Resend Automation match the schedule table above exactly (56/112/168/224 days for reminders, and the tip-email days). If any of those differ from what's here, let me know and I'll update this table to match reality rather than the other way around.
 
 ## Note on the reminder-vs-signup-completion distinction
 
