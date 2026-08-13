@@ -6,6 +6,11 @@
 // + weekly-tips Automation. It stores ONLY the email — it never sees survey
 // responses, so the reminder list stays separate from the Microsoft Forms data.
 //
+// CORS: this endpoint is called from more than one domain (notebook.meded.studio
+// AND the GitHub Pages mirror at laurenmfine-coder.github.io), since GitHub Pages
+// can't host this function itself. It's a public opt-in signup form with no
+// cookies/auth, so we allow any origin rather than maintaining an allowlist.
+//
 // Environment variables (set in Vercel → Project → Settings → Environment Variables):
 //   RESEND_API_KEY     - injected automatically by the Resend Vercel integration,
 //                        or pasted in manually. (required)
@@ -27,7 +32,21 @@ function safeParse(s) {
   try { return JSON.parse(s); } catch { return {}; }
 }
 
+function setCorsHeaders(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.setHeader("Vary", "Origin");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+}
+
 module.exports = async (req, res) => {
+  setCorsHeaders(req, res);
+
+  // Preflight request (browsers send this automatically before a cross-origin POST).
+  if (req.method === "OPTIONS") {
+    return res.status(204).end();
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ ok: false, error: "Method not allowed" });
   }

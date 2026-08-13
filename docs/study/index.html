@@ -73,13 +73,18 @@
                 var form = document.getElementById("reminderSignupForm");
                 var msg = document.getElementById("reminderSignupMsg");
                 if (!form) return;
+                // The signup API only runs on Vercel (docs/api/signup.js needs a server,
+                // which GitHub Pages can't provide). Always call the Vercel-hosted API
+                // directly so the form works the same way regardless of which domain
+                // is currently serving this page (notebook.meded.studio OR GitHub Pages).
+                var API_BASE = "https://notebook.meded.studio";
                 form.addEventListener("submit", function (e) {
                     e.preventDefault();
                     var btn = form.querySelector("button[type=submit]");
                     msg.style.color = "var(--sage-600)";
                     msg.textContent = "Signing you up…";
                     btn.disabled = true;
-                    fetch("/api/signup", {
+                    fetch(API_BASE + "/api/signup", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ email: form.email.value.trim(), website: form.website.value })
