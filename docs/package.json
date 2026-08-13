@@ -1,0 +1,8 @@
+{
+  "name": "notebook-meded-studio",
+  "private": true,
+  "description": "Gemini Notebook Guide site + study signup function (notebook.meded.studio)",
+  "dependencies": {
+    "resend": "^6.19.0"
+  }
+}
