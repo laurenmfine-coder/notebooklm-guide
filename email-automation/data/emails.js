@@ -1,10 +1,10 @@
 // All content sourced from Website_Update_Plan_Notebook_2.docx, lightly formatted for HTML email.
-// delayDays is relative to the "study_signup" event (when the participant signs up for
+// delayDays is relative to the "study.enrolled" event (when the participant signs up for
 // reminders/tips on the study page) — NOT a calendar date. This is the Flodesk-style
 // behavior: sign up today, get the Week 8 email in 56 days; sign up next week, get it
 // 56 days from your own signup.
 
-const STUDY_PAGE = "https://laurenmfine-coder.github.io/notebooklm-guide/study/index.html";
+const STUDY_PAGE = "https://notebook.meded.studio/study/index.html";
 
 // Survey links (same as docs/study/index.html)
 const SURVEY_LINKS = {
@@ -106,9 +106,9 @@ const tips = [
   {
     id: "tip-01-study-guide",
     order: 1,
-    delayDays: 7,
+    delayDays: 15,
     stage: "Foundations",
-    subject: "Tip of the week: Turn your lecture notes into a study guide",
+    subject: "Study tip: Turn your lecture notes into a study guide",
     preheader: "Start simple — organize a whole lecture in seconds.",
     heading: "Turn your lecture notes into a study guide",
     bodyHtml: `
@@ -120,9 +120,9 @@ const tips = [
   {
     id: "tip-02-flashcards",
     order: 2,
-    delayDays: 21,
+    delayDays: 30,
     stage: "Foundations",
-    subject: "Tip of the week: Instant flashcards",
+    subject: "Study tip: Instant flashcards",
     preheader: "Let Notebook do the heavy lifting.",
     heading: "Instant flashcards",
     bodyHtml: `
@@ -134,9 +134,9 @@ const tips = [
   {
     id: "tip-03-learner-type",
     order: 3,
-    delayDays: 35,
+    delayDays: 45,
     stage: "Foundations",
-    subject: "Tip of the week: Match the tool to how you learn",
+    subject: "Study tip: Match the tool to how you learn",
     preheader: "Using Notebook in your style makes it stick.",
     heading: "Match the tool to how you learn",
     bodyHtml: `
@@ -150,9 +150,9 @@ const tips = [
   {
     id: "tip-04-qa",
     order: 4,
-    delayDays: 49,
+    delayDays: 60,
     stage: "Foundations",
-    subject: "Tip of the week: Ask your notes questions",
+    subject: "Study tip: Ask your notes questions",
     preheader: "It's like having office hours with your notes.",
     heading: "Ask your notes questions",
     bodyHtml: `
@@ -164,9 +164,9 @@ const tips = [
   {
     id: "tip-05-active-recall",
     order: 5,
-    delayDays: 63,
+    delayDays: 75,
     stage: "Building Skills",
-    subject: "Tip of the week: Quiz yourself for active recall",
+    subject: "Study tip: Quiz yourself for active recall",
     preheader: "A fast way to find weak spots before an exam.",
     heading: "Quiz yourself for active recall",
     bodyHtml: `
@@ -178,9 +178,9 @@ const tips = [
   {
     id: "tip-06-combine-sources",
     order: 6,
-    delayDays: 77,
+    delayDays: 90,
     stage: "Building Skills",
-    subject: "Tip of the week: Combine multiple sources",
+    subject: "Study tip: Combine multiple sources",
     preheader: "One clear picture instead of five scattered ones.",
     heading: "Combine multiple sources",
     bodyHtml: `
@@ -192,9 +192,9 @@ const tips = [
   {
     id: "tip-07-connect-concepts",
     order: 7,
-    delayDays: 91,
+    delayDays: 105,
     stage: "Building Skills",
-    subject: "Tip of the week: Connect concepts across blocks",
+    subject: "Study tip: Connect concepts across blocks",
     preheader: "Linking new material to old strengthens long-term memory.",
     heading: "Connect concepts across blocks",
     bodyHtml: `
@@ -206,9 +206,9 @@ const tips = [
   {
     id: "tip-08-rapid-review",
     order: 8,
-    delayDays: 105,
+    delayDays: 120,
     stage: "Building Skills",
-    subject: "Tip of the week: Make a rapid review sheet",
+    subject: "Study tip: Make a rapid review sheet",
     preheader: "Perfect for the night before or a quick morning refresh.",
     heading: "Make a rapid review sheet",
     bodyHtml: `
@@ -220,9 +220,9 @@ const tips = [
   {
     id: "tip-09-learn-on-the-go",
     order: 9,
-    delayDays: 126,
+    delayDays: 135,
     stage: "Building Skills",
-    subject: "Tip of the week: Learn on the go",
+    subject: "Study tip: Learn on the go",
     preheader: "Turn dead time into study time.",
     heading: "Learn on the go",
     bodyHtml: `
@@ -233,9 +233,9 @@ const tips = [
   {
     id: "tip-10-exam-questions",
     order: 10,
-    delayDays: 140,
+    delayDays: 150,
     stage: "Advanced & Exam-Focused",
-    subject: "Tip of the week: Simulate exam questions",
+    subject: "Study tip: Simulate exam questions",
     preheader: "Practicing in exam format builds test-day reasoning.",
     heading: "Simulate exam questions",
     bodyHtml: `
@@ -247,9 +247,9 @@ const tips = [
   {
     id: "tip-11-feynman",
     order: 11,
-    delayDays: 161,
+    delayDays: 165,
     stage: "Advanced & Exam-Focused",
-    subject: "Tip of the week: Explain it back (the Feynman technique)",
+    subject: "Study tip: Explain it back (the Feynman technique)",
     preheader: "If you can teach it, you know it.",
     heading: "Explain it back (the Feynman technique)",
     bodyHtml: `
@@ -261,9 +261,9 @@ const tips = [
   {
     id: "tip-12-cumulative-review",
     order: 12,
-    delayDays: 189,
+    delayDays: 180,
     stage: "Advanced & Exam-Focused",
-    subject: "Tip of the week: Build a cumulative review notebook",
+    subject: "Study tip: Build a cumulative review notebook",
     preheader: "A single place to review everything before finals.",
     heading: "Build a cumulative review notebook",
     bodyHtml: `
@@ -275,9 +275,9 @@ const tips = [
   {
     id: "tip-13-weak-spots",
     order: 13,
-    delayDays: 210,
+    delayDays: 195,
     stage: "Advanced & Exam-Focused",
-    subject: "Tip of the week: Target your weak spots",
+    subject: "Study tip: Target your weak spots",
     preheader: "Efficient studying is smart studying.",
     heading: "Target your weak spots",
     bodyHtml: `
@@ -288,14 +288,14 @@ const tips = [
   },
 ];
 
-// Final "keeper" message — not in the original weekly cadence table but drafted
+// Final "keeper" message — not in the original cadence table but drafted
 // as a closing tip in the plan doc. Scheduled just ahead of the Week 32 survey.
 tips.push({
   id: "tip-14-make-it-a-keeper",
   order: 14,
-  delayDays: 217,
+  delayDays: 210,
   stage: "Advanced & Exam-Focused",
-  subject: "Tip of the week: Make it a keeper",
+  subject: "Study tip: Make it a keeper",
   preheader: "The best tool is the one you'll actually keep using.",
   heading: "Make it a keeper",
   bodyHtml: `
@@ -307,7 +307,7 @@ tips.push({
 // Shared CTA for all tips emails
 tips.forEach((t) => {
   t.category = "tip";
-  t.eyebrow = `Weekly Tip \u00b7 ${t.stage}`;
+  t.eyebrow = `Study Tip \u00b7 ${t.stage}`;
   t.ctaText = "Open your study page";
   t.ctaLink = STUDY_PAGE;
 });
